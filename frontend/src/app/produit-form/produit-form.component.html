@@ -1,0 +1,60 @@
+<div class="container" >
+
+    <div class="row">
+
+      <div class="col-sm-8">
+        <div class="row" style="display: block;">
+          <h2 >{{title}}</h2>
+        </div>
+        <div style="margin-bottom: 2vw;">
+          <form>
+
+            <div class="form-group">
+              <label for="name">DCI</label>
+              <input [(ngModel)]="produit.dci" type="text" name="dci" class="form-control" id="dci"  placeholder="Entrer votre dci">
+            </div>
+            <div class="form-group">
+              <label for="dosage">Dosage</label>
+              <input [(ngModel)]="produit.dosage" type="text" name="dosage" class="form-control" id="dosage"  placeholder="Entrer le dosage">
+
+            </div>
+            <div class="form-group">
+              <label for="forme">Forme</label>
+              <input [(ngModel)]="produit.forme" type="text" name="forme" class="form-control" id="forme"  placeholder="Entrer la forme du produit">
+
+            </div>
+            <div class="form-group">
+              <label for="reference">Référence</label>
+              <input [(ngModel)]="produit.reference" type="text" name="adresse" class="form-control" id="reference"  placeholder="Entrer la référence">
+
+            </div>
+            <div class="form-group">
+                <label for="prix">Prix</label>
+                <input [(ngModel)]="produit.prix" type="number" name="prix" class="form-control" id="prix"  placeholder="Entrer le prix">
+
+              </div>
+
+              <div class="form-group">
+                <label for="quantite">Quantité restante</label>
+                <input [(ngModel)]="produit.quantite" type="number" name="quantite" class="form-control" id="quantite"  placeholder="Entrer la quantité restante">
+
+              </div>
+
+              <div class="form-group">
+                <label for="seuilAlerte">Seuil d'alerte</label>
+                <input [(ngModel)]="produit.seuilAlerte" type="number" name="seuilAlerte" class="form-control" id="seuilAlerte"  placeholder="Entrer le seuil d'Alerte">
+
+              </div>
+          </form>
+
+
+        </div>
+        <div class="btn-toolbar float-end">
+          <button class="btn btn-primary me-1" *ngIf="isCreation()" (click)="save()">Créer</button>
+          <button class="btn btn-primary me-1" *ngIf="!isCreation()" (click)="update()">Enregistrer</button>
+          <button class="btn btn-primary" [routerLink]="['/produit-list']"> Retour</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

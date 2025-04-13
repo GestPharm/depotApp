@@ -1,0 +1,82 @@
+<div class="container" >
+  <h5 class="text-center fst-italic time-new-roman">Bienvenue dans votre dépot pharmaceutique</h5>
+  <div class="row justify-content-center align-items-center mb-4">
+    <div class="col">
+      <span >Répartition des entrées/sorties</span>
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [labels]="chartOptions.labels"
+          [responsive]="chartOptions.responsive"
+        ></apx-chart>
+      </div>
+      
+    </div>
+    <div class="col">
+      <div id="chart1">
+        <apx-chart
+          [series]="chartOptions1.series"
+          [chart]="chartOptions1.chart"
+          [xaxis]="chartOptions1.xaxis"
+          [dataLabels]="chartOptions1.dataLabels"
+          [grid]="chartOptions1.grid"
+          [stroke]="chartOptions1.stroke"
+          [title]="chartOptions1.title"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row" style="display: block;">
+      <h2 >Dernières transactions</h2>
+    </div>
+
+
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>No</th>
+          <th>Type de transaction</th>
+          <th>Poste de santé</th>
+          <th>Produits</th>
+          <th>Date</th>
+
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 10, currentPage: page }">
+
+          <td>{{ transaction.id }}</td>
+          <td> {{transaction.type }}</td>
+          <td> {{transaction.poste?.nom }}</td>
+          <td>
+            <ul *ngIf="transaction.ligneProduits">
+                <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}}</li>
+            </ul>
+          </td>
+          <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
+
+          <td>
+           
+              <a routerLink="/transaction-form/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+            
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination" *ngIf="transactions.length > 0">
+        <pagination-controls (pageChange)="page = $event" [responsive]="true"
+        [previousLabel]="paginationLabels.previousLabel"
+        [nextLabel]="paginationLabels.nextLabel"
+        [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
+        [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
+        [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
+        ></pagination-controls>
+      </div>
+  </div>

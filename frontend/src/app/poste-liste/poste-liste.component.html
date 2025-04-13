@@ -1,0 +1,54 @@
+<div class="container" >
+
+    <div class="row" style="display: block;">
+      <h2 >Liste des postes</h2>
+    </div>
+  
+      
+  
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>No</th>
+          <th>Nom</th>
+          <th>Contact</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let poste of postes ">
+    
+          <td>{{ poste.id }}</td>
+          <td> {{poste.nom }}</td>
+          <td> {{ poste.email }} {{ poste.telephone }}</td>
+          <td>
+            
+            <a (click)="selectPoste(poste)" class="padding_1vw"><fa-icon [icon]="faEye" /> </a> 
+              <a routerLink="/poste-form/{{poste.id}}" class="padding_1vw"><fa-icon [icon]="faPen" /> </a> 
+             <a (click)="deletePoste(poste.id)" class="padding_1vw"><fa-icon [icon]="faTrash" ></fa-icon></a>
+            
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="mb-4 ">
+        <button class="btn btn-primary" [routerLink]="['/poste-form']"> Nouveau</button>
+    </div>
+    <br/>
+    <br/>
+    <div class="row" *ngIf="selectedPoste!==undefined && selectedPoste!==null">
+      <div class="col-sm-8">
+        <h2 class="center">Détails du poste de santé</h2>
+        <label-text [label] = "'Identifiant : '" [text] = "selectedPoste.id" [width]="20"></label-text>
+        <label-text [label] = "'Nom : '" [text] = "selectedPoste.nom" [width]="20"></label-text>
+        <label-text [label] = "'Adresse : '" [text] = "selectedPoste.adresse" [width]="20"></label-text>
+        <label-text [label] = "'Telephone : '" [text] = "selectedPoste.telephone" [width]="20"></label-text>
+        <label-text [label] = "'Telephone : '" [text] = "selectedPoste.email" [width]="20"></label-text>
+
+        
+    </div>
+    </div>
+      
+    </div>
+    
+    

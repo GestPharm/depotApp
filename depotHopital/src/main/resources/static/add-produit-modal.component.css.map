@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/transaction-form/add-produit-modal/add-produit-modal.component.scss"],
+  "sourcesContent": ["/* Styles pour le modal */\n.custom-modal {\n  width: 100%; /* Prend toute la largeur disponible */\n  max-width: 400px; /* Limite la largeur à 400px */\n}\n\n/* Styles pour l'en-tête */\n.custom-modal-header {\n  background-color: #008b8b;\n  color: white;\n  padding: 16px 24px;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n}\n\n/* Styles pour le contenu */\n.custom-modal-content {\n  padding: 24px;\n}\n\n/* Styles pour le footer */\n.custom-modal-footer {\n  background-color: #f5f5f5;\n  padding: 16px 24px;\n  border-bottom-left-radius: 4px;\n  border-bottom-right-radius: 4px;\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n}\n\n/* Styles pour les boutons */\n.custom-modal-footer button {\n  text-transform: uppercase;\n  font-weight: 500;\n}"],
+  "mappings": ";;;AACA,CAAA;AACE,SAAA;AACA,aAAA;;AAIF,CAAA;AACE,oBAAA;AACA,SAAA;AACA,WAAA,KAAA;AACA,0BAAA;AACA,2BAAA;;AAIF,CAAA;AACE,WAAA;;AAIF,CAAA;AACE,oBAAA;AACA,WAAA,KAAA;AACA,6BAAA;AACA,8BAAA;AACA,WAAA;AACA,mBAAA;AACA,OAAA;;AAIF,CAXA,oBAWA;AACE,kBAAA;AACA,eAAA;;",
+  "names": []
+}

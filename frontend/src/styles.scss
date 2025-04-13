@@ -1,0 +1,128 @@
+
+
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+
+
+$theme-colors: (
+  "primary": #008b8b,
+  
+);
+
+
+
+
+@import "bootstrap/scss/bootstrap";
+
+
+
+/* You can add global styles to this file, and also import other style files */
+
+.times-new-roman{
+    
+        font-family: 'Times New Roman', sans-serif !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fa-eye, .fa-trash, .fa-edit, .fa-pen {
+  color: #008b8b;
+}
+
+.padding_1vw{
+  padding: 1vw;
+}
+
+.padding_2vw{
+  padding: 2vw;
+}
+
+.bg-primary{
+  background: #008b8b;
+}
+
+.margin_1vw{
+  margin: 1vw;
+}
+
+.margin_2vw{
+  margin: 2vw;
+}
+
+.margin_right_1vw{
+  margin-right: 1vw;
+}
+
+.margin_right_2vw{
+  margin-right: 2vw;
+}
+
+.active .bs-stepper-circle  {
+  background-color: #008b8b;
+}
+
+.bs-stepper-label{
+  color:#008b8b;
+}
+
+
+.home-box{
+  background-color: #008b8b;
+  /*width: 350px;*/
+}
+
+
+
+
+
+.home-box-left{
+  width: 15%; 
+  /*padding: 1rem;*/
+  margin: auto;
+  display: block;
+}
+
+.home-box-right{
+  width: 70%; 
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media only screen and (min-width: 360px) { 
+  .min-vh-90 {
+  min-height: 85vh;
+  margin-top: 70px;
+  } 
+
+  .home-box{
+    width: 90%;
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media only screen and (min-width: 768px) { 
+  .min-vh-90 {
+    min-height: 85vh;
+    margin-top: 95px;
+    } 
+
+    
+  .home-box{
+    width: 100%;
+  }
+
+ }
+
+// Large devices (desktops, 992px and up)
+@media only screen and (min-width: 992px) { 
+  .min-vh-90 {
+    min-height: 70vh;
+    margin-top: 85px;
+    } 
+    .home-box{
+    
+      width: 350px;
+    }
+ }

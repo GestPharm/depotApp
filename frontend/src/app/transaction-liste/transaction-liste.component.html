@@ -1,0 +1,86 @@
+<div class="container" >
+
+    <div class="row" style="display: block;">
+      <h2 >Liste des transactions</h2>
+    </div>
+    <div class="row mb-4">
+        <!-- Champ DCI -->
+        <div class="col-md-4">
+         <!-- <label for="dci" class="form-label"></label>-->
+          <input type="text" class="form-control" id="dci" name="dci" placeholder="filtrer par DCI" [(ngModel)]="dciCritere">
+      </div>
+
+      <!-- Champ Nom du Poste -->
+      <div class="col-md-4">
+          <!--<label for="nomPoste" class="form-label">Nom du Poste</label>-->
+          <input type="text" class="form-control" id="nomPoste" name="nomPoste" placeholder="filter par nom du poste" [(ngModel)]="nomPosteCritere">
+      </div>
+
+      <!-- Bouton Rechercher -->
+      <div class="col-md-4 d-flex align-items-end">
+          <button (click)="rechercherTransaction()" class="btn btn-primary w-100">Rechercher</button>
+      </div>
+    </div>
+
+
+
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>No</th>
+          <th>Type de transaction</th>
+          <th>Poste de santé</th>
+          <th>Produits</th>
+          <th>Prix</th>
+          <th>Date</th>
+
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="filteredTransactions | async as listeTransactions">
+            <tr *ngFor="let transaction of listeTransactions | paginate: { itemsPerPage: 10, currentPage: page }">
+
+              <td>{{ transaction.id }}</td>
+              <td> {{transaction.type }}</td>
+              <td> {{transaction.poste?.nom }}</td>
+              <td>
+                <ul *ngIf="transaction.ligneProduits">
+                    <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}} - {{elt.prixTotal}}</li>
+                </ul>
+              </td>
+              <td> {{transaction.prixTotal }}</td>
+              <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
+              
+    
+              <td>
+                <a (click)="selectTransaction(transaction)" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+                  <a routerLink="/transaction-form/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faPen" /> </a>
+                 <a (click)="deleteTransaction(transaction.id)" class="padding_1vw"><fa-icon [icon]="faTrash" ></fa-icon></a>
+    
+              </td>
+            </tr>
+          </ng-container>
+        
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination" *ngIf="transactions.length > 0">
+        <pagination-controls (pageChange)="page = $event" [responsive]="true"
+        [previousLabel]="paginationLabels.previousLabel"
+        [nextLabel]="paginationLabels.nextLabel"
+        [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
+        [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
+        [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
+        ></pagination-controls>
+      </div>
+
+      <div class="mb-4 ">
+        <button class="btn btn-primary" [routerLink]="['/transaction-form']"> Nouveau</button>
+    </div>
+
+   
+
+</div>

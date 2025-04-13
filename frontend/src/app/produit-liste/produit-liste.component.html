@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row" style="display: block;">
+    <h2>Liste des produits</h2>
+  </div>
+
+  <div class="row mb-3">
+		<div class="col">
+		  <input 
+			type="text" 
+			class="form-control" 
+			placeholder="Rechercher par nom" 
+			[(ngModel)]="searchTerm"
+			(input)="filterProduits()"
+		  />
+		</div>
+	  </div>
+
+  <!-- Tableau avec pagination -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>DCI</th>
+        <th>Dosage</th>
+        <th>Quantité</th>
+        <th>Seuil d'alerte</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="filteredProduits | async as produits">
+        <!-- Afficher uniquement les éléments de la page actuelle -->
+        <tr *ngFor="let produit of produits | paginate: { itemsPerPage: 10, currentPage: page }">
+          <td>{{ produit.id }}</td>
+          <td>{{ produit.dci }}</td>
+          <td>{{ produit.dosage }}</td>
+          <td>{{ produit.quantite }}</td>
+          <td>{{ produit.seuilAlerte }}</td>
+          <td>
+            <a (click)="selectProduit(produit)" class="padding_1vw"><fa-icon [icon]="faEye" /></a>
+            <a routerLink="/produit-form/{{produit.id}}" class="padding_1vw"><fa-icon [icon]="faPen" /></a>
+            <a (click)="deleteProduit(produit.id)" class="padding_1vw"><fa-icon [icon]="faTrash"></fa-icon></a>
+          </td>
+        </tr>
+      </ng-container>
+      
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <pagination-controls (pageChange)="page = $event" [responsive]="true"
+    [previousLabel]="paginationLabels.previousLabel"
+    [nextLabel]="paginationLabels.nextLabel"
+    [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
+    [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
+    [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
+    ></pagination-controls>
+  </div>
+
+  <!-- Bouton pour ajouter un nouveau produit -->
+  <div class="mb-4">
+    <button class="btn btn-primary" [routerLink]="['/produit-form']">Nouveau</button>
+  </div>
+
+  <!-- Détails du produit sélectionné -->
+  <br />
+  <br />
+  <div class="row" *ngIf="selectedProduit !== undefined && selectedProduit !== null">
+    <div class="col-sm-8">
+      <h2 class="center">Détails du produit médical</h2>
+      <label-text [label]="'Identifiant : '" [text]="selectedProduit.id" [width]="20"></label-text>
+      <label-text [label]="'DCI : '" [text]="selectedProduit.nom" [width]="20"></label-text>
+      <label-text [label]="'Forme : '" [text]="selectedProduit.forme" [width]="20"></label-text>
+      <label-text [label]="'Dosage : '" [text]="selectedProduit.dosage" [width]="20"></label-text>
+      <label-text [label]="'Quantité : '" [text]="selectedProduit.quantite" [width]="20"></label-text>
+      <label-text [label]="'Seuil Alerte : '" [text]="selectedProduit.seuilAlerte" [width]="20"></label-text>
+      <label-text [label]="'Prix : '" [text]="selectedProduit.prix" [width]="20"></label-text>
+    </div>
+  </div>
+</div>
