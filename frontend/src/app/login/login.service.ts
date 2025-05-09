@@ -23,7 +23,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post<{ token: string }>('http://localhost:8080/api/login', { username, password })
+    return this.http.post<{ token: string }>('http://localhost:8080/depotHopital/api/login', { username, password })
       .pipe(tap(res => {
         localStorage.setItem('token', res.token);
       }));

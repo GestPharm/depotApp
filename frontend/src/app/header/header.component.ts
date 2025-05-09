@@ -2,14 +2,18 @@ import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../login/auth.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, NgbModule],
+  imports: [RouterLink, NgbModule, FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+  faSignOutAlt = faSignOutAlt;
 
   constructor(private router: Router, private auth: AuthService) {}
 

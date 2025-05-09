@@ -45,7 +45,7 @@ public class LigneProduit {
     }
 
     public Double getPrixTotal() {
-        return prixTotal;
+         if(prixTotal==null) return Double.valueOf(0) ; else return prixTotal;
     }
 
     public void setPrixTotal(Double prixTotal) {

@@ -10088,6 +10088,12 @@ var NgApexchartsModule = class _NgApexchartsModule {
 })();
 
 // node_modules/@fortawesome/free-solid-svg-icons/index.mjs
+var faRightFromBracket = {
+  prefix: "fas",
+  iconName: "right-from-bracket",
+  icon: [512, 512, ["sign-out-alt"], "f2f5", "M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"]
+};
+var faSignOutAlt = faRightFromBracket;
 var faEye = {
   prefix: "fas",
   iconName: "eye",
@@ -14747,7 +14753,7 @@ var Sexe;
   Sexe2[Sexe2["FEMME"] = 1] = "FEMME";
 })(Sexe || (Sexe = {}));
 var GenericConstants = {
-  "BACKEND_HOST_URL": "http://localhost:8080"
+  "BACKEND_HOST_URL": "http://localhost:8080/depotHopital"
   //'BACKEND_HOST_URL': 'http://192.168.1.40:8080/tailorApp'
 };
 
@@ -38752,6 +38758,8 @@ var AddProduitModalComponent = class _AddProduitModalComponent {
   save() {
     if (this.ligneProduit && this.ligneProduit.produit?.prix && this.ligneProduit.quantite) {
       this.ligneProduit.prixTotal = this.ligneProduit.produit?.prix * this.ligneProduit.quantite;
+    } else {
+      this.ligneProduit.prixTotal = 0;
     }
     if (this.isCreation) {
       this.listLigneProduit.push(this.ligneProduit);
@@ -46875,23 +46883,23 @@ function TransactionFormComponent_table_33_tr_10_Template(rf, ctx) {
   if (rf & 2) {
     const lp_r5 = ctx.$implicit;
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(lp_r5.id);
-    \u0275\u0275advance(2);
     \u0275\u0275textInterpolate2("", lp_r5.produit == null ? null : lp_r5.produit.dci, " ", lp_r5.produit == null ? null : lp_r5.produit.dosage, "");
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(lp_r5.quantite);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(lp_r5.prixTotal);
   }
 }
 function TransactionFormComponent_table_33_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "table", 30)(1, "thead")(2, "tr")(3, "th");
-    \u0275\u0275text(4, "No");
+    \u0275\u0275text(4, "DCI");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(5, "th");
-    \u0275\u0275text(6, "DCI");
+    \u0275\u0275text(6, "Quantit\xE9");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(7, "th");
-    \u0275\u0275text(8, "Quantit\xE9");
+    \u0275\u0275text(8, "Prix Total");
     \u0275\u0275elementEnd()()();
     \u0275\u0275elementStart(9, "tbody");
     \u0275\u0275template(10, TransactionFormComponent_table_33_tr_10_Template, 7, 4, "tr", 31);
@@ -47209,7 +47217,7 @@ var GenericsService = class _GenericsService {
 // src/app/transaction-liste/transaction-liste.component.ts
 var _c016 = () => ["/transaction-form"];
 var _c110 = (a0) => ({ itemsPerPage: 10, currentPage: a0 });
-function TransactionListeComponent_ng_container_30_tr_1_ul_8_li_1_Template(rf, ctx) {
+function TransactionListeComponent_ng_container_28_tr_1_ul_6_li_1_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "li");
     \u0275\u0275text(1);
@@ -47221,10 +47229,10 @@ function TransactionListeComponent_ng_container_30_tr_1_ul_8_li_1_Template(rf, c
     \u0275\u0275textInterpolate3("", elt_r2.produit == null ? null : elt_r2.produit.dci, " - ", elt_r2.quantite, " - ", elt_r2.prixTotal, "");
   }
 }
-function TransactionListeComponent_ng_container_30_tr_1_ul_8_Template(rf, ctx) {
+function TransactionListeComponent_ng_container_28_tr_1_ul_6_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "ul");
-    \u0275\u0275template(1, TransactionListeComponent_ng_container_30_tr_1_ul_8_li_1_Template, 2, 3, "li", 13);
+    \u0275\u0275template(1, TransactionListeComponent_ng_container_28_tr_1_ul_6_li_1_Template, 2, 3, "li", 13);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -47233,7 +47241,7 @@ function TransactionListeComponent_ng_container_30_tr_1_ul_8_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", transaction_r3.ligneProduits);
   }
 }
-function TransactionListeComponent_ng_container_30_tr_1_Template(rf, ctx) {
+function TransactionListeComponent_ng_container_28_tr_1_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "tr")(1, "td");
@@ -47243,43 +47251,38 @@ function TransactionListeComponent_ng_container_30_tr_1_Template(rf, ctx) {
     \u0275\u0275text(4);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(5, "td");
-    \u0275\u0275text(6);
+    \u0275\u0275template(6, TransactionListeComponent_ng_container_28_tr_1_ul_6_Template, 2, 1, "ul", 9);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(7, "td");
-    \u0275\u0275template(8, TransactionListeComponent_ng_container_30_tr_1_ul_8_Template, 2, 1, "ul", 9);
+    \u0275\u0275text(8);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(9, "td");
     \u0275\u0275text(10);
+    \u0275\u0275pipe(11, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(11, "td");
-    \u0275\u0275text(12);
-    \u0275\u0275pipe(13, "date");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "td")(15, "a", 14);
-    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_30_tr_1_Template_a_click_15_listener() {
+    \u0275\u0275elementStart(12, "td")(13, "a", 14);
+    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_28_tr_1_Template_a_click_13_listener() {
       const transaction_r3 = \u0275\u0275restoreView(_r1).$implicit;
       const ctx_r3 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r3.selectTransaction(transaction_r3));
     });
+    \u0275\u0275element(14, "fa-icon", 15);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(15, "a", 16);
     \u0275\u0275element(16, "fa-icon", 15);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(17, "a", 16);
-    \u0275\u0275element(18, "fa-icon", 15);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(19, "a", 14);
-    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_30_tr_1_Template_a_click_19_listener() {
+    \u0275\u0275elementStart(17, "a", 14);
+    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_28_tr_1_Template_a_click_17_listener() {
       const transaction_r3 = \u0275\u0275restoreView(_r1).$implicit;
       const ctx_r3 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r3.deleteTransaction(transaction_r3.id));
     });
-    \u0275\u0275element(20, "fa-icon", 15);
+    \u0275\u0275element(18, "fa-icon", 15);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
     const transaction_r3 = ctx.$implicit;
     const ctx_r3 = \u0275\u0275nextContext(2);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(transaction_r3.id);
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate1(" ", transaction_r3.type, "");
     \u0275\u0275advance(2);
@@ -47289,7 +47292,7 @@ function TransactionListeComponent_ng_container_30_tr_1_Template(rf, ctx) {
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate1(" ", transaction_r3.prixTotal, "");
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(13, 11, transaction_r3.dateTransaction, "dd/MM/yyyy"), "");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(11, 10, transaction_r3.dateTransaction, "dd/MM/yyyy"), "");
     \u0275\u0275advance(4);
     \u0275\u0275property("icon", ctx_r3.faEye);
     \u0275\u0275advance();
@@ -47300,10 +47303,10 @@ function TransactionListeComponent_ng_container_30_tr_1_Template(rf, ctx) {
     \u0275\u0275property("icon", ctx_r3.faTrash);
   }
 }
-function TransactionListeComponent_ng_container_30_Template(rf, ctx) {
+function TransactionListeComponent_ng_container_28_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TransactionListeComponent_ng_container_30_tr_1_Template, 21, 14, "tr", 13);
+    \u0275\u0275template(1, TransactionListeComponent_ng_container_28_tr_1_Template, 19, 13, "tr", 13);
     \u0275\u0275pipe(2, "paginate");
     \u0275\u0275elementContainerEnd();
   }
@@ -47314,11 +47317,11 @@ function TransactionListeComponent_ng_container_30_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", \u0275\u0275pipeBind2(2, 1, listeTransactions_r5, \u0275\u0275pureFunction1(4, _c110, ctx_r3.page)));
   }
 }
-function TransactionListeComponent_div_32_Template(rf, ctx) {
+function TransactionListeComponent_div_30_Template(rf, ctx) {
   if (rf & 1) {
     const _r6 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "div", 17)(1, "pagination-controls", 18);
-    \u0275\u0275listener("pageChange", function TransactionListeComponent_div_32_Template_pagination_controls_pageChange_1_listener($event) {
+    \u0275\u0275listener("pageChange", function TransactionListeComponent_div_30_Template_pagination_controls_pageChange_1_listener($event) {
       \u0275\u0275restoreView(_r6);
       const ctx_r3 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r3.page = $event);
@@ -47415,7 +47418,7 @@ var TransactionListeComponent = class _TransactionListeComponent {
   static \u0275fac = function TransactionListeComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _TransactionListeComponent)(\u0275\u0275directiveInject(TransactionService), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(GenericsService));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _TransactionListeComponent, selectors: [["app-transaction-list"]], decls: 36, vars: 8, consts: [[1, "container"], [1, "row", 2, "display", "block"], [1, "row", "mb-4"], [1, "col-md-4"], ["type", "text", "id", "dci", "name", "dci", "placeholder", "filtrer par DCI", 1, "form-control", 3, "ngModelChange", "ngModel"], ["type", "text", "id", "nomPoste", "name", "nomPoste", "placeholder", "filter par nom du poste", 1, "form-control", 3, "ngModelChange", "ngModel"], [1, "col-md-4", "d-flex", "align-items-end"], [1, "btn", "btn-primary", "w-100", 3, "click"], [1, "table", "table-hover"], [4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "routerLink"], [4, "ngFor", "ngForOf"], [1, "padding_1vw", 3, "click"], [3, "icon"], [1, "padding_1vw", 3, "routerLink"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"]], template: function TransactionListeComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _TransactionListeComponent, selectors: [["app-transaction-list"]], decls: 34, vars: 8, consts: [[1, "container"], [1, "row", 2, "display", "block"], [1, "row", "mb-4"], [1, "col-md-4"], ["type", "text", "id", "dci", "name", "dci", "placeholder", "filtrer par DCI", 1, "form-control", 3, "ngModelChange", "ngModel"], ["type", "text", "id", "nomPoste", "name", "nomPoste", "placeholder", "filter par nom du poste", 1, "form-control", 3, "ngModelChange", "ngModel"], [1, "col-md-4", "d-flex", "align-items-end"], [1, "btn", "btn-primary", "w-100", 3, "click"], [1, "table", "table-hover"], [4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "routerLink"], [4, "ngFor", "ngForOf"], [1, "padding_1vw", 3, "click"], [3, "icon"], [1, "padding_1vw", 3, "routerLink"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"]], template: function TransactionListeComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "h2");
       \u0275\u0275text(3, "Liste des transactions");
@@ -47439,33 +47442,30 @@ var TransactionListeComponent = class _TransactionListeComponent {
       \u0275\u0275text(11, "Rechercher");
       \u0275\u0275elementEnd()()();
       \u0275\u0275elementStart(12, "table", 8)(13, "thead")(14, "tr")(15, "th");
-      \u0275\u0275text(16, "No");
+      \u0275\u0275text(16, "Type de transaction");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(17, "th");
-      \u0275\u0275text(18, "Type de transaction");
+      \u0275\u0275text(18, "Poste de sant\xE9");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(19, "th");
-      \u0275\u0275text(20, "Poste de sant\xE9");
+      \u0275\u0275text(20, "Produits");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(21, "th");
-      \u0275\u0275text(22, "Produits");
+      \u0275\u0275text(22, "Prix");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(23, "th");
-      \u0275\u0275text(24, "Prix");
+      \u0275\u0275text(24, "Date");
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(25, "th");
-      \u0275\u0275text(26, "Date");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(27, "th");
-      \u0275\u0275text(28, "Actions");
+      \u0275\u0275text(26, "Actions");
       \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(29, "tbody");
-      \u0275\u0275template(30, TransactionListeComponent_ng_container_30_Template, 3, 6, "ng-container", 9);
-      \u0275\u0275pipe(31, "async");
+      \u0275\u0275elementStart(27, "tbody");
+      \u0275\u0275template(28, TransactionListeComponent_ng_container_28_Template, 3, 6, "ng-container", 9);
+      \u0275\u0275pipe(29, "async");
       \u0275\u0275elementEnd()();
-      \u0275\u0275template(32, TransactionListeComponent_div_32_Template, 2, 6, "div", 10);
-      \u0275\u0275elementStart(33, "div", 11)(34, "button", 12);
-      \u0275\u0275text(35, " Nouveau");
+      \u0275\u0275template(30, TransactionListeComponent_div_30_Template, 2, 6, "div", 10);
+      \u0275\u0275elementStart(31, "div", 11)(32, "button", 12);
+      \u0275\u0275text(33, " Nouveau");
       \u0275\u0275elementEnd()()();
     }
     if (rf & 2) {
@@ -47473,8 +47473,8 @@ var TransactionListeComponent = class _TransactionListeComponent {
       \u0275\u0275twoWayProperty("ngModel", ctx.dciCritere);
       \u0275\u0275advance(2);
       \u0275\u0275twoWayProperty("ngModel", ctx.nomPosteCritere);
-      \u0275\u0275advance(22);
-      \u0275\u0275property("ngIf", \u0275\u0275pipeBind1(31, 5, ctx.filteredTransactions));
+      \u0275\u0275advance(20);
+      \u0275\u0275property("ngIf", \u0275\u0275pipeBind1(29, 5, ctx.filteredTransactions));
       \u0275\u0275advance(2);
       \u0275\u0275property("ngIf", ctx.transactions.length > 0);
       \u0275\u0275advance(2);
@@ -47489,7 +47489,7 @@ var TransactionListeComponent = class _TransactionListeComponent {
 // src/app/login/auth.service.ts
 var AuthService = class _AuthService {
   http;
-  baseUrl = "http://localhost:8080/api";
+  baseUrl = "http://localhost:8080/depotHopital/api";
   constructor(http) {
     this.http = http;
   }
@@ -64881,6 +64881,7 @@ var NgbModule = class _NgbModule {
 var HeaderComponent = class _HeaderComponent {
   router;
   auth;
+  faSignOutAlt = faSignOutAlt;
   constructor(router, auth) {
     this.router = router;
     this.auth = auth;
@@ -64893,7 +64894,7 @@ var HeaderComponent = class _HeaderComponent {
   static \u0275fac = function HeaderComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _HeaderComponent)(\u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(AuthService));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], decls: 23, vars: 0, consts: [[1, "navbar", "navbar-expand-md", "bg-primary", "navbar-dark", "fixed-top", "mb-4"], ["href", "#", 1, "navbar-brand", "fs-2", "font-italic", "times-new-roman"], ["type", "button", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", "aria-controls", "navbarCollapse", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "collapsed"], [1, "navbar-toggler-icon"], ["id", "navbarCollapse", 1, "collapse", "navbar-collapse"], [1, "navbar-nav", "me-auto"], [1, "nav-item"], ["routerLink", "/home", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/transaction-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/produit-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/poste-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], [1, "navbar-nav", "ms-auto"], [1, "btn", "btn-outline-light", 3, "click"]], template: function HeaderComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], decls: 25, vars: 1, consts: [[1, "navbar", "navbar-expand-md", "bg-primary", "navbar-dark", "fixed-top", "mb-4"], ["href", "#", 1, "navbar-brand", "fs-2", "font-italic", "times-new-roman"], ["type", "button", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", "aria-controls", "navbarCollapse", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "collapsed"], [1, "navbar-toggler-icon"], ["id", "navbarCollapse", 1, "collapse", "navbar-collapse"], [1, "navbar-nav", "me-auto"], [1, "nav-item"], ["routerLink", "/home", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/transaction-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/produit-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/poste-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], [1, "navbar-nav", "ms-auto"], [1, "btn", "btn-outline-light", 3, "click"], [3, "icon"]], template: function HeaderComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "nav", 0)(1, "a", 1);
       \u0275\u0275text(2, "D\xE9pot Virtuel");
@@ -64917,13 +64918,20 @@ var HeaderComponent = class _HeaderComponent {
       \u0275\u0275listener("click", function HeaderComponent_Template_button_click_21_listener() {
         return ctx.logout();
       });
-      \u0275\u0275text(22, "Logout");
+      \u0275\u0275elementStart(22, "i");
+      \u0275\u0275element(23, "fa-icon", 13);
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(24, " Logout");
       \u0275\u0275elementEnd()()()()();
     }
-  }, dependencies: [RouterLink, NgbModule], styles: ["\n\n.nav-item[_ngcontent-%COMP%] {\n  padding: 2px;\n  margin-left: 7px;\n}\n/*# sourceMappingURL=header.component.css.map */"] });
+    if (rf & 2) {
+      \u0275\u0275advance(23);
+      \u0275\u0275property("icon", ctx.faSignOutAlt);
+    }
+  }, dependencies: [RouterLink, NgbModule, FontAwesomeModule, FaIconComponent], styles: ["\n\n.nav-item[_ngcontent-%COMP%] {\n  padding: 2px;\n  margin-left: 7px;\n}\n/*# sourceMappingURL=header.component.css.map */"] });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HeaderComponent, { className: "HeaderComponent", filePath: "src/app/header/header.component.ts", lineNumber: 12 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HeaderComponent, { className: "HeaderComponent", filePath: "src/app/header/header.component.ts", lineNumber: 14 });
 })();
 
 // src/app/app.component.ts

@@ -28,7 +28,7 @@
       <table class="table table-hover">
         <thead>
         <tr>
-          <th>No</th>
+         
           <th>Type de transaction</th>
           <th>Poste de santé</th>
           <th>Produits</th>
@@ -42,7 +42,7 @@
           <ng-container *ngIf="filteredTransactions | async as listeTransactions">
             <tr *ngFor="let transaction of listeTransactions | paginate: { itemsPerPage: 10, currentPage: page }">
 
-              <td>{{ transaction.id }}</td>
+             
               <td> {{transaction.type }}</td>
               <td> {{transaction.poste?.nom }}</td>
               <td>

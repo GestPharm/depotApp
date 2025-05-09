@@ -73,7 +73,7 @@ public class Produit {
     }
 
     public Double getPrix() {
-        return prix;
+        if(prix==null) return Double.valueOf(0) ; else return prix;
     }
 
     public void setPrix(Double prix) {

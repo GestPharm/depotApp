@@ -42,6 +42,8 @@ faClose= faClose;
 save() {
   if(this.ligneProduit && this.ligneProduit.produit?.prix && this.ligneProduit.quantite){
     this.ligneProduit.prixTotal=this.ligneProduit.produit?.prix * this.ligneProduit.quantite;
+  }else{
+    this.ligneProduit.prixTotal=0;
   }
   if(this.isCreation){
     this.listLigneProduit.push(this.ligneProduit);

@@ -21,6 +21,7 @@
               "base": "dist/frontend",
               "browser": ""
             },
+            "baseHref": "/depotHopital/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
