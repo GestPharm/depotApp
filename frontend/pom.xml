@@ -44,7 +44,7 @@
                                 <PROJECT_VERSION>${project.version}</PROJECT_VERSION>
                             </environmentVariables>
                             <executable>npm</executable>
-                            <commandlineArgs>run build</commandlineArgs>
+                            <commandlineArgs>run build --source-map=true</commandlineArgs>
                         </configuration>
                     </execution>
                 </executions>

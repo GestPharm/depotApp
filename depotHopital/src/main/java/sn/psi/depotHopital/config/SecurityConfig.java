@@ -1,21 +1,71 @@
 package sn.psi.depotHopital.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import sn.psi.depotHopital.services.CustomUserDetailsService;
+import sn.psi.depotHopital.utils.JwtUtil;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
+    @Autowired
+    private JwtUtil jwtUtil;
+    @Autowired
+    private  UserDetailsService userDetailsService;
+
+    public SecurityConfig(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
+        this.jwtUtil = jwtUtil;
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authManager) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/", "/index.html", "/favicon.ico", "/assets/**", "/*.js", "/*.css"
+                        ).permitAll()
+                        .requestMatchers("/api/login", "/api/register").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .addFilter(new JwtAuthenticationFilter(authManager, jwtUtil))
+                .addFilterBefore(new JwtAuthorizationFilter(userDetailsService, jwtUtil), UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
+
+
+    @Bean
+    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService,
+                                                       PasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
+        return new ProviderManager(authProvider);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
+    /*private final CustomUserDetailsService userDetailsService;
 
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
@@ -33,6 +83,7 @@ public class SecurityConfig {
                 .formLogin(form -> form // Enable default login form
                         .loginPage("/login") // Custom login page (optional)
                         .permitAll()
+                        .defaultSuccessUrl("/home")
                 )
                 .logout(logout -> logout // Enable logout
                         .permitAll()
@@ -55,4 +106,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); // For encoding passwords
     }
-}
+}*/
+

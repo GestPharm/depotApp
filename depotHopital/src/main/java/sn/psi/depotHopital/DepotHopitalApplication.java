@@ -5,11 +5,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "sn.psi.depotHopital, sn.psi.depotHopital.config")
+@ComponentScan(basePackages = "sn.psi.depotHopital, sn.psi.depotHopital.config, sn.psi.depotHopital.utils")
 @EnableAutoConfiguration
 public class DepotHopitalApplication {
 

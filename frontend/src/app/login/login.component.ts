@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  imports: [FormsModule, CommonModule],
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
@@ -15,19 +19,19 @@ export class LoginComponent {
 
   errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   onSubmit() {
-    this.http.post('/api/login', this.credentials).subscribe(
-      (response: any) => {
-        // Handle successful login
-        localStorage.setItem('token', response.token); // Save the token (if using JWT)
-        this.router.navigate(['/dashboard']); // Redirect to the dashboard or home page
+    this.auth.login(this.credentials.username, this.credentials.password).subscribe({
+      next: (res) => {
+        this.auth.storeToken(res.token); // assuming { token: '...' }
+        this.router.navigate(['/home']);
       },
-      (error) => {
-        // Handle login error
-        this.errorMessage = 'Invalid username or password';
+      error: () => {
+        this.errorMessage = 'Invalid credentials';
       }
-    );
+    });
   }
+
+
 }

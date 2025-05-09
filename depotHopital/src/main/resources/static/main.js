@@ -2264,6 +2264,15 @@ function provideHttpClient(...features) {
   }
   return makeEnvironmentProviders(providers2);
 }
+function withInterceptors(interceptorFns) {
+  return makeHttpFeature(HttpFeatureKind.Interceptors, interceptorFns.map((interceptorFn) => {
+    return {
+      provide: HTTP_INTERCEPTOR_FNS,
+      useValue: interceptorFn,
+      multi: true
+    };
+  }));
+}
 var LEGACY_INTERCEPTOR_FN = new InjectionToken(ngDevMode ? "LEGACY_INTERCEPTOR_FN" : "");
 function withInterceptorsFromDi() {
   return makeHttpFeature(HttpFeatureKind.LegacyInterceptors, [{
@@ -47477,19 +47486,166 @@ var TransactionListeComponent = class _TransactionListeComponent {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TransactionListeComponent, { className: "TransactionListeComponent", filePath: "src/app/transaction-liste/transaction-liste.component.ts", lineNumber: 20 });
 })();
 
+// src/app/login/auth.service.ts
+var AuthService = class _AuthService {
+  http;
+  baseUrl = "http://localhost:8080/api";
+  constructor(http) {
+    this.http = http;
+  }
+  login(username, password) {
+    return this.http.post(`${this.baseUrl}/login`, {
+      username,
+      password
+    });
+  }
+  // auth.service.ts
+  logout() {
+    localStorage.removeItem("token");
+  }
+  storeToken(token) {
+    localStorage.setItem("token", token);
+  }
+  getToken() {
+    return localStorage.getItem("token");
+  }
+  isLoggedIn() {
+    return !!this.getToken();
+  }
+  static \u0275fac = function AuthService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _AuthService)(\u0275\u0275inject(HttpClient));
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthService, factory: _AuthService.\u0275fac, providedIn: "root" });
+};
+
+// src/app/login/login.component.ts
+function LoginComponent_div_21_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 17);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", ctx_r1.errorMessage, " ");
+  }
+}
+var LoginComponent = class _LoginComponent {
+  auth;
+  router;
+  credentials = {
+    username: "",
+    password: ""
+  };
+  errorMessage = "";
+  constructor(auth, router) {
+    this.auth = auth;
+    this.router = router;
+  }
+  onSubmit() {
+    this.auth.login(this.credentials.username, this.credentials.password).subscribe({
+      next: (res) => {
+        this.auth.storeToken(res.token);
+        this.router.navigate(["/home"]);
+      },
+      error: () => {
+        this.errorMessage = "Invalid credentials";
+      }
+    });
+  }
+  static \u0275fac = function LoginComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _LoginComponent)(\u0275\u0275directiveInject(AuthService), \u0275\u0275directiveInject(Router));
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], decls: 22, vars: 4, consts: [["loginForm", "ngForm"], [1, "container", "mt-5"], [1, "row", "justify-content-center"], [1, "col-md-6"], [1, "card"], [1, "card-header", "bg-primary", "text-white"], [1, "card-title", "text-center"], [1, "card-body"], [3, "ngSubmit"], [1, "form-group"], ["for", "username"], ["type", "text", "id", "username", "name", "username", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel"], ["for", "password"], ["type", "password", "id", "password", "name", "password", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel"], [1, "form-group", "text-center"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], ["class", "alert alert-danger mt-3", 4, "ngIf"], [1, "alert", "alert-danger", "mt-3"]], template: function LoginComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      const _r1 = \u0275\u0275getCurrentView();
+      \u0275\u0275elementStart(0, "div", 1)(1, "div", 2)(2, "div", 3)(3, "div", 4)(4, "div", 5)(5, "h3", 6);
+      \u0275\u0275text(6, "Login");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(7, "div", 7)(8, "form", 8, 0);
+      \u0275\u0275listener("ngSubmit", function LoginComponent_Template_form_ngSubmit_8_listener() {
+        \u0275\u0275restoreView(_r1);
+        return \u0275\u0275resetView(ctx.onSubmit());
+      });
+      \u0275\u0275elementStart(10, "div", 9)(11, "label", 10);
+      \u0275\u0275text(12, "Username");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(13, "input", 11);
+      \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_13_listener($event) {
+        \u0275\u0275restoreView(_r1);
+        \u0275\u0275twoWayBindingSet(ctx.credentials.username, $event) || (ctx.credentials.username = $event);
+        return \u0275\u0275resetView($event);
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(14, "div", 9)(15, "label", 12);
+      \u0275\u0275text(16, "Password");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(17, "input", 13);
+      \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_17_listener($event) {
+        \u0275\u0275restoreView(_r1);
+        \u0275\u0275twoWayBindingSet(ctx.credentials.password, $event) || (ctx.credentials.password = $event);
+        return \u0275\u0275resetView($event);
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(18, "div", 14)(19, "button", 15);
+      \u0275\u0275text(20, " Login ");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275template(21, LoginComponent_div_21_Template, 2, 1, "div", 16);
+      \u0275\u0275elementEnd()()()()();
+    }
+    if (rf & 2) {
+      const loginForm_r3 = \u0275\u0275reference(9);
+      \u0275\u0275advance(13);
+      \u0275\u0275twoWayProperty("ngModel", ctx.credentials.username);
+      \u0275\u0275advance(4);
+      \u0275\u0275twoWayProperty("ngModel", ctx.credentials.password);
+      \u0275\u0275advance(2);
+      \u0275\u0275property("disabled", !loginForm_r3.form.valid);
+      \u0275\u0275advance(2);
+      \u0275\u0275property("ngIf", ctx.errorMessage);
+    }
+  }, dependencies: [FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm, CommonModule, NgIf], encapsulation: 2 });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src/app/login/login.component.ts", lineNumber: 14 });
+})();
+
+// src/app/login/auth.guard.ts
+var AuthGuard = class _AuthGuard {
+  auth;
+  router;
+  constructor(auth, router) {
+    this.auth = auth;
+    this.router = router;
+  }
+  canActivate() {
+    if (!this.auth.isLoggedIn()) {
+      this.router.navigate(["/login"]);
+      return false;
+    }
+    return true;
+  }
+  static \u0275fac = function AuthGuard_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _AuthGuard)(\u0275\u0275inject(AuthService), \u0275\u0275inject(Router));
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthGuard, factory: _AuthGuard.\u0275fac, providedIn: "root" });
+};
+
 // src/app/app.routes.ts
 var routes = [
-  { path: "", pathMatch: "full", redirectTo: "home" },
-  { path: "home", component: HomeComponent },
-  { path: "poste-form", component: PosteFormComponent },
-  { path: "poste-form/:id", component: PosteFormComponent },
-  { path: "poste-list", component: PosteListeComponent },
-  { path: "produit-form", component: ProduitFormComponent },
-  { path: "produit-form/:id", component: ProduitFormComponent },
-  { path: "produit-list", component: ProduitListeComponent },
-  { path: "transaction-form", component: TransactionFormComponent },
-  { path: "transaction-form/:id", component: TransactionFormComponent },
-  { path: "transaction-list", component: TransactionListeComponent }
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
+  { path: "poste-form", component: PosteFormComponent, canActivate: [AuthGuard] },
+  { path: "poste-form/:id", component: PosteFormComponent, canActivate: [AuthGuard] },
+  { path: "poste-list", component: PosteListeComponent, canActivate: [AuthGuard] },
+  { path: "produit-form", component: ProduitFormComponent, canActivate: [AuthGuard] },
+  { path: "produit-form/:id", component: ProduitFormComponent, canActivate: [AuthGuard] },
+  { path: "produit-list", component: ProduitListeComponent, canActivate: [AuthGuard] },
+  { path: "transaction-form", component: TransactionFormComponent, canActivate: [AuthGuard] },
+  { path: "transaction-form/:id", component: TransactionFormComponent, canActivate: [AuthGuard] },
+  { path: "transaction-list", component: TransactionListeComponent, canActivate: [AuthGuard] },
+  { path: "login", component: LoginComponent }
 ];
 
 // node_modules/@angular/platform-browser/fesm2022/animations/async.mjs
@@ -47726,9 +47882,30 @@ function provideAnimationsAsync(type = "animations") {
   }]);
 }
 
+// src/app/login/auth.interceptor.ts
+var authInterceptor = (req, next) => {
+  const token = localStorage.getItem("token");
+  const isPublic = req.url.includes("/login") || req.url.includes("/register") || req.url.includes("/public");
+  if (token && !isPublic) {
+    const cloned = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return next(cloned);
+  }
+  return next(req);
+};
+
 // src/app/app.config.ts
 var appConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(), provideAnimationsAsync(), provideAnimationsAsync()]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([authInterceptor])),
+    provideAnimationsAsync(),
+    provideAnimationsAsync()
+  ]
 };
 
 // node_modules/@angular/core/fesm2022/rxjs-interop.mjs
@@ -64702,10 +64879,21 @@ var NgbModule = class _NgbModule {
 
 // src/app/header/header.component.ts
 var HeaderComponent = class _HeaderComponent {
+  router;
+  auth;
+  constructor(router, auth) {
+    this.router = router;
+    this.auth = auth;
+  }
+  // header.component.ts or similar
+  logout() {
+    this.auth.logout();
+    this.router.navigate(["/login"]);
+  }
   static \u0275fac = function HeaderComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _HeaderComponent)();
+    return new (__ngFactoryType__ || _HeaderComponent)(\u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(AuthService));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], decls: 19, vars: 0, consts: [[1, "navbar", "navbar-expand-md", "bg-primary", "navbar-dark", "fixed-top", "mb-4"], ["href", "#", 1, "navbar-brand", "fs-2", "font-italic", "times-new-roman"], ["type", "button", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", "aria-controls", "navbarCollapse", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "collapsed"], [1, "navbar-toggler-icon"], ["id", "navbarCollapse", 1, "collapse", "navbar-collapse"], [1, "navbar-nav", "mr-auto"], [1, "nav-item"], ["routerLink", "/home", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/transaction-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/produit-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/poste-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"]], template: function HeaderComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], decls: 23, vars: 0, consts: [[1, "navbar", "navbar-expand-md", "bg-primary", "navbar-dark", "fixed-top", "mb-4"], ["href", "#", 1, "navbar-brand", "fs-2", "font-italic", "times-new-roman"], ["type", "button", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", "aria-controls", "navbarCollapse", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "collapsed"], [1, "navbar-toggler-icon"], ["id", "navbarCollapse", 1, "collapse", "navbar-collapse"], [1, "navbar-nav", "me-auto"], [1, "nav-item"], ["routerLink", "/home", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/transaction-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/produit-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/poste-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], [1, "navbar-nav", "ms-auto"], [1, "btn", "btn-outline-light", 3, "click"]], template: function HeaderComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "nav", 0)(1, "a", 1);
       \u0275\u0275text(2, "D\xE9pot Virtuel");
@@ -64724,12 +64912,18 @@ var HeaderComponent = class _HeaderComponent {
       \u0275\u0275elementEnd()();
       \u0275\u0275elementStart(16, "li", 6)(17, "a", 10);
       \u0275\u0275text(18, "Postes");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(19, "ul", 11)(20, "li", 6)(21, "button", 12);
+      \u0275\u0275listener("click", function HeaderComponent_Template_button_click_21_listener() {
+        return ctx.logout();
+      });
+      \u0275\u0275text(22, "Logout");
       \u0275\u0275elementEnd()()()()();
     }
   }, dependencies: [RouterLink, NgbModule], styles: ["\n\n.nav-item[_ngcontent-%COMP%] {\n  padding: 2px;\n  margin-left: 7px;\n}\n/*# sourceMappingURL=header.component.css.map */"] });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HeaderComponent, { className: "HeaderComponent", filePath: "src/app/header/header.component.ts", lineNumber: 11 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HeaderComponent, { className: "HeaderComponent", filePath: "src/app/header/header.component.ts", lineNumber: 12 });
 })();
 
 // src/app/app.component.ts
