@@ -56,7 +56,7 @@
     
               <td>
                 <a (click)="selectTransaction(transaction)" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
-                  <a routerLink="/transaction-form/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faPen" /> </a>
+                  <a (click)="editTransaction(transaction)" class="padding_1vw"><fa-icon [icon]="faPen" /> </a>
                  <a (click)="deleteTransaction(transaction.id)" class="padding_1vw"><fa-icon [icon]="faTrash" ></fa-icon></a>
     
               </td>
@@ -78,7 +78,8 @@
       </div>
 
       <div class="mb-4 ">
-        <button class="btn btn-primary" [routerLink]="['/transaction-form']"> Nouveau</button>
+        <button class="btn btn-primary" [routerLink]="['/vente-form']"> Nouveau</button>
+        
     </div>
 
    

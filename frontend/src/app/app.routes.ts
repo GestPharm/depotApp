@@ -4,10 +4,12 @@ import { PosteFormComponent } from './poste-form/poste-form.component';
 import { PosteListeComponent } from './poste-liste/poste-liste.component';
 import { ProduitFormComponent } from './produit-form/produit-form.component';
 import { ProduitListeComponent } from './produit-liste/produit-liste.component';
-import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { TransactionListeComponent } from './transaction-liste/transaction-liste.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './login/auth.guard';
+import { VenteComponent } from './transaction-form/vente/vente.component';
+import { EntreeDepotComponent } from './transaction-form/entree-depot/entree-depot.component';
+import { RetourDepotComponent } from './transaction-form/retour-depot/retour-depot.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -18,8 +20,12 @@ export const routes: Routes = [
     {path: "produit-form", component: ProduitFormComponent, canActivate: [AuthGuard]},
     {path: "produit-form/:id", component: ProduitFormComponent, canActivate: [AuthGuard]},
     {path: "produit-list", component: ProduitListeComponent, canActivate: [AuthGuard]},
-    {path: "transaction-form", component: TransactionFormComponent, canActivate: [AuthGuard]},
-    {path: "transaction-form/:id", component: TransactionFormComponent, canActivate: [AuthGuard]},
+    {path: "vente-form", component: VenteComponent, canActivate: [AuthGuard]},
+    {path: "vente-form/:id", component: VenteComponent, canActivate: [AuthGuard]},
+    {path: "entree-depot", component: EntreeDepotComponent, canActivate: [AuthGuard]},
+    {path: "entree-depot/:id", component: EntreeDepotComponent, canActivate: [AuthGuard]},
+    {path: "retour-depot", component: RetourDepotComponent, canActivate: [AuthGuard]},
+    {path: "retour-depot/:id", component: RetourDepotComponent, canActivate: [AuthGuard]},
     {path: "transaction-list", component: TransactionListeComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
    

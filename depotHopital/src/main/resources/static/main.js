@@ -14842,6 +14842,48 @@ function HomeComponent_tr_32_ul_8_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", transaction_r2.ligneProduits);
   }
 }
+function HomeComponent_tr_32_a_13_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "a", 15);
+    \u0275\u0275element(1, "fa-icon", 16);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const transaction_r2 = \u0275\u0275nextContext().$implicit;
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275propertyInterpolate1("routerLink", "/vente-form/", transaction_r2.id, "");
+    \u0275\u0275advance();
+    \u0275\u0275property("icon", ctx_r2.faEye);
+  }
+}
+function HomeComponent_tr_32_a_14_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "a", 15);
+    \u0275\u0275element(1, "fa-icon", 16);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const transaction_r2 = \u0275\u0275nextContext().$implicit;
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275propertyInterpolate1("routerLink", "/entree-depot/", transaction_r2.id, "");
+    \u0275\u0275advance();
+    \u0275\u0275property("icon", ctx_r2.faEye);
+  }
+}
+function HomeComponent_tr_32_a_15_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "a", 15);
+    \u0275\u0275element(1, "fa-icon", 16);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const transaction_r2 = \u0275\u0275nextContext().$implicit;
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275propertyInterpolate1("routerLink", "/retour-depot/", transaction_r2.id, "");
+    \u0275\u0275advance();
+    \u0275\u0275property("icon", ctx_r2.faEye);
+  }
+}
 function HomeComponent_tr_32_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "tr")(1, "td");
@@ -14860,13 +14902,12 @@ function HomeComponent_tr_32_Template(rf, ctx) {
     \u0275\u0275text(10);
     \u0275\u0275pipe(11, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "td")(13, "a", 14);
-    \u0275\u0275element(14, "fa-icon", 15);
-    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(12, "td");
+    \u0275\u0275template(13, HomeComponent_tr_32_a_13_Template, 2, 3, "a", 14)(14, HomeComponent_tr_32_a_14_Template, 2, 3, "a", 14)(15, HomeComponent_tr_32_a_15_Template, 2, 3, "a", 14);
+    \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
     const transaction_r2 = ctx.$implicit;
-    const ctx_r2 = \u0275\u0275nextContext();
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(transaction_r2.id);
     \u0275\u0275advance(2);
@@ -14878,15 +14919,17 @@ function HomeComponent_tr_32_Template(rf, ctx) {
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(11, 8, transaction_r2.dateTransaction, "dd/MM/yyyy"), "");
     \u0275\u0275advance(3);
-    \u0275\u0275propertyInterpolate1("routerLink", "/transaction-form/", transaction_r2.id, "");
+    \u0275\u0275property("ngIf", transaction_r2.type === "sortie");
     \u0275\u0275advance();
-    \u0275\u0275property("icon", ctx_r2.faEye);
+    \u0275\u0275property("ngIf", transaction_r2.type === "entree");
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", transaction_r2.type === "retour");
   }
 }
 function HomeComponent_div_34_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 16)(1, "pagination-controls", 17);
+    \u0275\u0275elementStart(0, "div", 17)(1, "pagination-controls", 18);
     \u0275\u0275listener("pageChange", function HomeComponent_div_34_Template_pagination_controls_pageChange_1_listener($event) {
       \u0275\u0275restoreView(_r4);
       const ctx_r2 = \u0275\u0275nextContext();
@@ -15013,7 +15056,7 @@ var HomeComponent = class _HomeComponent {
       \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.chart = _t.first);
       \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.chart1 = _t.first);
     }
-  }, decls: 35, vars: 18, consts: [[1, "container"], [1, "text-center", "fst-italic", "time-new-roman"], [1, "row", "justify-content-center", "align-items-center", "mb-4"], [1, "col"], ["id", "chart"], [3, "series", "chart", "labels", "responsive"], ["id", "chart1"], [3, "series", "chart", "xaxis", "dataLabels", "grid", "stroke", "title"], [1, "row"], [1, "row", 2, "display", "block"], [1, "table", "table-hover"], [4, "ngFor", "ngForOf"], ["class", "pagination", 4, "ngIf"], [4, "ngIf"], [1, "padding_1vw", 3, "routerLink"], [3, "icon"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"]], template: function HomeComponent_Template(rf, ctx) {
+  }, decls: 35, vars: 18, consts: [[1, "container"], [1, "text-center", "fst-italic", "time-new-roman"], [1, "row", "justify-content-center", "align-items-center", "mb-4"], [1, "col"], ["id", "chart"], [3, "series", "chart", "labels", "responsive"], ["id", "chart1"], [3, "series", "chart", "xaxis", "dataLabels", "grid", "stroke", "title"], [1, "row"], [1, "row", 2, "display", "block"], [1, "table", "table-hover"], [4, "ngFor", "ngForOf"], ["class", "pagination", 4, "ngIf"], [4, "ngIf"], ["class", "padding_1vw", 3, "routerLink", 4, "ngIf"], [1, "padding_1vw", 3, "routerLink"], [3, "icon"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"]], template: function HomeComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "div", 0)(1, "h5", 1);
       \u0275\u0275text(2, "Bienvenue dans votre d\xE9pot pharmaceutique");
@@ -15049,7 +15092,7 @@ var HomeComponent = class _HomeComponent {
       \u0275\u0275text(30, "Actions");
       \u0275\u0275elementEnd()()();
       \u0275\u0275elementStart(31, "tbody");
-      \u0275\u0275template(32, HomeComponent_tr_32_Template, 15, 11, "tr", 11);
+      \u0275\u0275template(32, HomeComponent_tr_32_Template, 16, 11, "tr", 11);
       \u0275\u0275pipe(33, "paginate");
       \u0275\u0275elementEnd()();
       \u0275\u0275template(34, HomeComponent_div_34_Template, 2, 6, "div", 12);
@@ -22695,6 +22738,446 @@ var ProduitListeComponent = class _ProduitListeComponent {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(ProduitListeComponent, { className: "ProduitListeComponent", filePath: "src/app/produit-liste/produit-liste.component.ts", lineNumber: 19 });
 })();
 
+// src/app/services/generics.service.ts
+var GenericsService = class _GenericsService {
+  constructor() {
+  }
+  isAtLeastOneFieldNotEmpty(dci, nomPoste) {
+    return dci !== null && dci.trim() !== "" || nomPoste !== null && nomPoste.trim() !== "";
+  }
+  static \u0275fac = function GenericsService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _GenericsService)();
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _GenericsService, factory: _GenericsService.\u0275fac, providedIn: "root" });
+};
+
+// src/app/transaction-liste/transaction-liste.component.ts
+var _c08 = () => ["/vente-form"];
+var _c13 = (a0) => ({ itemsPerPage: 10, currentPage: a0 });
+function TransactionListeComponent_ng_container_28_tr_1_ul_6_li_1_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "li");
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const elt_r2 = ctx.$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate3("", elt_r2.produit == null ? null : elt_r2.produit.dci, " - ", elt_r2.quantite, " - ", elt_r2.prixTotal, "");
+  }
+}
+function TransactionListeComponent_ng_container_28_tr_1_ul_6_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "ul");
+    \u0275\u0275template(1, TransactionListeComponent_ng_container_28_tr_1_ul_6_li_1_Template, 2, 3, "li", 13);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const transaction_r3 = \u0275\u0275nextContext().$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275property("ngForOf", transaction_r3.ligneProduits);
+  }
+}
+function TransactionListeComponent_ng_container_28_tr_1_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r1 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "tr")(1, "td");
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "td");
+    \u0275\u0275text(4);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "td");
+    \u0275\u0275template(6, TransactionListeComponent_ng_container_28_tr_1_ul_6_Template, 2, 1, "ul", 9);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(7, "td");
+    \u0275\u0275text(8);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(9, "td");
+    \u0275\u0275text(10);
+    \u0275\u0275pipe(11, "date");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(12, "td")(13, "a", 14);
+    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_28_tr_1_Template_a_click_13_listener() {
+      const transaction_r3 = \u0275\u0275restoreView(_r1).$implicit;
+      const ctx_r3 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r3.selectTransaction(transaction_r3));
+    });
+    \u0275\u0275element(14, "fa-icon", 15);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(15, "a", 14);
+    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_28_tr_1_Template_a_click_15_listener() {
+      const transaction_r3 = \u0275\u0275restoreView(_r1).$implicit;
+      const ctx_r3 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r3.editTransaction(transaction_r3));
+    });
+    \u0275\u0275element(16, "fa-icon", 15);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(17, "a", 14);
+    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_28_tr_1_Template_a_click_17_listener() {
+      const transaction_r3 = \u0275\u0275restoreView(_r1).$implicit;
+      const ctx_r3 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r3.deleteTransaction(transaction_r3.id));
+    });
+    \u0275\u0275element(18, "fa-icon", 15);
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const transaction_r3 = ctx.$implicit;
+    const ctx_r3 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", transaction_r3.type, "");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", transaction_r3.poste == null ? null : transaction_r3.poste.nom, "");
+    \u0275\u0275advance(2);
+    \u0275\u0275property("ngIf", transaction_r3.ligneProduits);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", transaction_r3.prixTotal, "");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(11, 8, transaction_r3.dateTransaction, "dd/MM/yyyy"), "");
+    \u0275\u0275advance(4);
+    \u0275\u0275property("icon", ctx_r3.faEye);
+    \u0275\u0275advance(2);
+    \u0275\u0275property("icon", ctx_r3.faPen);
+    \u0275\u0275advance(2);
+    \u0275\u0275property("icon", ctx_r3.faTrash);
+  }
+}
+function TransactionListeComponent_ng_container_28_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementContainerStart(0);
+    \u0275\u0275template(1, TransactionListeComponent_ng_container_28_tr_1_Template, 19, 11, "tr", 13);
+    \u0275\u0275pipe(2, "paginate");
+    \u0275\u0275elementContainerEnd();
+  }
+  if (rf & 2) {
+    const listeTransactions_r5 = ctx.ngIf;
+    const ctx_r3 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275property("ngForOf", \u0275\u0275pipeBind2(2, 1, listeTransactions_r5, \u0275\u0275pureFunction1(4, _c13, ctx_r3.page)));
+  }
+}
+function TransactionListeComponent_div_30_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 16)(1, "pagination-controls", 17);
+    \u0275\u0275listener("pageChange", function TransactionListeComponent_div_30_Template_pagination_controls_pageChange_1_listener($event) {
+      \u0275\u0275restoreView(_r6);
+      const ctx_r3 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r3.page = $event);
+    });
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r3 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275property("responsive", true)("previousLabel", ctx_r3.paginationLabels.previousLabel)("nextLabel", ctx_r3.paginationLabels.nextLabel)("screenReaderPaginationLabel", ctx_r3.paginationLabels.screenReaderPaginationLabel)("screenReaderPageLabel", ctx_r3.paginationLabels.screenReaderPageLabel)("screenReaderCurrentLabel", ctx_r3.paginationLabels.screenReaderCurrentLabel);
+  }
+}
+var TransactionListeComponent = class _TransactionListeComponent {
+  transactionService;
+  router;
+  genericsService;
+  transactions = [];
+  selectedTransaction;
+  filteredTransactions = of([]);
+  searchTerm = "";
+  page = 1;
+  // Configuration des labels de pagination en français
+  paginationLabels = {
+    previousLabel: "Pr\xE9c.",
+    nextLabel: "Suiv.",
+    screenReaderPaginationLabel: "Pagination",
+    screenReaderPageLabel: "page",
+    screenReaderCurrentLabel: `Vous \xEAtes sur la page`
+  };
+  faTrash = faTrash;
+  faPen = faPen;
+  faEye = faEye;
+  dciCritere = "";
+  nomPosteCritere = "";
+  constructor(transactionService, router, genericsService) {
+    this.transactionService = transactionService;
+    this.router = router;
+    this.genericsService = genericsService;
+  }
+  ngOnInit() {
+    this.loadDataSource();
+  }
+  loadDataSource() {
+    this.transactionService.getAllTransaction().subscribe((data) => {
+      this.transactions = data;
+      this.filteredTransactions = of([...this.transactions]);
+    });
+  }
+  rechercherTransaction() {
+    if (this.genericsService.isAtLeastOneFieldNotEmpty(this.dciCritere, this.nomPosteCritere)) {
+      this.transactionService.rechercherTransaction(this.dciCritere, this.nomPosteCritere).subscribe((data) => {
+        this.filteredTransactions = of([...data]);
+      });
+    } else {
+      this.filteredTransactions = of([...this.transactions]);
+    }
+  }
+  /* filterTransactions(): void {
+        
+        if(this.searchTerm && this.searchTerm.length > 1){
+                  this.filteredTransactions = of(this.searchTerm).pipe(
+                     debounceTime(2000),
+                    switchMap((value) => this.fetchTransactions(value)), // Fetch options from the backend
+                    catchError((err) => {
+                      console.error('Error fetching options', err);
+                      return of([]); // Return an empty array in case of error
+                    }));
+        }
+        
+      }
+  
+  
+    fetchTransactions(query: string, ): Observable<Transaction[]> {
+     if(typeof query === 'string' && query && query.trim() !== ''){
+          return this.transactionService.rechercherTransaction(null, query);
+      }else  {
+        return of([...this.transactions]);
+          //return of([]); // Return empty array for empty input
+      }
+        
+    }*/
+  selectTransaction(transaction) {
+    this.selectedTransaction = transaction;
+  }
+  editTransaction(transaction) {
+    this.selectedTransaction = transaction;
+    if (this.selectedTransaction.type === "sortie") {
+      this.router.navigate(["/vente-form/" + transaction.id]);
+    } else if (this.selectedTransaction.type === "entree") {
+      this.router.navigate(["/entree-depot/" + transaction.id]);
+    } else if (this.selectedTransaction.type === "retour") {
+      this.router.navigate(["/retour-depot/" + transaction.id]);
+    }
+  }
+  deleteTransaction(id) {
+    if (confirm("Etes vous s\xFBr de vouloir supprimer ? ")) {
+      this.transactionService.deleteTransaction(id).subscribe(() => this.loadDataSource());
+    }
+  }
+  static \u0275fac = function TransactionListeComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _TransactionListeComponent)(\u0275\u0275directiveInject(TransactionService), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(GenericsService));
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _TransactionListeComponent, selectors: [["app-transaction-list"]], decls: 34, vars: 8, consts: [[1, "container"], [1, "row", 2, "display", "block"], [1, "row", "mb-4"], [1, "col-md-4"], ["type", "text", "id", "dci", "name", "dci", "placeholder", "filtrer par DCI", 1, "form-control", 3, "ngModelChange", "ngModel"], ["type", "text", "id", "nomPoste", "name", "nomPoste", "placeholder", "filter par nom du poste", 1, "form-control", 3, "ngModelChange", "ngModel"], [1, "col-md-4", "d-flex", "align-items-end"], [1, "btn", "btn-primary", "w-100", 3, "click"], [1, "table", "table-hover"], [4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "routerLink"], [4, "ngFor", "ngForOf"], [1, "padding_1vw", 3, "click"], [3, "icon"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"]], template: function TransactionListeComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "h2");
+      \u0275\u0275text(3, "Liste des transactions");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(4, "div", 2)(5, "div", 3)(6, "input", 4);
+      \u0275\u0275twoWayListener("ngModelChange", function TransactionListeComponent_Template_input_ngModelChange_6_listener($event) {
+        \u0275\u0275twoWayBindingSet(ctx.dciCritere, $event) || (ctx.dciCritere = $event);
+        return $event;
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(7, "div", 3)(8, "input", 5);
+      \u0275\u0275twoWayListener("ngModelChange", function TransactionListeComponent_Template_input_ngModelChange_8_listener($event) {
+        \u0275\u0275twoWayBindingSet(ctx.nomPosteCritere, $event) || (ctx.nomPosteCritere = $event);
+        return $event;
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(9, "div", 6)(10, "button", 7);
+      \u0275\u0275listener("click", function TransactionListeComponent_Template_button_click_10_listener() {
+        return ctx.rechercherTransaction();
+      });
+      \u0275\u0275text(11, "Rechercher");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(12, "table", 8)(13, "thead")(14, "tr")(15, "th");
+      \u0275\u0275text(16, "Type de transaction");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(17, "th");
+      \u0275\u0275text(18, "Poste de sant\xE9");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(19, "th");
+      \u0275\u0275text(20, "Produits");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(21, "th");
+      \u0275\u0275text(22, "Prix");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(23, "th");
+      \u0275\u0275text(24, "Date");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(25, "th");
+      \u0275\u0275text(26, "Actions");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(27, "tbody");
+      \u0275\u0275template(28, TransactionListeComponent_ng_container_28_Template, 3, 6, "ng-container", 9);
+      \u0275\u0275pipe(29, "async");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275template(30, TransactionListeComponent_div_30_Template, 2, 6, "div", 10);
+      \u0275\u0275elementStart(31, "div", 11)(32, "button", 12);
+      \u0275\u0275text(33, " Nouveau");
+      \u0275\u0275elementEnd()()();
+    }
+    if (rf & 2) {
+      \u0275\u0275advance(6);
+      \u0275\u0275twoWayProperty("ngModel", ctx.dciCritere);
+      \u0275\u0275advance(2);
+      \u0275\u0275twoWayProperty("ngModel", ctx.nomPosteCritere);
+      \u0275\u0275advance(20);
+      \u0275\u0275property("ngIf", \u0275\u0275pipeBind1(29, 5, ctx.filteredTransactions));
+      \u0275\u0275advance(2);
+      \u0275\u0275property("ngIf", ctx.transactions.length > 0);
+      \u0275\u0275advance(2);
+      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(7, _c08));
+    }
+  }, dependencies: [CommonModule, NgForOf, NgIf, AsyncPipe, DatePipe, RouterLink, FontAwesomeModule, FaIconComponent, FormsModule, DefaultValueAccessor, NgControlStatus, NgModel, NgxPaginationModule, PaginatePipe, PaginationControlsComponent], encapsulation: 2 });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TransactionListeComponent, { className: "TransactionListeComponent", filePath: "src/app/transaction-liste/transaction-liste.component.ts", lineNumber: 20 });
+})();
+
+// src/app/login/auth.service.ts
+var AuthService = class _AuthService {
+  http;
+  baseUrl = "http://localhost:8080/depotHopital/api";
+  constructor(http) {
+    this.http = http;
+  }
+  login(username, password) {
+    return this.http.post(`${this.baseUrl}/login`, {
+      username,
+      password
+    });
+  }
+  // auth.service.ts
+  logout() {
+    localStorage.removeItem("token");
+  }
+  storeToken(token) {
+    localStorage.setItem("token", token);
+  }
+  getToken() {
+    return localStorage.getItem("token");
+  }
+  isLoggedIn() {
+    return !!this.getToken();
+  }
+  static \u0275fac = function AuthService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _AuthService)(\u0275\u0275inject(HttpClient));
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthService, factory: _AuthService.\u0275fac, providedIn: "root" });
+};
+
+// src/app/login/login.component.ts
+function LoginComponent_div_21_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 17);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", ctx_r1.errorMessage, " ");
+  }
+}
+var LoginComponent = class _LoginComponent {
+  auth;
+  router;
+  credentials = {
+    username: "",
+    password: ""
+  };
+  errorMessage = "";
+  constructor(auth, router) {
+    this.auth = auth;
+    this.router = router;
+  }
+  onSubmit() {
+    this.auth.login(this.credentials.username, this.credentials.password).subscribe({
+      next: (res) => {
+        this.auth.storeToken(res.token);
+        this.router.navigate(["/home"]);
+      },
+      error: () => {
+        this.errorMessage = "Invalid credentials";
+      }
+    });
+  }
+  static \u0275fac = function LoginComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _LoginComponent)(\u0275\u0275directiveInject(AuthService), \u0275\u0275directiveInject(Router));
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], decls: 22, vars: 4, consts: [["loginForm", "ngForm"], [1, "container", "mt-5"], [1, "row", "justify-content-center"], [1, "col-md-6"], [1, "card"], [1, "card-header", "bg-primary", "text-white"], [1, "card-title", "text-center"], [1, "card-body"], [3, "ngSubmit"], [1, "form-group"], ["for", "username"], ["type", "text", "id", "username", "name", "username", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel"], ["for", "password"], ["type", "password", "id", "password", "name", "password", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel"], [1, "form-group", "text-center"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], ["class", "alert alert-danger mt-3", 4, "ngIf"], [1, "alert", "alert-danger", "mt-3"]], template: function LoginComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      const _r1 = \u0275\u0275getCurrentView();
+      \u0275\u0275elementStart(0, "div", 1)(1, "div", 2)(2, "div", 3)(3, "div", 4)(4, "div", 5)(5, "h3", 6);
+      \u0275\u0275text(6, "Login");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(7, "div", 7)(8, "form", 8, 0);
+      \u0275\u0275listener("ngSubmit", function LoginComponent_Template_form_ngSubmit_8_listener() {
+        \u0275\u0275restoreView(_r1);
+        return \u0275\u0275resetView(ctx.onSubmit());
+      });
+      \u0275\u0275elementStart(10, "div", 9)(11, "label", 10);
+      \u0275\u0275text(12, "Username");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(13, "input", 11);
+      \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_13_listener($event) {
+        \u0275\u0275restoreView(_r1);
+        \u0275\u0275twoWayBindingSet(ctx.credentials.username, $event) || (ctx.credentials.username = $event);
+        return \u0275\u0275resetView($event);
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(14, "div", 9)(15, "label", 12);
+      \u0275\u0275text(16, "Password");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(17, "input", 13);
+      \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_17_listener($event) {
+        \u0275\u0275restoreView(_r1);
+        \u0275\u0275twoWayBindingSet(ctx.credentials.password, $event) || (ctx.credentials.password = $event);
+        return \u0275\u0275resetView($event);
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(18, "div", 14)(19, "button", 15);
+      \u0275\u0275text(20, " Login ");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275template(21, LoginComponent_div_21_Template, 2, 1, "div", 16);
+      \u0275\u0275elementEnd()()()()();
+    }
+    if (rf & 2) {
+      const loginForm_r3 = \u0275\u0275reference(9);
+      \u0275\u0275advance(13);
+      \u0275\u0275twoWayProperty("ngModel", ctx.credentials.username);
+      \u0275\u0275advance(4);
+      \u0275\u0275twoWayProperty("ngModel", ctx.credentials.password);
+      \u0275\u0275advance(2);
+      \u0275\u0275property("disabled", !loginForm_r3.form.valid);
+      \u0275\u0275advance(2);
+      \u0275\u0275property("ngIf", ctx.errorMessage);
+    }
+  }, dependencies: [FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm, CommonModule, NgIf], encapsulation: 2 });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src/app/login/login.component.ts", lineNumber: 14 });
+})();
+
+// src/app/login/auth.guard.ts
+var AuthGuard = class _AuthGuard {
+  auth;
+  router;
+  constructor(auth, router) {
+    this.auth = auth;
+    this.router = router;
+  }
+  canActivate() {
+    if (!this.auth.isLoggedIn()) {
+      this.router.navigate(["/login"]);
+      return false;
+    }
+    return true;
+  }
+  static \u0275fac = function AuthGuard_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _AuthGuard)(\u0275\u0275inject(AuthService), \u0275\u0275inject(Router));
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthGuard, factory: _AuthGuard.\u0275fac, providedIn: "root" });
+};
+
 // src/app/models/transaction.model.ts
 var Transaction = class {
   id;
@@ -23318,8 +23801,8 @@ var UniqueSelectionDispatcher = class _UniqueSelectionDispatcher {
 })();
 
 // node_modules/@angular/cdk/fesm2022/scrolling.mjs
-var _c08 = ["contentWrapper"];
-var _c13 = ["*"];
+var _c09 = ["contentWrapper"];
+var _c14 = ["*"];
 var VIRTUAL_SCROLL_STRATEGY = new InjectionToken("VIRTUAL_SCROLL_STRATEGY");
 var FixedSizeVirtualScrollStrategy = class {
   _scrolledIndexChange = new Subject();
@@ -24298,7 +24781,7 @@ var CdkVirtualScrollViewport = class _CdkVirtualScrollViewport extends CdkVirtua
     selectors: [["cdk-virtual-scroll-viewport"]],
     viewQuery: function CdkVirtualScrollViewport_Query(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275viewQuery(_c08, 7);
+        \u0275\u0275viewQuery(_c09, 7);
       }
       if (rf & 2) {
         let _t;
@@ -24324,7 +24807,7 @@ var CdkVirtualScrollViewport = class _CdkVirtualScrollViewport extends CdkVirtua
       useFactory: (virtualScrollable, viewport2) => virtualScrollable || viewport2,
       deps: [[new Optional(), new Inject(VIRTUAL_SCROLLABLE)], _CdkVirtualScrollViewport]
     }]), \u0275\u0275InputTransformsFeature, \u0275\u0275InheritDefinitionFeature],
-    ngContentSelectors: _c13,
+    ngContentSelectors: _c14,
     decls: 4,
     vars: 4,
     consts: [["contentWrapper", ""], [1, "cdk-virtual-scroll-content-wrapper"], [1, "cdk-virtual-scroll-spacer"]],
@@ -31996,8 +32479,8 @@ var DialogModule = class _DialogModule {
 })();
 
 // node_modules/@angular/material/fesm2022/core.mjs
-var _c09 = ["*", [["mat-option"], ["ng-container"]]];
-var _c14 = ["*", "mat-option, ng-container"];
+var _c010 = ["*", [["mat-option"], ["ng-container"]]];
+var _c15 = ["*", "mat-option, ng-container"];
 var _c22 = ["text"];
 var _c3 = [[["mat-icon"]], "*"];
 var _c4 = ["mat-icon", "*"];
@@ -33458,13 +33941,13 @@ var MatOptgroup = class _MatOptgroup {
       provide: MAT_OPTGROUP,
       useExisting: _MatOptgroup
     }]), \u0275\u0275InputTransformsFeature],
-    ngContentSelectors: _c14,
+    ngContentSelectors: _c15,
     decls: 5,
     vars: 4,
     consts: [["role", "presentation", 1, "mat-mdc-optgroup-label", 3, "id"], [1, "mdc-list-item__primary-text"]],
     template: function MatOptgroup_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275projectionDef(_c09);
+        \u0275\u0275projectionDef(_c010);
         \u0275\u0275elementStart(0, "span", 0)(1, "span", 1);
         \u0275\u0275text(2);
         \u0275\u0275projection(3);
@@ -35159,8 +35642,8 @@ var SharedResizeObserver = class _SharedResizeObserver {
 })();
 
 // node_modules/@angular/material/fesm2022/form-field.mjs
-var _c010 = ["notch"];
-var _c15 = ["matFormFieldNotchedOutline", ""];
+var _c011 = ["notch"];
+var _c16 = ["matFormFieldNotchedOutline", ""];
 var _c23 = ["*"];
 var _c32 = ["textField"];
 var _c42 = ["iconPrefixContainer"];
@@ -35710,7 +36193,7 @@ var MatFormFieldNotchedOutline = class _MatFormFieldNotchedOutline {
     selectors: [["div", "matFormFieldNotchedOutline", ""]],
     viewQuery: function MatFormFieldNotchedOutline_Query(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275viewQuery(_c010, 5);
+        \u0275\u0275viewQuery(_c011, 5);
       }
       if (rf & 2) {
         let _t;
@@ -35727,7 +36210,7 @@ var MatFormFieldNotchedOutline = class _MatFormFieldNotchedOutline {
     inputs: {
       open: [0, "matFormFieldNotchedOutlineOpen", "open"]
     },
-    attrs: _c15,
+    attrs: _c16,
     ngContentSelectors: _c23,
     decls: 5,
     vars: 0,
@@ -36560,8 +37043,8 @@ var MatFormFieldModule = class _MatFormFieldModule {
 })();
 
 // node_modules/@angular/material/fesm2022/autocomplete.mjs
-var _c011 = ["panel"];
-var _c16 = ["*"];
+var _c012 = ["panel"];
+var _c17 = ["*"];
 function MatAutocomplete_ng_template_0_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
@@ -36810,7 +37293,7 @@ var MatAutocomplete = class _MatAutocomplete {
     viewQuery: function MatAutocomplete_Query(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275viewQuery(TemplateRef, 7);
-        \u0275\u0275viewQuery(_c011, 5);
+        \u0275\u0275viewQuery(_c012, 5);
       }
       if (rf & 2) {
         let _t;
@@ -36842,7 +37325,7 @@ var MatAutocomplete = class _MatAutocomplete {
       provide: MAT_OPTION_PARENT_COMPONENT,
       useExisting: _MatAutocomplete
     }]), \u0275\u0275InputTransformsFeature],
-    ngContentSelectors: _c16,
+    ngContentSelectors: _c17,
     decls: 1,
     vars: 0,
     consts: [["panel", ""], ["role", "listbox", 1, "mat-mdc-autocomplete-panel", "mdc-menu-surface", "mdc-menu-surface--open", 3, "id"]],
@@ -37824,7 +38307,7 @@ var MatAutocompleteModule = class _MatAutocompleteModule {
 })();
 
 // node_modules/@angular/material/fesm2022/icon.mjs
-var _c012 = ["*"];
+var _c013 = ["*"];
 var policy;
 function getPolicy() {
   if (policy === void 0) {
@@ -38647,7 +39130,7 @@ var MatIcon = class _MatIcon {
     },
     exportAs: ["matIcon"],
     features: [\u0275\u0275InputTransformsFeature],
-    ngContentSelectors: _c012,
+    ngContentSelectors: _c013,
     decls: 1,
     vars: 0,
     template: function MatIcon_Template(rf, ctx) {
@@ -38735,7 +39218,7 @@ function AddProduitModalComponent_mat_option_13_Template(rf, ctx) {
   if (rf & 2) {
     const option_r2 = ctx.$implicit;
     const ctx_r2 = \u0275\u0275nextContext();
-    \u0275\u0275property("value", option_r2);
+    \u0275\u0275property("value", option_r2)("disabled", ctx_r2.checkUserSelection(option_r2));
     \u0275\u0275advance();
     \u0275\u0275textInterpolate1(" ", ctx_r2.displayProduit(option_r2), " ");
   }
@@ -38853,10 +39336,17 @@ var AddProduitModalComponent = class _AddProduitModalComponent {
       console.error("\xC9l\xE9ment non trouv\xE9");
     }
   }
+  checkUserSelection(prod) {
+    if (prod) {
+      return prod?.quantite !== void 0 && prod?.seuilAlerte !== void 0 && prod?.quantite <= prod?.seuilAlerte;
+    } else {
+      return false;
+    }
+  }
   static \u0275fac = function AddProduitModalComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _AddProduitModalComponent)(\u0275\u0275directiveInject(MatDialogRef), \u0275\u0275directiveInject(MAT_DIALOG_DATA), \u0275\u0275directiveInject(ProduitService), \u0275\u0275directiveInject(ChangeDetectorRef));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AddProduitModalComponent, selectors: [["app-add-produit-modal"]], decls: 26, vars: 9, consts: [["auto", "matAutocomplete"], [1, "custom-modal-header", 2, "display", "flex", "justify-content", "space-between", "align-items", "center"], ["mat-dialog-title", ""], [3, "click"], [3, "icon"], ["mat-dialog-content", "", 1, "custom-modal-content"], [1, "form-group", "mb-4"], ["for", "client", 1, "form-label"], ["id", "searchText", "name", "searchText", "type", "text", "placeholder", "Saisir pour rechercher", 1, "form-control", 3, "ngModelChange", "ngModel", "matAutocomplete"], [3, "optionSelected", "displayWith"], [3, "value", 4, "ngFor", "ngForOf"], [1, "form-group"], ["for", "reference"], ["type", "text", "name", "quantite", "id", "quantite", "placeholder", "Entrer la quantit\xE9", 1, "form-control", 3, "ngModelChange", "ngModel"], ["mat-dialog-actions", "", 1, "custom-modal-footer"], [1, "btn", "btn-warning", "me-1", "float-start", 3, "click"], ["color", "primary", 1, "btn", "btn-danger", "me-1", "float-start", 3, "click"], ["color", "primary", 1, "btn", "btn-primary", "me-1", "float-end", 3, "click"], [3, "value"]], template: function AddProduitModalComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AddProduitModalComponent, selectors: [["app-add-produit-modal"]], decls: 26, vars: 9, consts: [["auto", "matAutocomplete"], [1, "custom-modal-header", 2, "display", "flex", "justify-content", "space-between", "align-items", "center"], ["mat-dialog-title", ""], [3, "click"], [3, "icon"], ["mat-dialog-content", "", 1, "custom-modal-content"], [1, "form-group", "mb-4"], ["for", "client", 1, "form-label"], ["id", "searchText", "name", "searchText", "type", "text", "placeholder", "Saisir pour rechercher", 1, "form-control", 3, "ngModelChange", "ngModel", "matAutocomplete"], [3, "optionSelected", "displayWith"], [3, "value", "disabled", 4, "ngFor", "ngForOf"], [1, "form-group"], ["for", "reference"], ["type", "text", "name", "quantite", "id", "quantite", "placeholder", "Entrer la quantit\xE9", 1, "form-control", 3, "ngModelChange", "ngModel"], ["mat-dialog-actions", "", 1, "custom-modal-footer"], [1, "btn", "btn-warning", "me-1", "float-start", 3, "click"], ["color", "primary", 1, "btn", "btn-danger", "me-1", "float-start", 3, "click"], ["color", "primary", 1, "btn", "btn-primary", "me-1", "float-end", 3, "click"], [3, "value", "disabled"]], template: function AddProduitModalComponent_Template(rf, ctx) {
     if (rf & 1) {
       const _r1 = \u0275\u0275getCurrentView();
       \u0275\u0275elementStart(0, "div", 1)(1, "h3", 2);
@@ -38888,7 +39378,7 @@ var AddProduitModalComponent = class _AddProduitModalComponent {
         \u0275\u0275restoreView(_r1);
         return \u0275\u0275resetView(ctx.onSelectProduit($event.option.value));
       });
-      \u0275\u0275template(13, AddProduitModalComponent_mat_option_13_Template, 2, 2, "mat-option", 10);
+      \u0275\u0275template(13, AddProduitModalComponent_mat_option_13_Template, 2, 3, "mat-option", 10);
       \u0275\u0275pipe(14, "async");
       \u0275\u0275elementEnd()();
       \u0275\u0275elementStart(15, "div", 11)(16, "label", 12);
@@ -38953,8 +39443,8 @@ function toTitleCase(str) {
 }
 
 // node_modules/@angular/material/fesm2022/button.mjs
-var _c013 = ["mat-button", ""];
-var _c17 = [[["", 8, "material-icons", 3, "iconPositionEnd", ""], ["mat-icon", 3, "iconPositionEnd", ""], ["", "matButtonIcon", "", 3, "iconPositionEnd", ""]], "*", [["", "iconPositionEnd", "", 8, "material-icons"], ["mat-icon", "iconPositionEnd", ""], ["", "matButtonIcon", "", "iconPositionEnd", ""]]];
+var _c014 = ["mat-button", ""];
+var _c18 = [[["", 8, "material-icons", 3, "iconPositionEnd", ""], ["mat-icon", 3, "iconPositionEnd", ""], ["", "matButtonIcon", "", 3, "iconPositionEnd", ""]], "*", [["", "iconPositionEnd", "", 8, "material-icons"], ["mat-icon", "iconPositionEnd", ""], ["", "matButtonIcon", "", "iconPositionEnd", ""]]];
 var _c24 = [".material-icons:not([iconPositionEnd]), mat-icon:not([iconPositionEnd]), [matButtonIcon]:not([iconPositionEnd])", "*", ".material-icons[iconPositionEnd], mat-icon[iconPositionEnd], [matButtonIcon][iconPositionEnd]"];
 var _c33 = '.mat-mdc-button-base{text-decoration:none}.mdc-button{-webkit-user-select:none;user-select:none;position:relative;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:64px;border:none;outline:none;line-height:inherit;-webkit-appearance:none;overflow:visible;vertical-align:middle;background:rgba(0,0,0,0);padding:0 8px}.mdc-button::-moz-focus-inner{padding:0;border:0}.mdc-button:active{outline:none}.mdc-button:hover{cursor:pointer}.mdc-button:disabled{cursor:default;pointer-events:none}.mdc-button[hidden]{display:none}.mdc-button .mdc-button__label{position:relative}.mat-mdc-button{padding:0 var(--mat-text-button-horizontal-padding, 12px);height:var(--mdc-text-button-container-height, 40px);font-family:var(--mdc-text-button-label-text-font, var(--mat-sys-label-large-font));font-size:var(--mdc-text-button-label-text-size, var(--mat-sys-label-large-size));letter-spacing:var(--mdc-text-button-label-text-tracking, var(--mat-sys-label-large-tracking));text-transform:var(--mdc-text-button-label-text-transform);font-weight:var(--mdc-text-button-label-text-weight, var(--mat-sys-label-large-weight))}.mat-mdc-button,.mat-mdc-button .mdc-button__ripple{border-radius:var(--mdc-text-button-container-shape, var(--mat-sys-corner-full))}.mat-mdc-button:not(:disabled){color:var(--mdc-text-button-label-text-color, var(--mat-sys-primary))}.mat-mdc-button[disabled],.mat-mdc-button.mat-mdc-button-disabled{cursor:default;pointer-events:none;color:var(--mdc-text-button-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent))}.mat-mdc-button.mat-mdc-button-disabled-interactive{pointer-events:auto}.mat-mdc-button:has(.material-icons,mat-icon,[matButtonIcon]){padding:0 var(--mat-text-button-with-icon-horizontal-padding, 16px)}.mat-mdc-button>.mat-icon{margin-right:var(--mat-text-button-icon-spacing, 8px);margin-left:var(--mat-text-button-icon-offset, -4px)}[dir=rtl] .mat-mdc-button>.mat-icon{margin-right:var(--mat-text-button-icon-offset, -4px);margin-left:var(--mat-text-button-icon-spacing, 8px)}.mat-mdc-button .mdc-button__label+.mat-icon{margin-right:var(--mat-text-button-icon-offset, -4px);margin-left:var(--mat-text-button-icon-spacing, 8px)}[dir=rtl] .mat-mdc-button .mdc-button__label+.mat-icon{margin-right:var(--mat-text-button-icon-spacing, 8px);margin-left:var(--mat-text-button-icon-offset, -4px)}.mat-mdc-button .mat-ripple-element{background-color:var(--mat-text-button-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent))}.mat-mdc-button .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-text-button-state-layer-color, var(--mat-sys-primary))}.mat-mdc-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-text-button-disabled-state-layer-color, var(--mat-sys-on-surface-variant))}.mat-mdc-button:hover>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-text-button-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity))}.mat-mdc-button.cdk-program-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-button.cdk-keyboard-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-button.mat-mdc-button-disabled-interactive:focus>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-text-button-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity))}.mat-mdc-button:active>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-text-button-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity))}.mat-mdc-button .mat-mdc-button-touch-target{position:absolute;top:50%;height:48px;left:0;right:0;transform:translateY(-50%);display:var(--mat-text-button-touch-target-display, block)}.mat-mdc-unelevated-button{transition:box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);height:var(--mdc-filled-button-container-height, 40px);font-family:var(--mdc-filled-button-label-text-font, var(--mat-sys-label-large-font));font-size:var(--mdc-filled-button-label-text-size, var(--mat-sys-label-large-size));letter-spacing:var(--mdc-filled-button-label-text-tracking, var(--mat-sys-label-large-tracking));text-transform:var(--mdc-filled-button-label-text-transform);font-weight:var(--mdc-filled-button-label-text-weight, var(--mat-sys-label-large-weight));padding:0 var(--mat-filled-button-horizontal-padding, 24px)}.mat-mdc-unelevated-button>.mat-icon{margin-right:var(--mat-filled-button-icon-spacing, 8px);margin-left:var(--mat-filled-button-icon-offset, -8px)}[dir=rtl] .mat-mdc-unelevated-button>.mat-icon{margin-right:var(--mat-filled-button-icon-offset, -8px);margin-left:var(--mat-filled-button-icon-spacing, 8px)}.mat-mdc-unelevated-button .mdc-button__label+.mat-icon{margin-right:var(--mat-filled-button-icon-offset, -8px);margin-left:var(--mat-filled-button-icon-spacing, 8px)}[dir=rtl] .mat-mdc-unelevated-button .mdc-button__label+.mat-icon{margin-right:var(--mat-filled-button-icon-spacing, 8px);margin-left:var(--mat-filled-button-icon-offset, -8px)}.mat-mdc-unelevated-button .mat-ripple-element{background-color:var(--mat-filled-button-ripple-color, color-mix(in srgb, var(--mat-sys-on-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent))}.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-filled-button-state-layer-color, var(--mat-sys-on-primary))}.mat-mdc-unelevated-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-filled-button-disabled-state-layer-color, var(--mat-sys-on-surface-variant))}.mat-mdc-unelevated-button:hover>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-filled-button-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity))}.mat-mdc-unelevated-button.cdk-program-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-unelevated-button.cdk-keyboard-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-unelevated-button.mat-mdc-button-disabled-interactive:focus>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-filled-button-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity))}.mat-mdc-unelevated-button:active>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-filled-button-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity))}.mat-mdc-unelevated-button .mat-mdc-button-touch-target{position:absolute;top:50%;height:48px;left:0;right:0;transform:translateY(-50%);display:var(--mat-filled-button-touch-target-display, block)}.mat-mdc-unelevated-button:not(:disabled){color:var(--mdc-filled-button-label-text-color, var(--mat-sys-on-primary));background-color:var(--mdc-filled-button-container-color, var(--mat-sys-primary))}.mat-mdc-unelevated-button,.mat-mdc-unelevated-button .mdc-button__ripple{border-radius:var(--mdc-filled-button-container-shape, var(--mat-sys-corner-full))}.mat-mdc-unelevated-button[disabled],.mat-mdc-unelevated-button.mat-mdc-button-disabled{cursor:default;pointer-events:none;color:var(--mdc-filled-button-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));background-color:var(--mdc-filled-button-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent))}.mat-mdc-unelevated-button.mat-mdc-button-disabled-interactive{pointer-events:auto}.mat-mdc-raised-button{transition:box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);box-shadow:var(--mdc-protected-button-container-elevation-shadow, var(--mat-sys-level1));height:var(--mdc-protected-button-container-height, 40px);font-family:var(--mdc-protected-button-label-text-font, var(--mat-sys-label-large-font));font-size:var(--mdc-protected-button-label-text-size, var(--mat-sys-label-large-size));letter-spacing:var(--mdc-protected-button-label-text-tracking, var(--mat-sys-label-large-tracking));text-transform:var(--mdc-protected-button-label-text-transform);font-weight:var(--mdc-protected-button-label-text-weight, var(--mat-sys-label-large-weight));padding:0 var(--mat-protected-button-horizontal-padding, 24px)}.mat-mdc-raised-button>.mat-icon{margin-right:var(--mat-protected-button-icon-spacing, 8px);margin-left:var(--mat-protected-button-icon-offset, -8px)}[dir=rtl] .mat-mdc-raised-button>.mat-icon{margin-right:var(--mat-protected-button-icon-offset, -8px);margin-left:var(--mat-protected-button-icon-spacing, 8px)}.mat-mdc-raised-button .mdc-button__label+.mat-icon{margin-right:var(--mat-protected-button-icon-offset, -8px);margin-left:var(--mat-protected-button-icon-spacing, 8px)}[dir=rtl] .mat-mdc-raised-button .mdc-button__label+.mat-icon{margin-right:var(--mat-protected-button-icon-spacing, 8px);margin-left:var(--mat-protected-button-icon-offset, -8px)}.mat-mdc-raised-button .mat-ripple-element{background-color:var(--mat-protected-button-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent))}.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-protected-button-state-layer-color, var(--mat-sys-primary))}.mat-mdc-raised-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-protected-button-disabled-state-layer-color, var(--mat-sys-on-surface-variant))}.mat-mdc-raised-button:hover>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-protected-button-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity))}.mat-mdc-raised-button.cdk-program-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-raised-button.cdk-keyboard-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-raised-button.mat-mdc-button-disabled-interactive:focus>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-protected-button-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity))}.mat-mdc-raised-button:active>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-protected-button-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity))}.mat-mdc-raised-button .mat-mdc-button-touch-target{position:absolute;top:50%;height:48px;left:0;right:0;transform:translateY(-50%);display:var(--mat-protected-button-touch-target-display, block)}.mat-mdc-raised-button:not(:disabled){color:var(--mdc-protected-button-label-text-color, var(--mat-sys-primary));background-color:var(--mdc-protected-button-container-color, var(--mat-sys-surface))}.mat-mdc-raised-button,.mat-mdc-raised-button .mdc-button__ripple{border-radius:var(--mdc-protected-button-container-shape, var(--mat-sys-corner-full))}.mat-mdc-raised-button:hover{box-shadow:var(--mdc-protected-button-hover-container-elevation-shadow, var(--mat-sys-level2))}.mat-mdc-raised-button:focus{box-shadow:var(--mdc-protected-button-focus-container-elevation-shadow, var(--mat-sys-level1))}.mat-mdc-raised-button:active,.mat-mdc-raised-button:focus:active{box-shadow:var(--mdc-protected-button-pressed-container-elevation-shadow, var(--mat-sys-level1))}.mat-mdc-raised-button[disabled],.mat-mdc-raised-button.mat-mdc-button-disabled{cursor:default;pointer-events:none;color:var(--mdc-protected-button-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));background-color:var(--mdc-protected-button-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent))}.mat-mdc-raised-button[disabled].mat-mdc-button-disabled,.mat-mdc-raised-button.mat-mdc-button-disabled.mat-mdc-button-disabled{box-shadow:var(--mdc-protected-button-disabled-container-elevation-shadow, var(--mat-sys-level0))}.mat-mdc-raised-button.mat-mdc-button-disabled-interactive{pointer-events:auto}.mat-mdc-outlined-button{border-style:solid;transition:border 280ms cubic-bezier(0.4, 0, 0.2, 1);height:var(--mdc-outlined-button-container-height, 40px);font-family:var(--mdc-outlined-button-label-text-font, var(--mat-sys-label-large-font));font-size:var(--mdc-outlined-button-label-text-size, var(--mat-sys-label-large-size));letter-spacing:var(--mdc-outlined-button-label-text-tracking, var(--mat-sys-label-large-tracking));text-transform:var(--mdc-outlined-button-label-text-transform);font-weight:var(--mdc-outlined-button-label-text-weight, var(--mat-sys-label-large-weight));border-radius:var(--mdc-outlined-button-container-shape, var(--mat-sys-corner-full));border-width:var(--mdc-outlined-button-outline-width, 1px);padding:0 var(--mat-outlined-button-horizontal-padding, 24px)}.mat-mdc-outlined-button>.mat-icon{margin-right:var(--mat-outlined-button-icon-spacing, 8px);margin-left:var(--mat-outlined-button-icon-offset, -8px)}[dir=rtl] .mat-mdc-outlined-button>.mat-icon{margin-right:var(--mat-outlined-button-icon-offset, -8px);margin-left:var(--mat-outlined-button-icon-spacing, 8px)}.mat-mdc-outlined-button .mdc-button__label+.mat-icon{margin-right:var(--mat-outlined-button-icon-offset, -8px);margin-left:var(--mat-outlined-button-icon-spacing, 8px)}[dir=rtl] .mat-mdc-outlined-button .mdc-button__label+.mat-icon{margin-right:var(--mat-outlined-button-icon-spacing, 8px);margin-left:var(--mat-outlined-button-icon-offset, -8px)}.mat-mdc-outlined-button .mat-ripple-element{background-color:var(--mat-outlined-button-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent))}.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-outlined-button-state-layer-color, var(--mat-sys-primary))}.mat-mdc-outlined-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before{background-color:var(--mat-outlined-button-disabled-state-layer-color, var(--mat-sys-on-surface-variant))}.mat-mdc-outlined-button:hover>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-outlined-button-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity))}.mat-mdc-outlined-button.cdk-program-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-outlined-button.cdk-keyboard-focused>.mat-mdc-button-persistent-ripple::before,.mat-mdc-outlined-button.mat-mdc-button-disabled-interactive:focus>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-outlined-button-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity))}.mat-mdc-outlined-button:active>.mat-mdc-button-persistent-ripple::before{opacity:var(--mat-outlined-button-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity))}.mat-mdc-outlined-button .mat-mdc-button-touch-target{position:absolute;top:50%;height:48px;left:0;right:0;transform:translateY(-50%);display:var(--mat-outlined-button-touch-target-display, block)}.mat-mdc-outlined-button:not(:disabled){color:var(--mdc-outlined-button-label-text-color, var(--mat-sys-primary));border-color:var(--mdc-outlined-button-outline-color, var(--mat-sys-outline))}.mat-mdc-outlined-button[disabled],.mat-mdc-outlined-button.mat-mdc-button-disabled{cursor:default;pointer-events:none;color:var(--mdc-outlined-button-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));border-color:var(--mdc-outlined-button-disabled-outline-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent))}.mat-mdc-outlined-button.mat-mdc-button-disabled-interactive{pointer-events:auto}.mat-mdc-outlined-button .mdc-button__ripple{border-width:var(--mdc-outlined-button-outline-width, 1px);border-style:solid;border-color:rgba(0,0,0,0)}.mat-mdc-button,.mat-mdc-unelevated-button,.mat-mdc-raised-button,.mat-mdc-outlined-button{-webkit-tap-highlight-color:rgba(0,0,0,0)}.mat-mdc-button .mat-mdc-button-ripple,.mat-mdc-button .mat-mdc-button-persistent-ripple,.mat-mdc-button .mat-mdc-button-persistent-ripple::before,.mat-mdc-unelevated-button .mat-mdc-button-ripple,.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple,.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,.mat-mdc-raised-button .mat-mdc-button-ripple,.mat-mdc-raised-button .mat-mdc-button-persistent-ripple,.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,.mat-mdc-outlined-button .mat-mdc-button-ripple,.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple,.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none;border-radius:inherit}.mat-mdc-button .mat-mdc-button-ripple,.mat-mdc-unelevated-button .mat-mdc-button-ripple,.mat-mdc-raised-button .mat-mdc-button-ripple,.mat-mdc-outlined-button .mat-mdc-button-ripple{overflow:hidden}.mat-mdc-button .mat-mdc-button-persistent-ripple::before,.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before{content:"";opacity:0}.mat-mdc-button .mdc-button__label,.mat-mdc-button .mat-icon,.mat-mdc-unelevated-button .mdc-button__label,.mat-mdc-unelevated-button .mat-icon,.mat-mdc-raised-button .mdc-button__label,.mat-mdc-raised-button .mat-icon,.mat-mdc-outlined-button .mdc-button__label,.mat-mdc-outlined-button .mat-icon{z-index:1;position:relative}.mat-mdc-button .mat-focus-indicator,.mat-mdc-unelevated-button .mat-focus-indicator,.mat-mdc-raised-button .mat-focus-indicator,.mat-mdc-outlined-button .mat-focus-indicator{top:0;left:0;right:0;bottom:0;position:absolute}.mat-mdc-button:focus>.mat-focus-indicator::before,.mat-mdc-unelevated-button:focus>.mat-focus-indicator::before,.mat-mdc-raised-button:focus>.mat-focus-indicator::before,.mat-mdc-outlined-button:focus>.mat-focus-indicator::before{content:""}.mat-mdc-button._mat-animation-noopable,.mat-mdc-unelevated-button._mat-animation-noopable,.mat-mdc-raised-button._mat-animation-noopable,.mat-mdc-outlined-button._mat-animation-noopable{transition:none !important;animation:none !important}.mat-mdc-button>.mat-icon,.mat-mdc-unelevated-button>.mat-icon,.mat-mdc-raised-button>.mat-icon,.mat-mdc-outlined-button>.mat-icon{display:inline-block;position:relative;vertical-align:top;font-size:1.125rem;height:1.125rem;width:1.125rem}.mat-mdc-outlined-button .mat-mdc-button-ripple,.mat-mdc-outlined-button .mdc-button__ripple{top:-1px;left:-1px;bottom:-1px;right:-1px}.mat-mdc-unelevated-button .mat-focus-indicator::before,.mat-mdc-raised-button .mat-focus-indicator::before{margin:calc(calc(var(--mat-focus-indicator-border-width, 3px) + 2px)*-1)}.mat-mdc-outlined-button .mat-focus-indicator::before{margin:calc(calc(var(--mat-focus-indicator-border-width, 3px) + 3px)*-1)}';
 var _c43 = "@media(forced-colors: active){.mat-mdc-button:not(.mdc-button--outlined),.mat-mdc-unelevated-button:not(.mdc-button--outlined),.mat-mdc-raised-button:not(.mdc-button--outlined),.mat-mdc-outlined-button:not(.mdc-button--outlined),.mat-mdc-icon-button.mat-mdc-icon-button{outline:solid 1px}}";
@@ -39249,14 +39739,14 @@ var MatButton = class _MatButton extends MatButtonBase {
     },
     exportAs: ["matButton"],
     features: [\u0275\u0275InheritDefinitionFeature],
-    attrs: _c013,
+    attrs: _c014,
     ngContentSelectors: _c24,
     decls: 7,
     vars: 4,
     consts: [[1, "mat-mdc-button-persistent-ripple"], [1, "mdc-button__label"], [1, "mat-focus-indicator"], [1, "mat-mdc-button-touch-target"]],
     template: function MatButton_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275projectionDef(_c17);
+        \u0275\u0275projectionDef(_c18);
         \u0275\u0275element(0, "span", 0);
         \u0275\u0275projection(1);
         \u0275\u0275elementStart(2, "span", 1);
@@ -39331,14 +39821,14 @@ var MatAnchor = class _MatAnchor extends MatAnchorBase {
     },
     exportAs: ["matButton", "matAnchor"],
     features: [\u0275\u0275InheritDefinitionFeature],
-    attrs: _c013,
+    attrs: _c014,
     ngContentSelectors: _c24,
     decls: 7,
     vars: 4,
     consts: [[1, "mat-mdc-button-persistent-ripple"], [1, "mdc-button__label"], [1, "mat-focus-indicator"], [1, "mat-mdc-button-touch-target"]],
     template: function MatAnchor_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275projectionDef(_c17);
+        \u0275\u0275projectionDef(_c18);
         \u0275\u0275element(0, "span", 0);
         \u0275\u0275projection(1);
         \u0275\u0275elementStart(2, "span", 1);
@@ -39438,7 +39928,7 @@ var MatFabButton = class _MatFabButton extends MatButtonBase {
     consts: [[1, "mat-mdc-button-persistent-ripple"], [1, "mdc-button__label"], [1, "mat-focus-indicator"], [1, "mat-mdc-button-touch-target"]],
     template: function MatFabButton_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275projectionDef(_c17);
+        \u0275\u0275projectionDef(_c18);
         \u0275\u0275element(0, "span", 0);
         \u0275\u0275projection(1);
         \u0275\u0275elementStart(2, "span", 1);
@@ -39533,7 +40023,7 @@ var MatMiniFabButton = class _MatMiniFabButton extends MatButtonBase {
     consts: [[1, "mat-mdc-button-persistent-ripple"], [1, "mdc-button__label"], [1, "mat-focus-indicator"], [1, "mat-mdc-button-touch-target"]],
     template: function MatMiniFabButton_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275projectionDef(_c17);
+        \u0275\u0275projectionDef(_c18);
         \u0275\u0275element(0, "span", 0);
         \u0275\u0275projection(1);
         \u0275\u0275elementStart(2, "span", 1);
@@ -39622,7 +40112,7 @@ var MatFabAnchor = class _MatFabAnchor extends MatAnchor {
     consts: [[1, "mat-mdc-button-persistent-ripple"], [1, "mdc-button__label"], [1, "mat-focus-indicator"], [1, "mat-mdc-button-touch-target"]],
     template: function MatFabAnchor_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275projectionDef(_c17);
+        \u0275\u0275projectionDef(_c18);
         \u0275\u0275element(0, "span", 0);
         \u0275\u0275projection(1);
         \u0275\u0275elementStart(2, "span", 1);
@@ -39717,7 +40207,7 @@ var MatMiniFabAnchor = class _MatMiniFabAnchor extends MatAnchor {
     consts: [[1, "mat-mdc-button-persistent-ripple"], [1, "mdc-button__label"], [1, "mat-focus-indicator"], [1, "mat-mdc-button-touch-target"]],
     template: function MatMiniFabAnchor_Template(rf, ctx) {
       if (rf & 1) {
-        \u0275\u0275projectionDef(_c17);
+        \u0275\u0275projectionDef(_c18);
         \u0275\u0275element(0, "span", 0);
         \u0275\u0275projection(1);
         \u0275\u0275elementStart(2, "span", 1);
@@ -40925,7 +41415,7 @@ var MatInputModule = class _MatInputModule {
 })();
 
 // node_modules/@angular/material/fesm2022/datepicker.mjs
-var _c014 = ["mat-calendar-body", ""];
+var _c015 = ["mat-calendar-body", ""];
 function _forTrack0($index, $item) {
   return this._trackRow($item);
 }
@@ -41029,7 +41519,7 @@ function MatMonthView_For_4_Template(rf, ctx) {
     \u0275\u0275textInterpolate(day_r1.narrow);
   }
 }
-var _c18 = ["*"];
+var _c19 = ["*"];
 function MatCalendar_ng_template_0_Template(rf, ctx) {
 }
 function MatCalendar_Case_2_Template(rf, ctx) {
@@ -41698,7 +42188,7 @@ var MatCalendarBody = class _MatCalendarBody {
     },
     exportAs: ["matCalendarBody"],
     features: [\u0275\u0275NgOnChangesFeature],
-    attrs: _c014,
+    attrs: _c015,
     decls: 11,
     vars: 11,
     consts: [["aria-hidden", "true"], ["role", "row"], [1, "mat-calendar-body-hidden-label", 3, "id"], [1, "mat-calendar-body-label"], [1, "mat-calendar-body-label", 3, "paddingTop", "paddingBottom"], ["role", "gridcell", 1, "mat-calendar-body-cell-container", 3, "width", "paddingTop", "paddingBottom"], ["role", "gridcell", 1, "mat-calendar-body-cell-container"], ["type", "button", 1, "mat-calendar-body-cell", 3, "click", "focus", "ngClass", "tabindex"], [1, "mat-calendar-body-cell-content", "mat-focus-indicator"], ["aria-hidden", "true", 1, "mat-calendar-body-cell-preview"]],
@@ -43625,7 +44115,7 @@ var MatCalendarHeader = class _MatCalendarHeader {
     type: _MatCalendarHeader,
     selectors: [["mat-calendar-header"]],
     exportAs: ["matCalendarHeader"],
-    ngContentSelectors: _c18,
+    ngContentSelectors: _c19,
     decls: 17,
     vars: 11,
     consts: [[1, "mat-calendar-header"], [1, "mat-calendar-controls"], ["aria-live", "polite", 1, "cdk-visually-hidden", 3, "id"], ["mat-button", "", "type", "button", 1, "mat-calendar-period-button", 3, "click"], ["aria-hidden", "true"], ["viewBox", "0 0 10 5", "focusable", "false", "aria-hidden", "true", 1, "mat-calendar-arrow"], ["points", "0,0 5,5 10,0"], [1, "mat-calendar-spacer"], ["mat-icon-button", "", "type", "button", 1, "mat-calendar-previous-button", 3, "click", "disabled"], ["viewBox", "0 0 24 24", "focusable", "false", "aria-hidden", "true"], ["d", "M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"], ["mat-icon-button", "", "type", "button", 1, "mat-calendar-next-button", 3, "click", "disabled"], ["d", "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"]],
@@ -46763,7 +47253,7 @@ var MatDatepickerActions = class _MatDatepickerActions {
         \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx._template = _t.first);
       }
     },
-    ngContentSelectors: _c18,
+    ngContentSelectors: _c19,
     decls: 1,
     vars: 0,
     consts: [[1, "mat-datepicker-actions"]],
@@ -46824,51 +47314,128 @@ var MatDatepickerModule = class _MatDatepickerModule {
   }], null, null);
 })();
 
-// src/app/transaction-form/transaction-form.component.ts
-var _c015 = () => ["/transaction-list"];
-var _c19 = (a0) => ({ itemsPerPage: 10, currentPage: a0 });
-function TransactionFormComponent_For_14_Template(rf, ctx) {
+// src/app/validation-msg/validation-msg.component.ts
+function ValidationMsgComponent_div_1_li_4_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 11);
+    \u0275\u0275elementStart(0, "li");
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const elt_r2 = ctx.$implicit;
-    \u0275\u0275property("value", elt_r2.value);
+    const error_r1 = ctx.$implicit;
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate(elt_r2.viewValue);
+    \u0275\u0275textInterpolate(error_r1);
   }
 }
-function TransactionFormComponent_mat_option_30_Template(rf, ctx) {
+function ValidationMsgComponent_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "mat-option", 11);
+    \u0275\u0275elementStart(0, "div", 3)(1, "h4", 4);
+    \u0275\u0275text(2, "Errors");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "ul");
+    \u0275\u0275template(4, ValidationMsgComponent_div_1_li_4_Template, 2, 1, "li", 5);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance(4);
+    \u0275\u0275property("ngForOf", ctx_r1.validationFields == null ? null : ctx_r1.validationFields.errors);
+  }
+}
+function ValidationMsgComponent_div_2_li_4_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "li");
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const warning_r3 = ctx.$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate(warning_r3);
+  }
+}
+function ValidationMsgComponent_div_2_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 6)(1, "h4", 4);
+    \u0275\u0275text(2, "Warnings");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "ul");
+    \u0275\u0275template(4, ValidationMsgComponent_div_2_li_4_Template, 2, 1, "li", 5);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance(4);
+    \u0275\u0275property("ngForOf", ctx_r1.validationFields == null ? null : ctx_r1.validationFields.warnings);
+  }
+}
+var ValidationMsgComponent = class _ValidationMsgComponent {
+  validationFields = null;
+  showWarnings = true;
+  showErrors = true;
+  static \u0275fac = function ValidationMsgComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _ValidationMsgComponent)();
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ValidationMsgComponent, selectors: [["app-validation-msg"]], inputs: { validationFields: "validationFields", showWarnings: "showWarnings", showErrors: "showErrors" }, decls: 3, vars: 2, consts: [[1, "validation-container"], ["class", "alert alert-danger", "role", "alert", 4, "ngIf"], ["class", "alert alert-warning", "role", "alert", 4, "ngIf"], ["role", "alert", 1, "alert", "alert-danger"], [1, "alert-heading"], [4, "ngFor", "ngForOf"], ["role", "alert", 1, "alert", "alert-warning"]], template: function ValidationMsgComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      \u0275\u0275elementStart(0, "div", 0);
+      \u0275\u0275template(1, ValidationMsgComponent_div_1_Template, 5, 1, "div", 1)(2, ValidationMsgComponent_div_2_Template, 5, 1, "div", 2);
+      \u0275\u0275elementEnd();
+    }
+    if (rf & 2) {
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.showErrors && (ctx.validationFields == null ? null : ctx.validationFields.errors == null ? null : ctx.validationFields.errors.length));
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.showWarnings && (ctx.validationFields == null ? null : ctx.validationFields.warnings == null ? null : ctx.validationFields.warnings.length));
+    }
+  }, dependencies: [CommonModule, NgForOf, NgIf], encapsulation: 2 });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(ValidationMsgComponent, { className: "ValidationMsgComponent", filePath: "src/app/validation-msg/validation-msg.component.ts", lineNumber: 10 });
+})();
+
+// src/app/models/validationFields.ts
+var ValidationFields = class {
+  errors = [];
+  warnings = [];
+  constructor({ errors, warnings }) {
+    this.errors = errors;
+    this.warnings = warnings;
+  }
+};
+
+// src/app/transaction-form/vente/vente.component.ts
+var _c016 = () => ["/transaction-list"];
+var _c110 = (a0) => ({ itemsPerPage: 10, currentPage: a0 });
+function VenteComponent_mat_option_24_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "mat-option", 26);
     \u0275\u0275text(1);
     \u0275\u0275pipe(2, "titlecase");
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
-    const option_r3 = ctx.$implicit;
-    \u0275\u0275property("value", option_r3);
+    const option_r2 = ctx.$implicit;
+    \u0275\u0275property("value", option_r2);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(2, 2, option_r3.nom), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(2, 2, option_r2.nom), " ");
   }
 }
-function TransactionFormComponent_div_32_Template(rf, ctx) {
+function VenteComponent_div_26_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "div", 5)(1, "h2");
     \u0275\u0275text(2, "Liste des produits");
     \u0275\u0275elementEnd()();
   }
 }
-function TransactionFormComponent_table_33_tr_10_Template(rf, ctx) {
+function VenteComponent_table_27_tr_10_Template(rf, ctx) {
   if (rf & 1) {
-    const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "tr", 32);
-    \u0275\u0275listener("dblclick", function TransactionFormComponent_table_33_tr_10_Template_tr_dblclick_0_listener() {
-      const lp_r5 = \u0275\u0275restoreView(_r4).$implicit;
-      const ctx_r5 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r5.openDialog(lp_r5));
+    const _r3 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "tr", 29);
+    \u0275\u0275listener("dblclick", function VenteComponent_table_27_tr_10_Template_tr_dblclick_0_listener() {
+      const lp_r4 = \u0275\u0275restoreView(_r3).$implicit;
+      const ctx_r4 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r4.openDialog(lp_r4));
     });
     \u0275\u0275elementStart(1, "td");
     \u0275\u0275text(2);
@@ -46881,18 +47448,18 @@ function TransactionFormComponent_table_33_tr_10_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const lp_r5 = ctx.$implicit;
+    const lp_r4 = ctx.$implicit;
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate2("", lp_r5.produit == null ? null : lp_r5.produit.dci, " ", lp_r5.produit == null ? null : lp_r5.produit.dosage, "");
+    \u0275\u0275textInterpolate2("", lp_r4.produit == null ? null : lp_r4.produit.dci, " ", lp_r4.produit == null ? null : lp_r4.produit.dosage, "");
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(lp_r5.quantite);
+    \u0275\u0275textInterpolate(lp_r4.quantite);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(lp_r5.prixTotal);
+    \u0275\u0275textInterpolate(lp_r4.prixTotal);
   }
 }
-function TransactionFormComponent_table_33_Template(rf, ctx) {
+function VenteComponent_table_27_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "table", 30)(1, "thead")(2, "tr")(3, "th");
+    \u0275\u0275elementStart(0, "table", 27)(1, "thead")(2, "tr")(3, "th");
     \u0275\u0275text(4, "DCI");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(5, "th");
@@ -46902,60 +47469,60 @@ function TransactionFormComponent_table_33_Template(rf, ctx) {
     \u0275\u0275text(8, "Prix Total");
     \u0275\u0275elementEnd()()();
     \u0275\u0275elementStart(9, "tbody");
-    \u0275\u0275template(10, TransactionFormComponent_table_33_tr_10_Template, 7, 4, "tr", 31);
+    \u0275\u0275template(10, VenteComponent_table_27_tr_10_Template, 7, 4, "tr", 28);
     \u0275\u0275pipe(11, "paginate");
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const ctx_r5 = \u0275\u0275nextContext();
+    const ctx_r4 = \u0275\u0275nextContext();
     \u0275\u0275advance(10);
-    \u0275\u0275property("ngForOf", \u0275\u0275pipeBind2(11, 1, ctx_r5.transaction.ligneProduits, \u0275\u0275pureFunction1(4, _c19, ctx_r5.page)));
+    \u0275\u0275property("ngForOf", \u0275\u0275pipeBind2(11, 1, ctx_r4.transaction.ligneProduits, \u0275\u0275pureFunction1(4, _c110, ctx_r4.page)));
   }
 }
-function TransactionFormComponent_div_34_Template(rf, ctx) {
+function VenteComponent_div_28_Template(rf, ctx) {
   if (rf & 1) {
-    const _r7 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 33)(1, "pagination-controls", 34);
-    \u0275\u0275listener("pageChange", function TransactionFormComponent_div_34_Template_pagination_controls_pageChange_1_listener($event) {
-      \u0275\u0275restoreView(_r7);
-      const ctx_r5 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r5.page = $event);
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 30)(1, "pagination-controls", 31);
+    \u0275\u0275listener("pageChange", function VenteComponent_div_28_Template_pagination_controls_pageChange_1_listener($event) {
+      \u0275\u0275restoreView(_r6);
+      const ctx_r4 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r4.page = $event);
     });
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const ctx_r5 = \u0275\u0275nextContext();
+    const ctx_r4 = \u0275\u0275nextContext();
     \u0275\u0275advance();
-    \u0275\u0275property("responsive", true)("previousLabel", ctx_r5.paginationLabels.previousLabel)("nextLabel", ctx_r5.paginationLabels.nextLabel)("screenReaderPaginationLabel", ctx_r5.paginationLabels.screenReaderPaginationLabel)("screenReaderPageLabel", ctx_r5.paginationLabels.screenReaderPageLabel)("screenReaderCurrentLabel", ctx_r5.paginationLabels.screenReaderCurrentLabel);
+    \u0275\u0275property("responsive", true)("previousLabel", ctx_r4.paginationLabels.previousLabel)("nextLabel", ctx_r4.paginationLabels.nextLabel)("screenReaderPaginationLabel", ctx_r4.paginationLabels.screenReaderPaginationLabel)("screenReaderPageLabel", ctx_r4.paginationLabels.screenReaderPageLabel)("screenReaderCurrentLabel", ctx_r4.paginationLabels.screenReaderCurrentLabel);
   }
 }
-function TransactionFormComponent_button_39_Template(rf, ctx) {
+function VenteComponent_button_33_Template(rf, ctx) {
   if (rf & 1) {
-    const _r8 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 35);
-    \u0275\u0275listener("click", function TransactionFormComponent_button_39_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r8);
-      const ctx_r5 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r5.save());
+    const _r7 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 32);
+    \u0275\u0275listener("click", function VenteComponent_button_33_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r7);
+      const ctx_r4 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r4.save());
     });
     \u0275\u0275text(1, "Cr\xE9er");
     \u0275\u0275elementEnd();
   }
 }
-function TransactionFormComponent_button_40_Template(rf, ctx) {
+function VenteComponent_button_34_Template(rf, ctx) {
   if (rf & 1) {
-    const _r9 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 35);
-    \u0275\u0275listener("click", function TransactionFormComponent_button_40_Template_button_click_0_listener() {
-      \u0275\u0275restoreView(_r9);
-      const ctx_r5 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r5.update());
+    const _r8 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 32);
+    \u0275\u0275listener("click", function VenteComponent_button_34_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r8);
+      const ctx_r4 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r4.update());
     });
     \u0275\u0275text(1, "Enregistrer");
     \u0275\u0275elementEnd();
   }
 }
-var TransactionFormComponent = class _TransactionFormComponent {
+var VenteComponent = class _VenteComponent {
   transactionService;
   route;
   location;
@@ -46989,6 +47556,7 @@ var TransactionFormComponent = class _TransactionFormComponent {
     { value: "sortie", viewValue: "Sortie" },
     { value: "retour", viewValue: "Retour" }
   ];
+  formValidation = null;
   constructor(transactionService, route, location, router, dialog, posteService, cdr) {
     this.transactionService = transactionService;
     this.route = route;
@@ -47014,6 +47582,7 @@ var TransactionFormComponent = class _TransactionFormComponent {
         if (this.transaction.poste) {
           this.onSearchChange(this.transaction.poste);
         }
+        this.validate();
         this.cdr.detectChanges();
       });
     }
@@ -47027,6 +47596,7 @@ var TransactionFormComponent = class _TransactionFormComponent {
       if (result && result.length > 0) {
         this.transaction.ligneProduits = result;
         this.calculateTotalCost();
+        this.validate();
         this.cdr.detectChanges();
       }
     });
@@ -47087,96 +47657,100 @@ var TransactionFormComponent = class _TransactionFormComponent {
   showListProduit() {
     return this.transaction.ligneProduits && this.transaction.ligneProduits.length > 0;
   }
-  static \u0275fac = function TransactionFormComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _TransactionFormComponent)(\u0275\u0275directiveInject(TransactionService), \u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(Location), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(MatDialog), \u0275\u0275directiveInject(PosteService), \u0275\u0275directiveInject(ChangeDetectorRef));
+  validate() {
+    let errors = [];
+    let warnings = [];
+    if (this.transaction && this.transaction.ligneProduits) {
+      for (var lp of this.transaction.ligneProduits) {
+        if (this.transaction.type == "sortie" && Number(lp?.quantite) > Number(lp.produit?.quantite)) {
+          errors.push("La quantit\xE9 restante est insuffisante");
+        }
+      }
+    }
+    if (errors.length > 0 || warnings.length > 0) {
+      this.formValidation = new ValidationFields({ errors, warnings });
+    } else {
+      this.formValidation = null;
+    }
+  }
+  static \u0275fac = function VenteComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _VenteComponent)(\u0275\u0275directiveInject(TransactionService), \u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(Location), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(MatDialog), \u0275\u0275directiveInject(PosteService), \u0275\u0275directiveInject(ChangeDetectorRef));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _TransactionFormComponent, selectors: [["app-transaction-form"]], features: [\u0275\u0275ProvidersFeature([provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: "fr-FR" }])], decls: 43, vars: 18, consts: [["pickerTransaction", ""], ["auto", "matAutocomplete"], [1, "container"], [1, "row"], [1, "col-sm-8"], [1, "row", 2, "display", "block"], [2, "margin-bottom", "2vw"], [1, "form-group"], ["for", "type"], ["name", "type", "id", "type", "placeholder", "Type de la transaction", 1, "form-control", 3, "ngModelChange", "ngModel"], ["value", "", "selected", ""], [3, "value"], [1, "form-group", "d-flex", "align-items-center"], [1, "flex-grow-1", "me-2"], ["for", "dateTransaction", 1, "form-label"], ["matInput", "", "name", "dateRetrait", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel", "matDatepicker"], ["matSuffix", "", 3, "for"], [1, "form-group", "mb-4", 2, "display", "grid", "grid-template-columns", "1fr auto", "gap", "8px", "align-items", "center"], ["for", "poste", 1, "form-label"], ["id", "poste", "name", "poste", "type", "text", "placeholder", "S\xE9lectionner un poste de sant\xE9", 1, "form-control", 3, "ngModelChange", "ngModel", "matAutocomplete"], [3, "optionSelected", "displayWith"], [3, "value", 4, "ngFor", "ngForOf"], ["class", "row", "style", "display: block;", 4, "ngIf"], ["class", "table table-hover", 4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "click"], [1, "btn-toolbar", "float-end"], ["class", "btn btn-primary me-1", 3, "click", 4, "ngIf"], [1, "btn", "btn-primary", 3, "routerLink"], [1, "table", "table-hover"], [3, "dblclick", 4, "ngFor", "ngForOf"], [3, "dblclick"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"], [1, "btn", "btn-primary", "me-1", 3, "click"]], template: function TransactionFormComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _VenteComponent, selectors: [["app-vente"]], features: [\u0275\u0275ProvidersFeature([provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: "fr-FR" }])], decls: 37, vars: 20, consts: [["pickerTransaction", ""], ["auto", "matAutocomplete"], [1, "container"], [1, "row"], [1, "col-sm-8"], [1, "row", 2, "display", "block"], [2, "margin-bottom", "2vw"], [3, "validationFields", "showErrors", "showWarnings"], [1, "form-group", "d-flex", "align-items-center"], [1, "flex-grow-1", "me-2"], ["for", "dateTransaction", 1, "form-label"], ["matInput", "", "name", "dateRetrait", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel", "matDatepicker"], ["matSuffix", "", 3, "for"], [1, "form-group", "mb-4", 2, "display", "grid", "grid-template-columns", "1fr auto", "gap", "8px", "align-items", "center"], ["for", "poste", 1, "form-label"], ["id", "poste", "name", "poste", "type", "text", "placeholder", "S\xE9lectionner un poste de sant\xE9", 1, "form-control", 3, "ngModelChange", "ngModel", "matAutocomplete"], [3, "optionSelected", "displayWith"], [3, "value", 4, "ngFor", "ngForOf"], ["class", "row", "style", "display: block;", 4, "ngIf"], ["class", "table table-hover", 4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "click"], [1, "btn-toolbar", "float-end"], ["class", "btn btn-primary me-1", 3, "click", 4, "ngIf"], [1, "btn", "btn-primary", 3, "routerLink"], [3, "value"], [1, "table", "table-hover"], [3, "dblclick", 4, "ngFor", "ngForOf"], [3, "dblclick"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"], [1, "btn", "btn-primary", "me-1", 3, "click"]], template: function VenteComponent_Template(rf, ctx) {
     if (rf & 1) {
       const _r1 = \u0275\u0275getCurrentView();
       \u0275\u0275elementStart(0, "div", 2)(1, "div", 3)(2, "div", 4)(3, "div", 5)(4, "h2");
       \u0275\u0275text(5);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(6, "div", 6)(7, "form")(8, "div", 7)(9, "label", 8);
-      \u0275\u0275text(10, "Type de la transaction");
+      \u0275\u0275elementStart(6, "div", 6)(7, "form");
+      \u0275\u0275element(8, "app-validation-msg", 7);
+      \u0275\u0275elementStart(9, "div", 8)(10, "div", 9)(11, "label", 10);
+      \u0275\u0275text(12, "Date de la transaction");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(11, "select", 9);
-      \u0275\u0275twoWayListener("ngModelChange", function TransactionFormComponent_Template_select_ngModelChange_11_listener($event) {
-        \u0275\u0275restoreView(_r1);
-        \u0275\u0275twoWayBindingSet(ctx.transaction.type, $event) || (ctx.transaction.type = $event);
-        return \u0275\u0275resetView($event);
-      });
-      \u0275\u0275element(12, "option", 10);
-      \u0275\u0275repeaterCreate(13, TransactionFormComponent_For_14_Template, 2, 2, "option", 11, \u0275\u0275repeaterTrackByIdentity);
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(15, "div", 12)(16, "div", 13)(17, "label", 14);
-      \u0275\u0275text(18, "Date de la transaction");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(19, "input", 15);
-      \u0275\u0275twoWayListener("ngModelChange", function TransactionFormComponent_Template_input_ngModelChange_19_listener($event) {
+      \u0275\u0275elementStart(13, "input", 11);
+      \u0275\u0275twoWayListener("ngModelChange", function VenteComponent_Template_input_ngModelChange_13_listener($event) {
         \u0275\u0275restoreView(_r1);
         \u0275\u0275twoWayBindingSet(ctx.transaction.dateTransaction, $event) || (ctx.transaction.dateTransaction = $event);
         return \u0275\u0275resetView($event);
       });
       \u0275\u0275elementEnd()();
-      \u0275\u0275element(20, "mat-datepicker-toggle", 16)(21, "mat-datepicker", null, 0);
+      \u0275\u0275element(14, "mat-datepicker-toggle", 12)(15, "mat-datepicker", null, 0);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(23, "div", 17)(24, "div")(25, "label", 18);
-      \u0275\u0275text(26, "Poste de sant\xE9");
+      \u0275\u0275elementStart(17, "div", 13)(18, "div")(19, "label", 14);
+      \u0275\u0275text(20, "Poste de sant\xE9");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(27, "input", 19);
-      \u0275\u0275twoWayListener("ngModelChange", function TransactionFormComponent_Template_input_ngModelChange_27_listener($event) {
+      \u0275\u0275elementStart(21, "input", 15);
+      \u0275\u0275twoWayListener("ngModelChange", function VenteComponent_Template_input_ngModelChange_21_listener($event) {
         \u0275\u0275restoreView(_r1);
         \u0275\u0275twoWayBindingSet(ctx.searchText, $event) || (ctx.searchText = $event);
         return \u0275\u0275resetView($event);
       });
-      \u0275\u0275listener("ngModelChange", function TransactionFormComponent_Template_input_ngModelChange_27_listener() {
+      \u0275\u0275listener("ngModelChange", function VenteComponent_Template_input_ngModelChange_21_listener() {
         \u0275\u0275restoreView(_r1);
         return \u0275\u0275resetView(ctx.onSearchChange(ctx.searchText));
       });
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(28, "mat-autocomplete", 20, 1);
-      \u0275\u0275listener("optionSelected", function TransactionFormComponent_Template_mat_autocomplete_optionSelected_28_listener($event) {
+      \u0275\u0275elementStart(22, "mat-autocomplete", 16, 1);
+      \u0275\u0275listener("optionSelected", function VenteComponent_Template_mat_autocomplete_optionSelected_22_listener($event) {
         \u0275\u0275restoreView(_r1);
         return \u0275\u0275resetView(ctx.onSelectPoste($event.option.value));
       });
-      \u0275\u0275template(30, TransactionFormComponent_mat_option_30_Template, 3, 4, "mat-option", 21);
-      \u0275\u0275pipe(31, "async");
+      \u0275\u0275template(24, VenteComponent_mat_option_24_Template, 3, 4, "mat-option", 17);
+      \u0275\u0275pipe(25, "async");
       \u0275\u0275elementEnd()();
-      \u0275\u0275template(32, TransactionFormComponent_div_32_Template, 3, 0, "div", 22)(33, TransactionFormComponent_table_33_Template, 12, 6, "table", 23)(34, TransactionFormComponent_div_34_Template, 2, 6, "div", 24);
-      \u0275\u0275elementStart(35, "div", 25)(36, "button", 26);
-      \u0275\u0275listener("click", function TransactionFormComponent_Template_button_click_36_listener() {
+      \u0275\u0275template(26, VenteComponent_div_26_Template, 3, 0, "div", 18)(27, VenteComponent_table_27_Template, 12, 6, "table", 19)(28, VenteComponent_div_28_Template, 2, 6, "div", 20);
+      \u0275\u0275elementStart(29, "div", 21)(30, "button", 22);
+      \u0275\u0275listener("click", function VenteComponent_Template_button_click_30_listener() {
         \u0275\u0275restoreView(_r1);
         return \u0275\u0275resetView(ctx.openDialog(void 0));
       });
-      \u0275\u0275text(37, "Ajouter des produits");
+      \u0275\u0275text(31, "Ajouter des produits");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275elementStart(38, "div", 27);
-      \u0275\u0275template(39, TransactionFormComponent_button_39_Template, 2, 0, "button", 28)(40, TransactionFormComponent_button_40_Template, 2, 0, "button", 28);
-      \u0275\u0275elementStart(41, "button", 29);
-      \u0275\u0275text(42, " Retour");
+      \u0275\u0275elementStart(32, "div", 23);
+      \u0275\u0275template(33, VenteComponent_button_33_Template, 2, 0, "button", 24)(34, VenteComponent_button_34_Template, 2, 0, "button", 24);
+      \u0275\u0275elementStart(35, "button", 25);
+      \u0275\u0275text(36, " Retour");
       \u0275\u0275elementEnd()()()()();
     }
     if (rf & 2) {
-      const pickerTransaction_r10 = \u0275\u0275reference(22);
-      const auto_r11 = \u0275\u0275reference(29);
+      const pickerTransaction_r9 = \u0275\u0275reference(16);
+      const auto_r10 = \u0275\u0275reference(23);
       \u0275\u0275advance(5);
       \u0275\u0275textInterpolate(ctx.title);
-      \u0275\u0275advance(6);
-      \u0275\u0275twoWayProperty("ngModel", ctx.transaction.type);
-      \u0275\u0275advance(2);
-      \u0275\u0275repeater(ctx.typeTransactions);
-      \u0275\u0275advance(6);
+      \u0275\u0275advance(3);
+      \u0275\u0275property("validationFields", ctx.formValidation)("showErrors", true)("showWarnings", true);
+      \u0275\u0275advance(5);
       \u0275\u0275twoWayProperty("ngModel", ctx.transaction.dateTransaction);
-      \u0275\u0275property("matDatepicker", pickerTransaction_r10);
+      \u0275\u0275property("matDatepicker", pickerTransaction_r9);
       \u0275\u0275advance();
-      \u0275\u0275property("for", pickerTransaction_r10);
+      \u0275\u0275property("for", pickerTransaction_r9);
       \u0275\u0275advance(7);
       \u0275\u0275twoWayProperty("ngModel", ctx.searchText);
-      \u0275\u0275property("matAutocomplete", auto_r11);
+      \u0275\u0275property("matAutocomplete", auto_r10);
       \u0275\u0275advance();
       \u0275\u0275property("displayWith", ctx.displayPoste);
       \u0275\u0275advance(2);
-      \u0275\u0275property("ngForOf", \u0275\u0275pipeBind1(31, 15, ctx.filteredOptions));
+      \u0275\u0275property("ngForOf", \u0275\u0275pipeBind1(25, 17, ctx.filteredOptions));
       \u0275\u0275advance(2);
       \u0275\u0275property("ngIf", ctx.transaction.ligneProduits && ctx.transaction.ligneProduits.length > 0);
       \u0275\u0275advance();
@@ -47188,12 +47762,12 @@ var TransactionFormComponent = class _TransactionFormComponent {
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", !ctx.isCreation());
       \u0275\u0275advance();
-      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(17, _c015));
+      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(19, _c016));
     }
-  }, dependencies: [FormsModule, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm, CommonModule, NgForOf, NgIf, AsyncPipe, TitleCasePipe, RouterLink, NgxPaginationModule, PaginatePipe, PaginationControlsComponent, FontAwesomeModule, MatDatepickerModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatAutocompleteModule, MatAutocomplete, MatOption, MatAutocompleteTrigger], encapsulation: 2, changeDetection: 0 });
+  }, dependencies: [FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm, CommonModule, NgForOf, NgIf, AsyncPipe, TitleCasePipe, RouterLink, NgxPaginationModule, PaginatePipe, PaginationControlsComponent, FontAwesomeModule, MatDatepickerModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatAutocompleteModule, MatAutocomplete, MatOption, MatAutocompleteTrigger, ValidationMsgComponent], encapsulation: 2, changeDetection: 0 });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TransactionFormComponent, { className: "TransactionFormComponent", filePath: "src/app/transaction-form/transaction-form.component.ts", lineNumber: 35 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(VenteComponent, { className: "VenteComponent", filePath: "src/app/transaction-form/vente/vente.component.ts", lineNumber: 37 });
 })();
 function toTitleCase2(str) {
   return str.toLowerCase().split(" ").map((word) => {
@@ -47201,128 +47775,73 @@ function toTitleCase2(str) {
   }).join(" ");
 }
 
-// src/app/services/generics.service.ts
-var GenericsService = class _GenericsService {
-  constructor() {
-  }
-  isAtLeastOneFieldNotEmpty(dci, nomPoste) {
-    return dci !== null && dci.trim() !== "" || nomPoste !== null && nomPoste.trim() !== "";
-  }
-  static \u0275fac = function GenericsService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _GenericsService)();
-  };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _GenericsService, factory: _GenericsService.\u0275fac, providedIn: "root" });
-};
-
-// src/app/transaction-liste/transaction-liste.component.ts
-var _c016 = () => ["/transaction-form"];
-var _c110 = (a0) => ({ itemsPerPage: 10, currentPage: a0 });
-function TransactionListeComponent_ng_container_28_tr_1_ul_6_li_1_Template(rf, ctx) {
+// src/app/transaction-form/entree-depot/entree-depot.component.ts
+var _c017 = () => ["/transaction-list"];
+var _c111 = (a0) => ({ itemsPerPage: 10, currentPage: a0 });
+function EntreeDepotComponent_div_17_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "li");
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const elt_r2 = ctx.$implicit;
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate3("", elt_r2.produit == null ? null : elt_r2.produit.dci, " - ", elt_r2.quantite, " - ", elt_r2.prixTotal, "");
+    \u0275\u0275elementStart(0, "div", 4)(1, "h2");
+    \u0275\u0275text(2, "Liste des produits");
+    \u0275\u0275elementEnd()();
   }
 }
-function TransactionListeComponent_ng_container_28_tr_1_ul_6_Template(rf, ctx) {
+function EntreeDepotComponent_table_18_tr_10_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "ul");
-    \u0275\u0275template(1, TransactionListeComponent_ng_container_28_tr_1_ul_6_li_1_Template, 2, 3, "li", 13);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const transaction_r3 = \u0275\u0275nextContext().$implicit;
-    \u0275\u0275advance();
-    \u0275\u0275property("ngForOf", transaction_r3.ligneProduits);
-  }
-}
-function TransactionListeComponent_ng_container_28_tr_1_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r1 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "tr")(1, "td");
+    const _r2 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "tr", 22);
+    \u0275\u0275listener("dblclick", function EntreeDepotComponent_table_18_tr_10_Template_tr_dblclick_0_listener() {
+      const lp_r3 = \u0275\u0275restoreView(_r2).$implicit;
+      const ctx_r3 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r3.openDialog(lp_r3));
+    });
+    \u0275\u0275elementStart(1, "td");
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(3, "td");
     \u0275\u0275text(4);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(5, "td");
-    \u0275\u0275template(6, TransactionListeComponent_ng_container_28_tr_1_ul_6_Template, 2, 1, "ul", 9);
+    \u0275\u0275text(6);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const lp_r3 = ctx.$implicit;
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate2("", lp_r3.produit == null ? null : lp_r3.produit.dci, " ", lp_r3.produit == null ? null : lp_r3.produit.dosage, "");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(lp_r3.quantite);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(lp_r3.prixTotal);
+  }
+}
+function EntreeDepotComponent_table_18_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "table", 20)(1, "thead")(2, "tr")(3, "th");
+    \u0275\u0275text(4, "DCI");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "td");
-    \u0275\u0275text(8);
+    \u0275\u0275elementStart(5, "th");
+    \u0275\u0275text(6, "Quantit\xE9");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(9, "td");
-    \u0275\u0275text(10);
-    \u0275\u0275pipe(11, "date");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "td")(13, "a", 14);
-    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_28_tr_1_Template_a_click_13_listener() {
-      const transaction_r3 = \u0275\u0275restoreView(_r1).$implicit;
-      const ctx_r3 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r3.selectTransaction(transaction_r3));
-    });
-    \u0275\u0275element(14, "fa-icon", 15);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(15, "a", 16);
-    \u0275\u0275element(16, "fa-icon", 15);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(17, "a", 14);
-    \u0275\u0275listener("click", function TransactionListeComponent_ng_container_28_tr_1_Template_a_click_17_listener() {
-      const transaction_r3 = \u0275\u0275restoreView(_r1).$implicit;
-      const ctx_r3 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r3.deleteTransaction(transaction_r3.id));
-    });
-    \u0275\u0275element(18, "fa-icon", 15);
+    \u0275\u0275elementStart(7, "th");
+    \u0275\u0275text(8, "Prix Total");
     \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(9, "tbody");
+    \u0275\u0275template(10, EntreeDepotComponent_table_18_tr_10_Template, 7, 4, "tr", 21);
+    \u0275\u0275pipe(11, "paginate");
+    \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const transaction_r3 = ctx.$implicit;
-    const ctx_r3 = \u0275\u0275nextContext(2);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", transaction_r3.type, "");
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", transaction_r3.poste == null ? null : transaction_r3.poste.nom, "");
-    \u0275\u0275advance(2);
-    \u0275\u0275property("ngIf", transaction_r3.ligneProduits);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", transaction_r3.prixTotal, "");
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(11, 10, transaction_r3.dateTransaction, "dd/MM/yyyy"), "");
-    \u0275\u0275advance(4);
-    \u0275\u0275property("icon", ctx_r3.faEye);
-    \u0275\u0275advance();
-    \u0275\u0275propertyInterpolate1("routerLink", "/transaction-form/", transaction_r3.id, "");
-    \u0275\u0275advance();
-    \u0275\u0275property("icon", ctx_r3.faPen);
-    \u0275\u0275advance(2);
-    \u0275\u0275property("icon", ctx_r3.faTrash);
-  }
-}
-function TransactionListeComponent_ng_container_28_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementContainerStart(0);
-    \u0275\u0275template(1, TransactionListeComponent_ng_container_28_tr_1_Template, 19, 13, "tr", 13);
-    \u0275\u0275pipe(2, "paginate");
-    \u0275\u0275elementContainerEnd();
-  }
-  if (rf & 2) {
-    const listeTransactions_r5 = ctx.ngIf;
     const ctx_r3 = \u0275\u0275nextContext();
-    \u0275\u0275advance();
-    \u0275\u0275property("ngForOf", \u0275\u0275pipeBind2(2, 1, listeTransactions_r5, \u0275\u0275pureFunction1(4, _c110, ctx_r3.page)));
+    \u0275\u0275advance(10);
+    \u0275\u0275property("ngForOf", \u0275\u0275pipeBind2(11, 1, ctx_r3.transaction.ligneProduits, \u0275\u0275pureFunction1(4, _c111, ctx_r3.page)));
   }
 }
-function TransactionListeComponent_div_30_Template(rf, ctx) {
+function EntreeDepotComponent_div_19_Template(rf, ctx) {
   if (rf & 1) {
-    const _r6 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 17)(1, "pagination-controls", 18);
-    \u0275\u0275listener("pageChange", function TransactionListeComponent_div_30_Template_pagination_controls_pageChange_1_listener($event) {
-      \u0275\u0275restoreView(_r6);
+    const _r5 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 23)(1, "pagination-controls", 24);
+    \u0275\u0275listener("pageChange", function EntreeDepotComponent_div_19_Template_pagination_controls_pageChange_1_listener($event) {
+      \u0275\u0275restoreView(_r5);
       const ctx_r3 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r3.page = $event);
     });
@@ -47334,14 +47853,43 @@ function TransactionListeComponent_div_30_Template(rf, ctx) {
     \u0275\u0275property("responsive", true)("previousLabel", ctx_r3.paginationLabels.previousLabel)("nextLabel", ctx_r3.paginationLabels.nextLabel)("screenReaderPaginationLabel", ctx_r3.paginationLabels.screenReaderPaginationLabel)("screenReaderPageLabel", ctx_r3.paginationLabels.screenReaderPageLabel)("screenReaderCurrentLabel", ctx_r3.paginationLabels.screenReaderCurrentLabel);
   }
 }
-var TransactionListeComponent = class _TransactionListeComponent {
+function EntreeDepotComponent_button_24_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 25);
+    \u0275\u0275listener("click", function EntreeDepotComponent_button_24_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r6);
+      const ctx_r3 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r3.save());
+    });
+    \u0275\u0275text(1, "Cr\xE9er");
+    \u0275\u0275elementEnd();
+  }
+}
+function EntreeDepotComponent_button_25_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r7 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 25);
+    \u0275\u0275listener("click", function EntreeDepotComponent_button_25_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r7);
+      const ctx_r3 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r3.update());
+    });
+    \u0275\u0275text(1, "Enregistrer");
+    \u0275\u0275elementEnd();
+  }
+}
+var EntreeDepotComponent = class _EntreeDepotComponent {
   transactionService;
+  route;
+  location;
   router;
-  genericsService;
-  transactions = [];
-  selectedTransaction;
-  filteredTransactions = of([]);
-  searchTerm = "";
+  dialog;
+  posteService;
+  cdr;
+  transaction = new Transaction({});
+  id = null;
+  title = "";
   page = 1;
   // Configuration des labels de pagination en français
   paginationLabels = {
@@ -47354,283 +47902,420 @@ var TransactionListeComponent = class _TransactionListeComponent {
   faTrash = faTrash;
   faPen = faPen;
   faEye = faEye;
-  dciCritere = "";
-  nomPosteCritere = "";
-  constructor(transactionService, router, genericsService) {
+  isModalVisible = false;
+  searchText = "";
+  // The value bound to the input field using ngModel
+  filteredOptions = of([]);
+  // Observable for the autocomplete options
+  formValidation = null;
+  constructor(transactionService, route, location, router, dialog, posteService, cdr) {
     this.transactionService = transactionService;
+    this.route = route;
+    this.location = location;
     this.router = router;
-    this.genericsService = genericsService;
+    this.dialog = dialog;
+    this.posteService = posteService;
+    this.cdr = cdr;
+    const param = this.route.snapshot.paramMap.get("id");
+    if (param !== void 0 && param != null) {
+      this.id = String(this.route.snapshot.paramMap.get("id"));
+    }
+    this.transaction = new Transaction({});
   }
   ngOnInit() {
-    this.loadDataSource();
+    if (this.isCreation()) {
+      this.title = "Cr\xE9ation d'une transaction";
+    } else if (this.id != null) {
+      this.title = "Modification d'une transaction";
+      this.transactionService.getTransaction(this.id).subscribe((value) => {
+        this.transaction = new Transaction(value);
+        this.validate();
+        this.cdr.detectChanges();
+      });
+    }
+    this.transaction.type = "entree";
   }
-  loadDataSource() {
-    this.transactionService.getAllTransaction().subscribe((data) => {
-      this.transactions = data;
-      this.filteredTransactions = of([...this.transactions]);
+  openDialog(selectedProduit) {
+    const dialogRef = this.dialog.open(AddProduitModalComponent, {
+      width: "400px",
+      data: { selectedProduit, listeProduit: this.transaction.ligneProduits }
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && result.length > 0) {
+        this.transaction.ligneProduits = result;
+        this.validate();
+        this.cdr.detectChanges();
+      }
     });
   }
-  rechercherTransaction() {
-    if (this.genericsService.isAtLeastOneFieldNotEmpty(this.dciCritere, this.nomPosteCritere)) {
-      this.transactionService.rechercherTransaction(this.dciCritere, this.nomPosteCritere).subscribe((data) => {
-        this.filteredTransactions = of([...data]);
-      });
-    } else {
-      this.filteredTransactions = of([...this.transactions]);
-    }
+  isCreation() {
+    return this.id === void 0 || this.id === null || this.id == "";
   }
-  /* filterTransactions(): void {
-        
-        if(this.searchTerm && this.searchTerm.length > 1){
-                  this.filteredTransactions = of(this.searchTerm).pipe(
-                     debounceTime(2000),
-                    switchMap((value) => this.fetchTransactions(value)), // Fetch options from the backend
-                    catchError((err) => {
-                      console.error('Error fetching options', err);
-                      return of([]); // Return an empty array in case of error
-                    }));
+  goToList() {
+    this.router.navigate(["/transaction-list"]);
+  }
+  update() {
+    this.transactionService.updateTransaction(this.transaction.id, this.transaction).subscribe((transaction) => this.goToList());
+  }
+  save() {
+    this.transactionService.createTransaction(this.transaction).subscribe((transaction) => this.goToList());
+  }
+  showListProduit() {
+    return this.transaction.ligneProduits && this.transaction.ligneProduits.length > 0;
+  }
+  validate() {
+    let errors = [];
+    let warnings = [];
+    if (this.transaction && this.transaction.ligneProduits) {
+      for (var lp of this.transaction.ligneProduits) {
+        if (this.transaction.type == "sortie" && Number(lp?.quantite) > Number(lp.produit?.quantite)) {
+          errors.push("La quantit\xE9 restante est insuffisante");
         }
-        
       }
-  
-  
-    fetchTransactions(query: string, ): Observable<Transaction[]> {
-     if(typeof query === 'string' && query && query.trim() !== ''){
-          return this.transactionService.rechercherTransaction(null, query);
-      }else  {
-        return of([...this.transactions]);
-          //return of([]); // Return empty array for empty input
-      }
-        
-    }*/
-  selectTransaction(transaction) {
-    this.selectedTransaction = transaction;
-  }
-  editTransaction(transaction) {
-    this.selectedTransaction = transaction;
-    this.router.navigate(["/transaction-form/" + transaction.id]);
-  }
-  deleteTransaction(id) {
-    if (confirm("Etes vous s\xFBr de vouloir supprimer ? ")) {
-      this.transactionService.deleteTransaction(id).subscribe(() => this.loadDataSource());
+    }
+    if (errors.length > 0 || warnings.length > 0) {
+      this.formValidation = new ValidationFields({ errors, warnings });
+    } else {
+      this.formValidation = null;
     }
   }
-  static \u0275fac = function TransactionListeComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _TransactionListeComponent)(\u0275\u0275directiveInject(TransactionService), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(GenericsService));
+  static \u0275fac = function EntreeDepotComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _EntreeDepotComponent)(\u0275\u0275directiveInject(TransactionService), \u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(Location), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(MatDialog), \u0275\u0275directiveInject(PosteService), \u0275\u0275directiveInject(ChangeDetectorRef));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _TransactionListeComponent, selectors: [["app-transaction-list"]], decls: 34, vars: 8, consts: [[1, "container"], [1, "row", 2, "display", "block"], [1, "row", "mb-4"], [1, "col-md-4"], ["type", "text", "id", "dci", "name", "dci", "placeholder", "filtrer par DCI", 1, "form-control", 3, "ngModelChange", "ngModel"], ["type", "text", "id", "nomPoste", "name", "nomPoste", "placeholder", "filter par nom du poste", 1, "form-control", 3, "ngModelChange", "ngModel"], [1, "col-md-4", "d-flex", "align-items-end"], [1, "btn", "btn-primary", "w-100", 3, "click"], [1, "table", "table-hover"], [4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "routerLink"], [4, "ngFor", "ngForOf"], [1, "padding_1vw", 3, "click"], [3, "icon"], [1, "padding_1vw", 3, "routerLink"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"]], template: function TransactionListeComponent_Template(rf, ctx) {
-    if (rf & 1) {
-      \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "h2");
-      \u0275\u0275text(3, "Liste des transactions");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(4, "div", 2)(5, "div", 3)(6, "input", 4);
-      \u0275\u0275twoWayListener("ngModelChange", function TransactionListeComponent_Template_input_ngModelChange_6_listener($event) {
-        \u0275\u0275twoWayBindingSet(ctx.dciCritere, $event) || (ctx.dciCritere = $event);
-        return $event;
-      });
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(7, "div", 3)(8, "input", 5);
-      \u0275\u0275twoWayListener("ngModelChange", function TransactionListeComponent_Template_input_ngModelChange_8_listener($event) {
-        \u0275\u0275twoWayBindingSet(ctx.nomPosteCritere, $event) || (ctx.nomPosteCritere = $event);
-        return $event;
-      });
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(9, "div", 6)(10, "button", 7);
-      \u0275\u0275listener("click", function TransactionListeComponent_Template_button_click_10_listener() {
-        return ctx.rechercherTransaction();
-      });
-      \u0275\u0275text(11, "Rechercher");
-      \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(12, "table", 8)(13, "thead")(14, "tr")(15, "th");
-      \u0275\u0275text(16, "Type de transaction");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(17, "th");
-      \u0275\u0275text(18, "Poste de sant\xE9");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(19, "th");
-      \u0275\u0275text(20, "Produits");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(21, "th");
-      \u0275\u0275text(22, "Prix");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(23, "th");
-      \u0275\u0275text(24, "Date");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(25, "th");
-      \u0275\u0275text(26, "Actions");
-      \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(27, "tbody");
-      \u0275\u0275template(28, TransactionListeComponent_ng_container_28_Template, 3, 6, "ng-container", 9);
-      \u0275\u0275pipe(29, "async");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275template(30, TransactionListeComponent_div_30_Template, 2, 6, "div", 10);
-      \u0275\u0275elementStart(31, "div", 11)(32, "button", 12);
-      \u0275\u0275text(33, " Nouveau");
-      \u0275\u0275elementEnd()()();
-    }
-    if (rf & 2) {
-      \u0275\u0275advance(6);
-      \u0275\u0275twoWayProperty("ngModel", ctx.dciCritere);
-      \u0275\u0275advance(2);
-      \u0275\u0275twoWayProperty("ngModel", ctx.nomPosteCritere);
-      \u0275\u0275advance(20);
-      \u0275\u0275property("ngIf", \u0275\u0275pipeBind1(29, 5, ctx.filteredTransactions));
-      \u0275\u0275advance(2);
-      \u0275\u0275property("ngIf", ctx.transactions.length > 0);
-      \u0275\u0275advance(2);
-      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(7, _c016));
-    }
-  }, dependencies: [CommonModule, NgForOf, NgIf, AsyncPipe, DatePipe, RouterLink, FontAwesomeModule, FaIconComponent, FormsModule, DefaultValueAccessor, NgControlStatus, NgModel, NgxPaginationModule, PaginatePipe, PaginationControlsComponent], encapsulation: 2 });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(TransactionListeComponent, { className: "TransactionListeComponent", filePath: "src/app/transaction-liste/transaction-liste.component.ts", lineNumber: 20 });
-})();
-
-// src/app/login/auth.service.ts
-var AuthService = class _AuthService {
-  http;
-  baseUrl = "http://localhost:8080/depotHopital/api";
-  constructor(http) {
-    this.http = http;
-  }
-  login(username, password) {
-    return this.http.post(`${this.baseUrl}/login`, {
-      username,
-      password
-    });
-  }
-  // auth.service.ts
-  logout() {
-    localStorage.removeItem("token");
-  }
-  storeToken(token) {
-    localStorage.setItem("token", token);
-  }
-  getToken() {
-    return localStorage.getItem("token");
-  }
-  isLoggedIn() {
-    return !!this.getToken();
-  }
-  static \u0275fac = function AuthService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AuthService)(\u0275\u0275inject(HttpClient));
-  };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthService, factory: _AuthService.\u0275fac, providedIn: "root" });
-};
-
-// src/app/login/login.component.ts
-function LoginComponent_div_21_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 17);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r1 = \u0275\u0275nextContext();
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", ctx_r1.errorMessage, " ");
-  }
-}
-var LoginComponent = class _LoginComponent {
-  auth;
-  router;
-  credentials = {
-    username: "",
-    password: ""
-  };
-  errorMessage = "";
-  constructor(auth, router) {
-    this.auth = auth;
-    this.router = router;
-  }
-  onSubmit() {
-    this.auth.login(this.credentials.username, this.credentials.password).subscribe({
-      next: (res) => {
-        this.auth.storeToken(res.token);
-        this.router.navigate(["/home"]);
-      },
-      error: () => {
-        this.errorMessage = "Invalid credentials";
-      }
-    });
-  }
-  static \u0275fac = function LoginComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _LoginComponent)(\u0275\u0275directiveInject(AuthService), \u0275\u0275directiveInject(Router));
-  };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], decls: 22, vars: 4, consts: [["loginForm", "ngForm"], [1, "container", "mt-5"], [1, "row", "justify-content-center"], [1, "col-md-6"], [1, "card"], [1, "card-header", "bg-primary", "text-white"], [1, "card-title", "text-center"], [1, "card-body"], [3, "ngSubmit"], [1, "form-group"], ["for", "username"], ["type", "text", "id", "username", "name", "username", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel"], ["for", "password"], ["type", "password", "id", "password", "name", "password", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel"], [1, "form-group", "text-center"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], ["class", "alert alert-danger mt-3", 4, "ngIf"], [1, "alert", "alert-danger", "mt-3"]], template: function LoginComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _EntreeDepotComponent, selectors: [["app-entree-depot"]], features: [\u0275\u0275ProvidersFeature([provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: "fr-FR" }])], decls: 28, vars: 14, consts: [["pickerTransaction", ""], [1, "container"], [1, "row"], [1, "col-sm-8"], [1, "row", 2, "display", "block"], [2, "margin-bottom", "2vw"], [3, "validationFields", "showErrors", "showWarnings"], [1, "form-group", "d-flex", "align-items-center"], [1, "flex-grow-1", "me-2"], ["for", "dateTransaction", 1, "form-label"], ["matInput", "", "name", "dateRetrait", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel", "matDatepicker"], ["matSuffix", "", 3, "for"], ["class", "row", "style", "display: block;", 4, "ngIf"], ["class", "table table-hover", 4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "click"], [1, "btn-toolbar", "float-end"], ["class", "btn btn-primary me-1", 3, "click", 4, "ngIf"], [1, "btn", "btn-primary", 3, "routerLink"], [1, "table", "table-hover"], [3, "dblclick", 4, "ngFor", "ngForOf"], [3, "dblclick"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"], [1, "btn", "btn-primary", "me-1", 3, "click"]], template: function EntreeDepotComponent_Template(rf, ctx) {
     if (rf & 1) {
       const _r1 = \u0275\u0275getCurrentView();
-      \u0275\u0275elementStart(0, "div", 1)(1, "div", 2)(2, "div", 3)(3, "div", 4)(4, "div", 5)(5, "h3", 6);
-      \u0275\u0275text(6, "Login");
+      \u0275\u0275elementStart(0, "div", 1)(1, "div", 2)(2, "div", 3)(3, "div", 4)(4, "h2");
+      \u0275\u0275text(5);
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(7, "div", 7)(8, "form", 8, 0);
-      \u0275\u0275listener("ngSubmit", function LoginComponent_Template_form_ngSubmit_8_listener() {
-        \u0275\u0275restoreView(_r1);
-        return \u0275\u0275resetView(ctx.onSubmit());
-      });
-      \u0275\u0275elementStart(10, "div", 9)(11, "label", 10);
-      \u0275\u0275text(12, "Username");
+      \u0275\u0275elementStart(6, "div", 5)(7, "form");
+      \u0275\u0275element(8, "app-validation-msg", 6);
+      \u0275\u0275elementStart(9, "div", 7)(10, "div", 8)(11, "label", 9);
+      \u0275\u0275text(12, "Date de la transaction");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(13, "input", 11);
-      \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_13_listener($event) {
+      \u0275\u0275elementStart(13, "input", 10);
+      \u0275\u0275twoWayListener("ngModelChange", function EntreeDepotComponent_Template_input_ngModelChange_13_listener($event) {
         \u0275\u0275restoreView(_r1);
-        \u0275\u0275twoWayBindingSet(ctx.credentials.username, $event) || (ctx.credentials.username = $event);
+        \u0275\u0275twoWayBindingSet(ctx.transaction.dateTransaction, $event) || (ctx.transaction.dateTransaction = $event);
         return \u0275\u0275resetView($event);
       });
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(14, "div", 9)(15, "label", 12);
-      \u0275\u0275text(16, "Password");
+      \u0275\u0275element(14, "mat-datepicker-toggle", 11)(15, "mat-datepicker", null, 0);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(17, "input", 13);
-      \u0275\u0275twoWayListener("ngModelChange", function LoginComponent_Template_input_ngModelChange_17_listener($event) {
+      \u0275\u0275template(17, EntreeDepotComponent_div_17_Template, 3, 0, "div", 12)(18, EntreeDepotComponent_table_18_Template, 12, 6, "table", 13)(19, EntreeDepotComponent_div_19_Template, 2, 6, "div", 14);
+      \u0275\u0275elementStart(20, "div", 15)(21, "button", 16);
+      \u0275\u0275listener("click", function EntreeDepotComponent_Template_button_click_21_listener() {
         \u0275\u0275restoreView(_r1);
-        \u0275\u0275twoWayBindingSet(ctx.credentials.password, $event) || (ctx.credentials.password = $event);
-        return \u0275\u0275resetView($event);
+        return \u0275\u0275resetView(ctx.openDialog(void 0));
       });
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(18, "div", 14)(19, "button", 15);
-      \u0275\u0275text(20, " Login ");
-      \u0275\u0275elementEnd()()();
-      \u0275\u0275template(21, LoginComponent_div_21_Template, 2, 1, "div", 16);
+      \u0275\u0275text(22, "Ajouter des produits");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(23, "div", 17);
+      \u0275\u0275template(24, EntreeDepotComponent_button_24_Template, 2, 0, "button", 18)(25, EntreeDepotComponent_button_25_Template, 2, 0, "button", 18);
+      \u0275\u0275elementStart(26, "button", 19);
+      \u0275\u0275text(27, " Retour");
       \u0275\u0275elementEnd()()()()();
     }
     if (rf & 2) {
-      const loginForm_r3 = \u0275\u0275reference(9);
-      \u0275\u0275advance(13);
-      \u0275\u0275twoWayProperty("ngModel", ctx.credentials.username);
-      \u0275\u0275advance(4);
-      \u0275\u0275twoWayProperty("ngModel", ctx.credentials.password);
-      \u0275\u0275advance(2);
-      \u0275\u0275property("disabled", !loginForm_r3.form.valid);
-      \u0275\u0275advance(2);
-      \u0275\u0275property("ngIf", ctx.errorMessage);
+      const pickerTransaction_r8 = \u0275\u0275reference(16);
+      \u0275\u0275advance(5);
+      \u0275\u0275textInterpolate(ctx.title);
+      \u0275\u0275advance(3);
+      \u0275\u0275property("validationFields", ctx.formValidation)("showErrors", true)("showWarnings", true);
+      \u0275\u0275advance(5);
+      \u0275\u0275twoWayProperty("ngModel", ctx.transaction.dateTransaction);
+      \u0275\u0275property("matDatepicker", pickerTransaction_r8);
+      \u0275\u0275advance();
+      \u0275\u0275property("for", pickerTransaction_r8);
+      \u0275\u0275advance(3);
+      \u0275\u0275property("ngIf", ctx.transaction.ligneProduits && ctx.transaction.ligneProduits.length > 0);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.transaction.ligneProduits && ctx.transaction.ligneProduits.length > 0);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.transaction.ligneProduits && ctx.transaction.ligneProduits.length > 0);
+      \u0275\u0275advance(5);
+      \u0275\u0275property("ngIf", ctx.isCreation());
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", !ctx.isCreation());
+      \u0275\u0275advance();
+      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(13, _c017));
     }
-  }, dependencies: [FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm, CommonModule, NgIf], encapsulation: 2 });
+  }, dependencies: [FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm, CommonModule, NgForOf, NgIf, RouterLink, NgxPaginationModule, PaginatePipe, PaginationControlsComponent, FontAwesomeModule, MatDatepickerModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatAutocompleteModule, ValidationMsgComponent], encapsulation: 2, changeDetection: 0 });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src/app/login/login.component.ts", lineNumber: 14 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(EntreeDepotComponent, { className: "EntreeDepotComponent", filePath: "src/app/transaction-form/entree-depot/entree-depot.component.ts", lineNumber: 36 });
 })();
 
-// src/app/login/auth.guard.ts
-var AuthGuard = class _AuthGuard {
-  auth;
+// src/app/transaction-form/retour-depot/retour-depot.component.ts
+var _c018 = () => ["/transaction-list"];
+var _c112 = (a0) => ({ itemsPerPage: 10, currentPage: a0 });
+function RetourDepotComponent_div_17_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 4)(1, "h2");
+    \u0275\u0275text(2, "Liste des produits");
+    \u0275\u0275elementEnd()();
+  }
+}
+function RetourDepotComponent_table_18_tr_10_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r2 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "tr", 22);
+    \u0275\u0275listener("dblclick", function RetourDepotComponent_table_18_tr_10_Template_tr_dblclick_0_listener() {
+      const lp_r3 = \u0275\u0275restoreView(_r2).$implicit;
+      const ctx_r3 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r3.openDialog(lp_r3));
+    });
+    \u0275\u0275elementStart(1, "td");
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "td");
+    \u0275\u0275text(4);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "td");
+    \u0275\u0275text(6);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const lp_r3 = ctx.$implicit;
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate2("", lp_r3.produit == null ? null : lp_r3.produit.dci, " ", lp_r3.produit == null ? null : lp_r3.produit.dosage, "");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(lp_r3.quantite);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(lp_r3.prixTotal);
+  }
+}
+function RetourDepotComponent_table_18_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "table", 20)(1, "thead")(2, "tr")(3, "th");
+    \u0275\u0275text(4, "DCI");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "th");
+    \u0275\u0275text(6, "Quantit\xE9");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(7, "th");
+    \u0275\u0275text(8, "Prix Total");
+    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(9, "tbody");
+    \u0275\u0275template(10, RetourDepotComponent_table_18_tr_10_Template, 7, 4, "tr", 21);
+    \u0275\u0275pipe(11, "paginate");
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r3 = \u0275\u0275nextContext();
+    \u0275\u0275advance(10);
+    \u0275\u0275property("ngForOf", \u0275\u0275pipeBind2(11, 1, ctx_r3.transaction.ligneProduits, \u0275\u0275pureFunction1(4, _c112, ctx_r3.page)));
+  }
+}
+function RetourDepotComponent_div_19_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r5 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 23)(1, "pagination-controls", 24);
+    \u0275\u0275listener("pageChange", function RetourDepotComponent_div_19_Template_pagination_controls_pageChange_1_listener($event) {
+      \u0275\u0275restoreView(_r5);
+      const ctx_r3 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r3.page = $event);
+    });
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r3 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275property("responsive", true)("previousLabel", ctx_r3.paginationLabels.previousLabel)("nextLabel", ctx_r3.paginationLabels.nextLabel)("screenReaderPaginationLabel", ctx_r3.paginationLabels.screenReaderPaginationLabel)("screenReaderPageLabel", ctx_r3.paginationLabels.screenReaderPageLabel)("screenReaderCurrentLabel", ctx_r3.paginationLabels.screenReaderCurrentLabel);
+  }
+}
+function RetourDepotComponent_button_24_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 25);
+    \u0275\u0275listener("click", function RetourDepotComponent_button_24_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r6);
+      const ctx_r3 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r3.save());
+    });
+    \u0275\u0275text(1, "Cr\xE9er");
+    \u0275\u0275elementEnd();
+  }
+}
+function RetourDepotComponent_button_25_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r7 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 25);
+    \u0275\u0275listener("click", function RetourDepotComponent_button_25_Template_button_click_0_listener() {
+      \u0275\u0275restoreView(_r7);
+      const ctx_r3 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r3.update());
+    });
+    \u0275\u0275text(1, "Enregistrer");
+    \u0275\u0275elementEnd();
+  }
+}
+var RetourDepotComponent = class _RetourDepotComponent {
+  transactionService;
+  route;
+  location;
   router;
-  constructor(auth, router) {
-    this.auth = auth;
-    this.router = router;
-  }
-  canActivate() {
-    if (!this.auth.isLoggedIn()) {
-      this.router.navigate(["/login"]);
-      return false;
-    }
-    return true;
-  }
-  static \u0275fac = function AuthGuard_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AuthGuard)(\u0275\u0275inject(AuthService), \u0275\u0275inject(Router));
+  dialog;
+  posteService;
+  cdr;
+  transaction = new Transaction({});
+  id = null;
+  title = "";
+  page = 1;
+  // Configuration des labels de pagination en français
+  paginationLabels = {
+    previousLabel: "Pr\xE9c.",
+    nextLabel: "Suiv.",
+    screenReaderPaginationLabel: "Pagination",
+    screenReaderPageLabel: "page",
+    screenReaderCurrentLabel: `Vous \xEAtes sur la page`
   };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AuthGuard, factory: _AuthGuard.\u0275fac, providedIn: "root" });
+  faTrash = faTrash;
+  faPen = faPen;
+  faEye = faEye;
+  isModalVisible = false;
+  searchText = "";
+  // The value bound to the input field using ngModel
+  filteredOptions = of([]);
+  // Observable for the autocomplete options
+  formValidation = null;
+  constructor(transactionService, route, location, router, dialog, posteService, cdr) {
+    this.transactionService = transactionService;
+    this.route = route;
+    this.location = location;
+    this.router = router;
+    this.dialog = dialog;
+    this.posteService = posteService;
+    this.cdr = cdr;
+    const param = this.route.snapshot.paramMap.get("id");
+    if (param !== void 0 && param != null) {
+      this.id = String(this.route.snapshot.paramMap.get("id"));
+    }
+    this.transaction = new Transaction({});
+  }
+  ngOnInit() {
+    if (this.isCreation()) {
+      this.title = "Cr\xE9ation d'une transaction";
+    } else if (this.id != null) {
+      this.title = "Modification d'une transaction";
+      this.transactionService.getTransaction(this.id).subscribe((value) => {
+        this.transaction = new Transaction(value);
+        this.validate();
+        this.cdr.detectChanges();
+      });
+    }
+    this.transaction.type = "retour";
+  }
+  openDialog(selectedProduit) {
+    const dialogRef = this.dialog.open(AddProduitModalComponent, {
+      width: "400px",
+      data: { selectedProduit, listeProduit: this.transaction.ligneProduits }
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && result.length > 0) {
+        this.transaction.ligneProduits = result;
+        this.validate();
+        this.cdr.detectChanges();
+      }
+    });
+  }
+  isCreation() {
+    return this.id === void 0 || this.id === null || this.id == "";
+  }
+  goToList() {
+    this.router.navigate(["/transaction-list"]);
+  }
+  update() {
+    this.transactionService.updateTransaction(this.transaction.id, this.transaction).subscribe((transaction) => this.goToList());
+  }
+  save() {
+    this.transactionService.createTransaction(this.transaction).subscribe((transaction) => this.goToList());
+  }
+  showListProduit() {
+    return this.transaction.ligneProduits && this.transaction.ligneProduits.length > 0;
+  }
+  validate() {
+    let errors = [];
+    let warnings = [];
+    if (this.transaction && this.transaction.ligneProduits) {
+      for (var lp of this.transaction.ligneProduits) {
+        if (this.transaction.type == "sortie" && Number(lp?.quantite) > Number(lp.produit?.quantite)) {
+          errors.push("La quantit\xE9 restante est insuffisante");
+        }
+      }
+    }
+    if (errors.length > 0 || warnings.length > 0) {
+      this.formValidation = new ValidationFields({ errors, warnings });
+    } else {
+      this.formValidation = null;
+    }
+  }
+  static \u0275fac = function RetourDepotComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _RetourDepotComponent)(\u0275\u0275directiveInject(TransactionService), \u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(Location), \u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(MatDialog), \u0275\u0275directiveInject(PosteService), \u0275\u0275directiveInject(ChangeDetectorRef));
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _RetourDepotComponent, selectors: [["app-retour-depot"]], features: [\u0275\u0275ProvidersFeature([provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: "fr-FR" }])], decls: 28, vars: 14, consts: [["pickerTransaction", ""], [1, "container"], [1, "row"], [1, "col-sm-8"], [1, "row", 2, "display", "block"], [2, "margin-bottom", "2vw"], [3, "validationFields", "showErrors", "showWarnings"], [1, "form-group", "d-flex", "align-items-center"], [1, "flex-grow-1", "me-2"], ["for", "dateTransaction", 1, "form-label"], ["matInput", "", "name", "dateRetrait", "required", "", 1, "form-control", 3, "ngModelChange", "ngModel", "matDatepicker"], ["matSuffix", "", 3, "for"], ["class", "row", "style", "display: block;", 4, "ngIf"], ["class", "table table-hover", 4, "ngIf"], ["class", "pagination", 4, "ngIf"], [1, "mb-4"], [1, "btn", "btn-primary", 3, "click"], [1, "btn-toolbar", "float-end"], ["class", "btn btn-primary me-1", 3, "click", 4, "ngIf"], [1, "btn", "btn-primary", 3, "routerLink"], [1, "table", "table-hover"], [3, "dblclick", 4, "ngFor", "ngForOf"], [3, "dblclick"], [1, "pagination"], [3, "pageChange", "responsive", "previousLabel", "nextLabel", "screenReaderPaginationLabel", "screenReaderPageLabel", "screenReaderCurrentLabel"], [1, "btn", "btn-primary", "me-1", 3, "click"]], template: function RetourDepotComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      const _r1 = \u0275\u0275getCurrentView();
+      \u0275\u0275elementStart(0, "div", 1)(1, "div", 2)(2, "div", 3)(3, "div", 4)(4, "h2");
+      \u0275\u0275text(5);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(6, "div", 5)(7, "form");
+      \u0275\u0275element(8, "app-validation-msg", 6);
+      \u0275\u0275elementStart(9, "div", 7)(10, "div", 8)(11, "label", 9);
+      \u0275\u0275text(12, "Date de la transaction");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(13, "input", 10);
+      \u0275\u0275twoWayListener("ngModelChange", function RetourDepotComponent_Template_input_ngModelChange_13_listener($event) {
+        \u0275\u0275restoreView(_r1);
+        \u0275\u0275twoWayBindingSet(ctx.transaction.dateTransaction, $event) || (ctx.transaction.dateTransaction = $event);
+        return \u0275\u0275resetView($event);
+      });
+      \u0275\u0275elementEnd()();
+      \u0275\u0275element(14, "mat-datepicker-toggle", 11)(15, "mat-datepicker", null, 0);
+      \u0275\u0275elementEnd();
+      \u0275\u0275template(17, RetourDepotComponent_div_17_Template, 3, 0, "div", 12)(18, RetourDepotComponent_table_18_Template, 12, 6, "table", 13)(19, RetourDepotComponent_div_19_Template, 2, 6, "div", 14);
+      \u0275\u0275elementStart(20, "div", 15)(21, "button", 16);
+      \u0275\u0275listener("click", function RetourDepotComponent_Template_button_click_21_listener() {
+        \u0275\u0275restoreView(_r1);
+        return \u0275\u0275resetView(ctx.openDialog(void 0));
+      });
+      \u0275\u0275text(22, "Ajouter des produits");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(23, "div", 17);
+      \u0275\u0275template(24, RetourDepotComponent_button_24_Template, 2, 0, "button", 18)(25, RetourDepotComponent_button_25_Template, 2, 0, "button", 18);
+      \u0275\u0275elementStart(26, "button", 19);
+      \u0275\u0275text(27, " Retour");
+      \u0275\u0275elementEnd()()()()();
+    }
+    if (rf & 2) {
+      const pickerTransaction_r8 = \u0275\u0275reference(16);
+      \u0275\u0275advance(5);
+      \u0275\u0275textInterpolate(ctx.title);
+      \u0275\u0275advance(3);
+      \u0275\u0275property("validationFields", ctx.formValidation)("showErrors", true)("showWarnings", true);
+      \u0275\u0275advance(5);
+      \u0275\u0275twoWayProperty("ngModel", ctx.transaction.dateTransaction);
+      \u0275\u0275property("matDatepicker", pickerTransaction_r8);
+      \u0275\u0275advance();
+      \u0275\u0275property("for", pickerTransaction_r8);
+      \u0275\u0275advance(3);
+      \u0275\u0275property("ngIf", ctx.transaction.ligneProduits && ctx.transaction.ligneProduits.length > 0);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.transaction.ligneProduits && ctx.transaction.ligneProduits.length > 0);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.transaction.ligneProduits && ctx.transaction.ligneProduits.length > 0);
+      \u0275\u0275advance(5);
+      \u0275\u0275property("ngIf", ctx.isCreation());
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", !ctx.isCreation());
+      \u0275\u0275advance();
+      \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(13, _c018));
+    }
+  }, dependencies: [FormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, NgModel, NgForm, CommonModule, NgForOf, NgIf, RouterLink, NgxPaginationModule, PaginatePipe, PaginationControlsComponent, FontAwesomeModule, MatDatepickerModule, MatDatepicker, MatDatepickerInput, MatDatepickerToggle, MatAutocompleteModule, ValidationMsgComponent], encapsulation: 2, changeDetection: 0 });
 };
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(RetourDepotComponent, { className: "RetourDepotComponent", filePath: "src/app/transaction-form/retour-depot/retour-depot.component.ts", lineNumber: 36 });
+})();
 
 // src/app/app.routes.ts
 var routes = [
@@ -47642,8 +48327,12 @@ var routes = [
   { path: "produit-form", component: ProduitFormComponent, canActivate: [AuthGuard] },
   { path: "produit-form/:id", component: ProduitFormComponent, canActivate: [AuthGuard] },
   { path: "produit-list", component: ProduitListeComponent, canActivate: [AuthGuard] },
-  { path: "transaction-form", component: TransactionFormComponent, canActivate: [AuthGuard] },
-  { path: "transaction-form/:id", component: TransactionFormComponent, canActivate: [AuthGuard] },
+  { path: "vente-form", component: VenteComponent, canActivate: [AuthGuard] },
+  { path: "vente-form/:id", component: VenteComponent, canActivate: [AuthGuard] },
+  { path: "entree-depot", component: EntreeDepotComponent, canActivate: [AuthGuard] },
+  { path: "entree-depot/:id", component: EntreeDepotComponent, canActivate: [AuthGuard] },
+  { path: "retour-depot", component: RetourDepotComponent, canActivate: [AuthGuard] },
+  { path: "retour-depot/:id", component: RetourDepotComponent, canActivate: [AuthGuard] },
   { path: "transaction-list", component: TransactionListeComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent }
 ];
@@ -49327,8 +50016,8 @@ var createPopper = /* @__PURE__ */ popperGenerator({
 });
 
 // node_modules/@ng-bootstrap/ng-bootstrap/fesm2022/ng-bootstrap.mjs
-var _c017 = ["container"];
-var _c111 = ["ngbAccordionBody", ""];
+var _c019 = ["container"];
+var _c113 = ["ngbAccordionBody", ""];
 var _c26 = ["*"];
 function NgbAlert_Conditional_1_Template(rf, ctx) {
   if (rf & 1) {
@@ -50824,7 +51513,7 @@ var NgbAccordionBody = class _NgbAccordionBody {
       },
       viewQuery: function NgbAccordionBody_Query(rf, ctx) {
         if (rf & 1) {
-          \u0275\u0275viewQuery(_c017, 7, ViewContainerRef);
+          \u0275\u0275viewQuery(_c019, 7, ViewContainerRef);
         }
         if (rf & 2) {
           let _t;
@@ -50832,7 +51521,7 @@ var NgbAccordionBody = class _NgbAccordionBody {
         }
       },
       hostAttrs: [1, "accordion-body"],
-      attrs: _c111,
+      attrs: _c113,
       ngContentSelectors: _c26,
       decls: 3,
       vars: 0,
@@ -64894,7 +65583,7 @@ var HeaderComponent = class _HeaderComponent {
   static \u0275fac = function HeaderComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _HeaderComponent)(\u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(AuthService));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], decls: 25, vars: 1, consts: [[1, "navbar", "navbar-expand-md", "bg-primary", "navbar-dark", "fixed-top", "mb-4"], ["href", "#", 1, "navbar-brand", "fs-2", "font-italic", "times-new-roman"], ["type", "button", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", "aria-controls", "navbarCollapse", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "collapsed"], [1, "navbar-toggler-icon"], ["id", "navbarCollapse", 1, "collapse", "navbar-collapse"], [1, "navbar-nav", "me-auto"], [1, "nav-item"], ["routerLink", "/home", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/transaction-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/produit-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/poste-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], [1, "navbar-nav", "ms-auto"], [1, "btn", "btn-outline-light", 3, "click"], [3, "icon"]], template: function HeaderComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], decls: 38, vars: 1, consts: [[1, "navbar", "navbar-expand-md", "bg-primary", "navbar-dark", "fixed-top", "mb-4"], ["href", "#", 1, "navbar-brand", "fs-2", "font-italic", "times-new-roman"], ["type", "button", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", "aria-controls", "navbarCollapse", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "collapsed"], [1, "navbar-toggler-icon"], ["id", "navbarCollapse", 1, "collapse", "navbar-collapse"], [1, "navbar-nav", "me-auto"], [1, "nav-item"], ["routerLink", "/home", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], [1, "nav-item", "dropdown"], ["href", "#", "id", "transactionDropdown", "role", "button", "data-bs-toggle", "dropdown", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle"], ["aria-labelledby", "transactionDropdown", 1, "dropdown-menu"], ["routerLink", "/transaction-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "dropdown-item"], ["routerLink", "/vente-form", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "dropdown-item"], ["routerLink", "/entree-depot", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "dropdown-item"], ["routerLink", "/retour-depot", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "dropdown-item"], ["routerLink", "/produit-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], ["routerLink", "/poste-list", "data-bs-toggle", "collapse", "data-bs-target", "#navbarCollapse", 1, "nav-link"], [1, "navbar-nav", "ms-auto"], [1, "btn", "btn-outline-light", 3, "click"], [3, "icon"]], template: function HeaderComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275elementStart(0, "nav", 0)(1, "a", 1);
       \u0275\u0275text(2, "D\xE9pot Virtuel");
@@ -64905,27 +65594,39 @@ var HeaderComponent = class _HeaderComponent {
       \u0275\u0275elementStart(5, "div", 4)(6, "ul", 5)(7, "li", 6)(8, "a", 7);
       \u0275\u0275text(9, "Home");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(10, "li", 6)(11, "a", 8);
-      \u0275\u0275text(12, "Transactions");
+      \u0275\u0275elementStart(10, "li", 8)(11, "a", 9);
+      \u0275\u0275text(12, " Transactions ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(13, "ul", 10)(14, "li")(15, "a", 11);
+      \u0275\u0275text(16, "Liste des Transactions");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(13, "li", 6)(14, "a", 9);
-      \u0275\u0275text(15, "Produits");
+      \u0275\u0275elementStart(17, "li")(18, "a", 12);
+      \u0275\u0275text(19, "Vente");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(16, "li", 6)(17, "a", 10);
-      \u0275\u0275text(18, "Postes");
+      \u0275\u0275elementStart(20, "li")(21, "a", 13);
+      \u0275\u0275text(22, "Entr\xE9e");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(23, "li")(24, "a", 14);
+      \u0275\u0275text(25, "Retour");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(26, "li", 6)(27, "a", 15);
+      \u0275\u0275text(28, "Produits");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(29, "li", 6)(30, "a", 16);
+      \u0275\u0275text(31, "Postes");
       \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(19, "ul", 11)(20, "li", 6)(21, "button", 12);
-      \u0275\u0275listener("click", function HeaderComponent_Template_button_click_21_listener() {
+      \u0275\u0275elementStart(32, "ul", 17)(33, "li", 6)(34, "button", 18);
+      \u0275\u0275listener("click", function HeaderComponent_Template_button_click_34_listener() {
         return ctx.logout();
       });
-      \u0275\u0275elementStart(22, "i");
-      \u0275\u0275element(23, "fa-icon", 13);
+      \u0275\u0275elementStart(35, "i");
+      \u0275\u0275element(36, "fa-icon", 19);
       \u0275\u0275elementEnd();
-      \u0275\u0275text(24, " Logout");
+      \u0275\u0275text(37, " D\xE9connexion");
       \u0275\u0275elementEnd()()()()();
     }
     if (rf & 2) {
-      \u0275\u0275advance(23);
+      \u0275\u0275advance(36);
       \u0275\u0275property("icon", ctx.faSignOutAlt);
     }
   }, dependencies: [RouterLink, NgbModule, FontAwesomeModule, FaIconComponent], styles: ["\n\n.nav-item[_ngcontent-%COMP%] {\n  padding: 2px;\n  margin-left: 7px;\n}\n/*# sourceMappingURL=header.component.css.map */"] });

@@ -1,0 +1,17 @@
+<div class="validation-container">
+    <!-- Errors Section -->
+    <div *ngIf="showErrors && validationFields?.errors?.length" class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">Errors</h4>
+      <ul>
+        <li *ngFor="let error of validationFields?.errors">{{ error }}</li>
+      </ul>
+    </div>
+  
+    <!-- Warnings Section -->
+    <div *ngIf="showWarnings && validationFields?.warnings?.length" class="alert alert-warning" role="alert">
+      <h4 class="alert-heading">Warnings</h4>
+      <ul>
+        <li *ngFor="let warning of validationFields?.warnings">{{ warning }}</li>
+      </ul>
+    </div>
+  </div>

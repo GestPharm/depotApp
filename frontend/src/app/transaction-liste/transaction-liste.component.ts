@@ -105,9 +105,16 @@ export class TransactionListeComponent implements OnInit{
       this.selectedTransaction = transaction;
       
     } 
-     editTransaction(transaction: any) {
+     editTransaction(transaction: Transaction) {
       this.selectedTransaction = transaction;
-      this.router.navigate(['/transaction-form/'+ transaction.id]);
+      if(this.selectedTransaction.type=== 'sortie'){
+        this.router.navigate(['/vente-form/'+ transaction.id]);
+      }else if(this.selectedTransaction.type=== 'entree'){
+        this.router.navigate(['/entree-depot/'+ transaction.id]);
+      } else if(this.selectedTransaction.type=== 'retour'){
+        this.router.navigate(['/retour-depot/'+ transaction.id]);
+      }
+      
     }
 
     deleteTransaction(id: number | undefined){

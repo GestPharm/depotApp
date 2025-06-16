@@ -1,0 +1,90 @@
+<div class="container" >
+
+    <div class="row">
+  
+      <div class="col-sm-8">
+        <div class="row" style="display: block;">
+          <h2 >{{title}}</h2>
+        </div>
+        <div style="margin-bottom: 2vw;">
+          <form>
+
+            <app-validation-msg 
+              [validationFields]="formValidation" 
+              [showErrors]="true"
+              [showWarnings]="true">
+            </app-validation-msg>
+
+            <div class="form-group d-flex align-items-center">
+                <div class="flex-grow-1 me-2">
+                  <label for="dateTransaction" class="form-label">Date de la transaction</label>
+                  <input
+                    class="form-control"
+                    matInput
+                    [(ngModel)]="transaction.dateTransaction"
+                    name="dateRetrait"
+                    [matDatepicker]="pickerTransaction"
+                    required
+                  />
+                </div>
+                <mat-datepicker-toggle matSuffix [for]="pickerTransaction"></mat-datepicker-toggle>
+                <mat-datepicker #pickerTransaction></mat-datepicker>
+            </div>
+
+
+
+            <div class="row" style="display: block;" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
+                <h2>Liste des produits</h2>
+              </div>
+            
+              <!-- Tableau avec pagination -->
+              <table class="table table-hover" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
+                <thead>
+                  <tr>
+                    
+                    <th>DCI</th>
+                    <th>Quantité</th>
+                    <th>Prix Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Afficher uniquement les éléments de la page actuelle -->
+                  <tr *ngFor="let lp of transaction.ligneProduits| paginate: { itemsPerPage: 10, currentPage: page }" (dblclick)="openDialog(lp)">
+                   
+                    <td>{{ lp.produit?.dci }} {{ lp.produit?.dosage }}</td>
+                    <td>{{ lp.quantite}}</td>
+                    <td>{{ lp.prixTotal }}</td>
+                    
+                    
+                  </tr>
+                </tbody>
+              </table>
+            
+              <!-- Pagination -->
+              <div class="pagination" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
+                <pagination-controls (pageChange)="page = $event" [responsive]="true"
+                [previousLabel]="paginationLabels.previousLabel"
+                [nextLabel]="paginationLabels.nextLabel"
+                [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
+                [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
+                [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
+                ></pagination-controls>
+              </div>
+            
+              <!-- Bouton pour ajouter un nouveau produit -->
+              <div class="mb-4">
+                <button class="btn btn-primary" (click)="openDialog(undefined)">Ajouter des produits</button>
+              </div>
+            </form>
+            
+            
+          </div>
+          <div class="btn-toolbar float-end">
+            <button class="btn btn-primary me-1" *ngIf="isCreation()" (click)="save()">Créer</button>
+            <button class="btn btn-primary me-1" *ngIf="!isCreation()" (click)="update()">Enregistrer</button>
+            <button class="btn btn-primary" [routerLink]="['/transaction-list']"> Retour</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>

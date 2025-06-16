@@ -18,7 +18,7 @@
         placeholder="Saisir pour rechercher"
       />
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectProduit($event.option.value)" [displayWith]="displayProduit">
-        <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
+        <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option" [disabled]="checkUserSelection(option)">
           {{ displayProduit(option) }}
         </mat-option>
       </mat-autocomplete>

@@ -27,6 +27,7 @@ import { Poste } from '../../models/poste.model';
   styleUrl: './add-produit-modal.component.scss'
 })
 export class AddProduitModalComponent implements OnInit{
+
 title: any;
 ligneProduit: LigneProduit = new LigneProduit({});
 listLigneProduit: LigneProduit[] = [];
@@ -183,6 +184,16 @@ modifierLigneProduit(id: number | undefined, nouvellesDonnees: LigneProduit): vo
     }
   
   }
+
+  checkUserSelection(prod: Produit): boolean {
+    if(prod){
+      return prod?.quantite !== undefined && prod?.seuilAlerte !== undefined && prod?.quantite <= prod?.seuilAlerte;
+    }else{
+      return false;
+    }
+
+    
+    }
 
 }
 
