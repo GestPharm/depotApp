@@ -30,6 +30,9 @@ public class Transaction {
     @Column(nullable = true)
     private Double prixTotal;
 
+    @Column(nullable = true)
+    private String motif;
+
     public Long getId() {
         return id;
     }
@@ -84,5 +87,13 @@ public class Transaction {
 
     public void setPrixTotal(Double prixTotal) {
         this.prixTotal = prixTotal;
+    }
+
+    public String getMotif() {
+        return motif;
+    }
+
+    public void setMotif(String motif) {
+        this.motif = motif;
     }
 }

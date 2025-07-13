@@ -84,9 +84,9 @@ export class RetourDepotComponent {
 
     
     if(this.isCreation()){
-      this.title = "Création d'une transaction";
+      this.title = "Création d'un retour";
     }else if(this.id != null){
-      this.title = "Modification d'une transaction";
+      this.title = "Modification d'un retour";
       this.transactionService.getTransaction(this.id).subscribe( value =>{
         this.transaction = new Transaction(value);
         

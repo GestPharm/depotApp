@@ -50,7 +50,7 @@
         <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 10, currentPage: page }">
 
           <td>{{ transaction.id }}</td>
-          <td> {{transaction.type }}</td>
+          <td> {{getTransactionTypeLabel(transaction.type)}}</td>
           <td> {{transaction.poste?.nom }}</td>
           <td>
             <ul *ngIf="transaction.ligneProduits">

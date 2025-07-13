@@ -11,6 +11,7 @@ export class Transaction {
     ligneProduits: LigneProduit[] | undefined;
     poste: Poste | undefined;
     prixTotal: number | undefined;
+    motif: string | undefined;
 
 
     constructor({
@@ -20,7 +21,8 @@ export class Transaction {
         dateTransaction,
         ligneProduits,
         poste,
-        prixTotal
+        prixTotal,
+        motif
     }: {
         id?: number | undefined;
         quantite?: number | undefined;
@@ -29,6 +31,8 @@ export class Transaction {
         ligneProduits?: LigneProduit[] | undefined;
         poste?: Poste | undefined;
         prixTotal?: number | undefined;
+        motif?: string | undefined;
+
     }) {
       this.id = id;
       this.quantite = quantite;
@@ -37,6 +41,8 @@ export class Transaction {
       this.ligneProduits = ligneProduits;
       this.poste = poste;
       this.prixTotal = prixTotal;
+      this.motif = motif;
+
 
     }
 }

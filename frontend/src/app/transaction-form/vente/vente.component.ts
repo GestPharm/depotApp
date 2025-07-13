@@ -90,9 +90,9 @@ export class VenteComponent implements OnInit {
 
     this.loadPostes();
     if(this.isCreation()){
-      this.title = "Création d'une transaction";
+      this.title = "Ajouter une vente";
     }else if(this.id != null){
-      this.title = "Modification d'une transaction";
+      this.title = "Modification d'une vente";
       this.transactionService.getTransaction(this.id).subscribe( value =>{
         this.transaction = new Transaction(value);
         if(this.transaction.poste){
@@ -103,6 +103,7 @@ export class VenteComponent implements OnInit {
 
       });
     }
+    this.transaction.type = 'sortie';
 
     
   }

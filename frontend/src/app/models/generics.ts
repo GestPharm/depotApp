@@ -14,3 +14,14 @@ export interface ListIem {
     //'BACKEND_HOST_URL': 'http://192.168.1.40:8080/tailorApp'
 
   }
+
+
+  export enum TransactionType {
+    entree = "Entrée",
+    sortie = "Vente",
+    retour = "Retour",
+
+    
+  }
+
+ 

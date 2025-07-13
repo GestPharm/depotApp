@@ -10,6 +10,7 @@ import { catchError, debounceTime, Observable, of, switchMap } from 'rxjs';
 import { LabelTextComponent } from '../graphics/label-text/label-text.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { GenericsService } from '../services/generics.service';
+import { TransactionType } from '../models/generics';
 
 @Component({
   selector: 'app-transaction-list',
@@ -40,6 +41,7 @@ export class TransactionListeComponent implements OnInit{
       faEye= faEye;
       dciCritere: string = '';
       nomPosteCritere: string = '';
+    TransactionType = TransactionType;
 
       
   
@@ -125,4 +127,9 @@ export class TransactionListeComponent implements OnInit{
       }
      
     }
+
+    getTransactionTypeLabel(arg0: string|undefined) {
+      return arg0 ? TransactionType[arg0 as keyof typeof TransactionType] : '';
+    }
+    
 }

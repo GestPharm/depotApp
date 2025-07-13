@@ -19,6 +19,7 @@ import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { TransactionService } from '../services/transaction.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TransactionType } from '../models/generics';
 
 
 export type ChartOptions = {
@@ -46,6 +47,8 @@ export type ChartOptions1 = {
 })
 export class HomeComponent implements OnInit{
 
+
+
   @ViewChild("chart") chart: ChartComponent| undefined;
   public chartOptions: ChartOptions;
 
@@ -69,6 +72,7 @@ export class HomeComponent implements OnInit{
       faTrash= faTrash;
         faPen = faPen;
         faEye= faEye;
+        
 
    constructor(private transactionService: TransactionService) {
 
@@ -159,6 +163,11 @@ export class HomeComponent implements OnInit{
     });
 
   }
+
+  getTransactionTypeLabel(arg0: string|undefined) {
+    return arg0 ? TransactionType[arg0 as keyof typeof TransactionType] : '';
+  }
+  
 
    
 
