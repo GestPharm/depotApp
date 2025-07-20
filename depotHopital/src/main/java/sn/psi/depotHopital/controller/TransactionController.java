@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sn.psi.depotHopital.entities.Transaction;
 import sn.psi.depotHopital.services.TransactionService;
+import sn.psi.depotHopital.vo.StatPoste;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,17 @@ public class TransactionController {
     public List<Transaction> rechercherClient(@RequestParam (name="dci", required=false) String dci, @RequestParam(name="nomPoste", required=false) String nomPoste) {
         List<Transaction> res = new ArrayList<>();
         return transactionService.searchTransactions(dci, nomPoste);
+    }
+
+    @GetMapping("/stat_by_poste/{idPoste}")
+    public StatPoste getStatByPoste(@PathVariable Long idPoste) {
+        StatPoste stat = new StatPoste();
+        stat.setBudgetTotal(10000d);
+        stat.setDepenseTotale(transactionService.getTotalTransactionsAmount(idPoste));
+        stat.setNbTotalCommandes(transactionService.getTransactionCountForPoste(idPoste));
+        stat.setDernieresCommandes(transactionService.getTransactionsForPoste(idPoste));
+         return stat;
+
     }
 
 }

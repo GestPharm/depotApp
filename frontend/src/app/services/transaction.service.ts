@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Transaction } from '../models/transaction.model';
 import { GenericConstants } from '../models/generics';
+import { StatPoste } from '../statistiques/stat-poste.model';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,17 @@ export class TransactionService {
     const options = params.keys().length > 0 ?
      { params: params } : {};
     return this.http.get<Transaction[]>(`${this.baseURL}/api/transactions/rechercher`, options)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
+  getStatByPoste(idPoste: number): Observable<StatPoste> {
+    
+    
+    
+    return this.http.get<StatPoste>(`${this.baseURL}/api/transactions/stat_by_poste/${idPoste}`)
     .pipe(
       catchError(this.handleError)
     );

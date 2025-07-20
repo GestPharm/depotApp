@@ -10,6 +10,7 @@ import { AuthGuard } from './login/auth.guard';
 import { VenteComponent } from './transaction-form/vente/vente.component';
 import { EntreeDepotComponent } from './transaction-form/entree-depot/entree-depot.component';
 import { RetourDepotComponent } from './transaction-form/retour-depot/retour-depot.component';
+import { StatistiquesComponent } from './statistiques/statistiques.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -27,6 +28,7 @@ export const routes: Routes = [
     {path: "retour-depot", component: RetourDepotComponent, canActivate: [AuthGuard]},
     {path: "retour-depot/:id", component: RetourDepotComponent, canActivate: [AuthGuard]},
     {path: "transaction-list", component: TransactionListeComponent, canActivate: [AuthGuard]},
+    {path: "stat-poste", component: StatistiquesComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
    
     

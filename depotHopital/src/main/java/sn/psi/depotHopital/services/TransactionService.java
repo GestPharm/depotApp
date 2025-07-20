@@ -2,6 +2,7 @@ package sn.psi.depotHopital.services;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import sn.psi.depotHopital.entities.LigneProduit;
 import sn.psi.depotHopital.entities.Produit;
@@ -11,6 +12,8 @@ import sn.psi.depotHopital.repositories.ProduitRepository;
 import sn.psi.depotHopital.repositories.TransactionRepository;
 
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 @Service
 public class TransactionService {
@@ -111,5 +114,32 @@ public class TransactionService {
         transaction.setPrixTotal(total);
         return transactionRepository.save(transaction);
     }
+
+
+    public Double getTotalTransactionsAmount(Long posteId) {
+        LocalDate today= LocalDate.now();
+        LocalDate start = LocalDate.of(today.getYear(), Month.JANUARY, 1);
+        LocalDate end = LocalDate.of(today.getYear(), Month.DECEMBER, 31);
+
+        return transactionRepository.calculateTotalVentesAmountByPosteId(posteId, start, end);
+    }
+
+    // In your service class
+    public List<Transaction> getTransactionsForPoste(Long posteId) {
+        LocalDate today= LocalDate.now();
+        LocalDate start = LocalDate.of(today.getYear(), Month.JANUARY, 1);
+        LocalDate end = LocalDate.of(today.getYear(), Month.DECEMBER, 31);
+        return transactionRepository.findTransactionsByPosteId(posteId, start, end,
+                PageRequest.of(0, 10));
+
+    }
+
+    public long getTransactionCountForPoste(Long posteId) {
+        LocalDate today= LocalDate.now();
+        LocalDate start = LocalDate.of(today.getYear(), Month.JANUARY, 1);
+        LocalDate end = LocalDate.of(today.getYear(), Month.DECEMBER, 31);
+        return transactionRepository.countTransactionsByPosteId(posteId, start, end);
+    }
+
 
 }

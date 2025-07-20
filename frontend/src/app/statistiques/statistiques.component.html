@@ -1,0 +1,114 @@
+<div class="container" >
+
+    
+     
+        <div class="row" style="display: block;">
+          <h2 >{{title}}</h2>
+        </div>
+        
+        <form>
+            <div class="row">
+                <div class="form-group mb-4" style="display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;">
+                    <div>
+                      <label for="poste" class="form-label">Poste de santé</label>
+                      <input
+                        class="form-control"
+                        id="poste"
+                        name="poste"
+                        type="text" 
+                        [(ngModel)]="searchText"
+                        (ngModelChange)="onSearchChange(searchText)"
+                        [matAutocomplete]="auto"
+                        placeholder="Sélectionner un poste de santé"
+                      />
+                    </div>
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectPoste($event.option.value)" [displayWith]="displayPoste">
+                      <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
+                        {{option.nom | titlecase }}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+            </div>
+        </form>
+        <div *ngIf="selectedPoste?.id && statPoste" class="row">
+
+            <div class="col">
+                 <app-command-counter 
+                [count]="statPoste.nbTotalCommandes" 
+                [title]="'Nombre commandes'" 
+                [size]="'lg'" 
+                [color]="'success'">
+              </app-command-counter>
+            </div>
+
+            <div class="col">
+                <app-command-counter 
+               [count]="statPoste.depenseTotale" 
+               [title]="'Dépense totale'" 
+               [size]="'lg'" 
+               [color]="'success'">
+             </app-command-counter>
+           </div>
+
+           <div class="col">
+                    <app-command-counter 
+                [count]="statPoste.budgetTotal" 
+                [title]="'Budget annuel'" 
+                [size]="'lg'" 
+                [color]="'success'">
+                </app-command-counter>
+            </div>
+            
+        </div>
+        <br/><br/>
+
+        <div class="row">
+            <div class="row" style="display: block;">
+              <h2 >Dernières transactions</h2>
+            </div>
+        
+        
+        
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Type de transaction</th>
+                  <th>Poste de santé</th>
+                  <th>Produits</th>
+                  <th>Date</th>
+        
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let transaction of statPoste?.dernieresCommandes">
+        
+                  <td>{{ transaction.id }}</td>
+                  <td> {{getTransactionTypeLabel(transaction.type)}}</td>
+                  <td> {{transaction.poste?.nom }}</td>
+                  <td>
+                    <ul *ngIf="transaction.ligneProduits">
+                        <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}}</li>
+                    </ul>
+                  </td>
+                  <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
+        
+                  <td>
+                   
+                      <a  *ngIf="transaction.type ==='sortie'" routerLink="/vente-form/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+                      <a  *ngIf="transaction.type ==='entree'" routerLink="/entree-depot/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+                      <a  *ngIf="transaction.type ==='retour'" routerLink="/retour-depot/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+        
+        
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+        
+             
+          </div>
+
+       
+    
+</div>
