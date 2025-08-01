@@ -1,7 +1,6 @@
-<div class="container" >
+<div class="container-fluid px-md-5 px-3 home-container">
+  <div class="row py-3">
 
-    <div class="row">
-  
       <div class="col-sm-8">
         <div class="row" style="display: block;">
           <h2 >{{title}}</h2>
@@ -9,8 +8,8 @@
         <div style="margin-bottom: 2vw;">
           <form>
 
-            <app-validation-msg 
-              [validationFields]="formValidation" 
+            <app-validation-msg
+              [validationFields]="formValidation"
               [showErrors]="true"
               [showWarnings]="true">
             </app-validation-msg>
@@ -43,12 +42,12 @@
             <div class="row" style="display: block;" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
                 <h2>Liste des produits</h2>
               </div>
-            
+
               <!-- Tableau avec pagination -->
               <table class="table table-hover" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
                 <thead>
                   <tr>
-                    
+
                     <th>DCI</th>
                     <th>Quantité</th>
                     <th>Prix Total</th>
@@ -57,16 +56,16 @@
                 <tbody>
                   <!-- Afficher uniquement les éléments de la page actuelle -->
                   <tr *ngFor="let lp of transaction.ligneProduits| paginate: { itemsPerPage: 10, currentPage: page }" (dblclick)="openDialog(lp)">
-                   
+
                     <td>{{ lp.produit?.dci }} {{ lp.produit?.dosage }}</td>
                     <td>{{ lp.quantite}}</td>
                     <td>{{ lp.prixTotal }}</td>
-                    
-                    
+
+
                   </tr>
                 </tbody>
               </table>
-            
+
               <!-- Pagination -->
               <div class="pagination" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
                 <pagination-controls (pageChange)="page = $event" [responsive]="true"
@@ -77,14 +76,14 @@
                 [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
                 ></pagination-controls>
               </div>
-            
+
               <!-- Bouton pour ajouter un nouveau produit -->
               <div class="mb-4">
                 <button class="btn btn-primary" (click)="openDialog(undefined)">Ajouter des produits</button>
               </div>
             </form>
-            
-            
+
+
           </div>
           <div class="btn-toolbar float-end">
             <button class="btn btn-primary me-1" *ngIf="isCreation()" (click)="save()">Créer</button>
@@ -93,5 +92,5 @@
           </div>
         </div>
       </div>
-      
+
     </div>

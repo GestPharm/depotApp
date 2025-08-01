@@ -1,8 +1,6 @@
-<div class="container" >
+<div class="container-fluid px-md-5 px-3 home-container">
+  <h2 class="text-center fst-italic times-new-roman py-3">Liste des transactions</h2>
 
-    <div class="row" style="display: block;">
-      <h2 >Liste des transactions</h2>
-    </div>
     <div class="row mb-4">
         <!-- Champ DCI -->
         <div class="col-md-4">
@@ -28,7 +26,7 @@
       <table class="table table-hover">
         <thead>
         <tr>
-         
+
           <th>Type de transaction</th>
           <th>Poste de santé</th>
           <th>Produits</th>
@@ -42,7 +40,7 @@
           <ng-container *ngIf="filteredTransactions | async as listeTransactions">
             <tr *ngFor="let transaction of listeTransactions | paginate: { itemsPerPage: 10, currentPage: page }">
 
-             
+
               <td> {{getTransactionTypeLabel(transaction.type) }}</td>
               <td> {{transaction.poste?.nom }}</td>
               <td>
@@ -52,17 +50,17 @@
               </td>
               <td>  <ng-container *ngIf="transaction.type ==='sortie'"> - {{transaction.prixTotal}}</ng-container></td>
               <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
-              
-    
+
+
               <td>
                 <a (click)="selectTransaction(transaction)" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
                   <a (click)="editTransaction(transaction)" class="padding_1vw"><fa-icon [icon]="faPen" /> </a>
                  <a (click)="deleteTransaction(transaction.id)" class="padding_1vw"><fa-icon [icon]="faTrash" ></fa-icon></a>
-    
+
               </td>
             </tr>
           </ng-container>
-        
+
         </tbody>
       </table>
 
@@ -79,9 +77,9 @@
 
       <div class="mb-4 ">
         <button class="btn btn-primary" [routerLink]="['/vente-form']"> Nouveau</button>
-        
+
     </div>
 
-   
+
 
 </div>

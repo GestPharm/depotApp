@@ -1,20 +1,21 @@
-<div class="container" >
-  <h5 class="text-center fst-italic time-new-roman">Bienvenue dans votre dépot pharmaceutique</h5>
-  <div class="row justify-content-center align-items-center mb-4">
-    <div class="col">
-      <span >Répartition des entrées/sorties</span>
-      <div id="chart">
+<div class="container-fluid px-md-5 px-3 home-container">
+  <h5 class="text-center fst-italic times-new-roman py-3">Bienvenue dans votre dépot pharmaceutique</h5>
+
+  <!-- Charts Section -->
+  <div class="row gy-4 charts-section">
+    <div class="col-12 col-lg-6">
+      <div class="chart-container">
+        <span class="chart-title">Répartition des entrées/sorties</span>
         <apx-chart
           [series]="chartOptions.series"
           [chart]="chartOptions.chart"
           [labels]="chartOptions.labels"
-          [responsive]="chartOptions.responsive"
-        ></apx-chart>
+          [responsive]="chartOptions.responsive">
+        </apx-chart>
       </div>
-      
     </div>
-    <div class="col">
-      <div id="chart1">
+    <div class="col-12 col-lg-6">
+      <div class="chart-container">
         <apx-chart
           [series]="chartOptions1.series"
           [chart]="chartOptions1.chart"
@@ -22,63 +23,69 @@
           [dataLabels]="chartOptions1.dataLabels"
           [grid]="chartOptions1.grid"
           [stroke]="chartOptions1.stroke"
-          [title]="chartOptions1.title"
-        ></apx-chart>
+          [title]="chartOptions1.title">
+        </apx-chart>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="row" style="display: block;">
-      <h2 >Dernières transactions</h2>
-    </div>
 
 
-
+ <!-- Transactions Section -->
+ <div class="transactions-section mt-4">
+  <h2 class="mb-3">Dernières transactions</h2>
+  
+  <div class="table-container">
+    <div class="table-responsive">
       <table class="table table-hover">
-        <thead>
-        <tr>
-          <th>No</th>
-          <th>Type de transaction</th>
-          <th>Poste de santé</th>
-          <th>Produits</th>
-          <th>Date</th>
+          <!-- Table headers remain the same -->
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Type de transaction</th>
+              <th>Poste de santé</th>
+              <th>Produits</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 10, currentPage: page }">
 
-          <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 10, currentPage: page }">
-
-          <td>{{ transaction.id }}</td>
-          <td> {{getTransactionTypeLabel(transaction.type)}}</td>
-          <td> {{transaction.poste?.nom }}</td>
-          <td>
-            <ul *ngIf="transaction.ligneProduits">
+            <td>{{ transaction.id }}</td>
+            <td> {{getTransactionTypeLabel(transaction.type)}}</td>
+            <td> {{transaction.poste?.nom }}</td>
+            <td>
+              <ul *ngIf="transaction.ligneProduits">
                 <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}}</li>
-            </ul>
-          </td>
-          <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
+              </ul>
+            </td>
+            <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
 
-          <td>
-           
+            <td>
+
               <a  *ngIf="transaction.type ==='sortie'" routerLink="/vente-form/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
               <a  *ngIf="transaction.type ==='entree'" routerLink="/entree-depot/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
               <a  *ngIf="transaction.type ==='retour'" routerLink="/retour-depot/{{transaction.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
 
 
-          </td>
-        </tr>
-        </tbody>
-      </table>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Pagination -->
-      <div class="pagination" *ngIf="transactions.length > 0">
-        <pagination-controls (pageChange)="page = $event" [responsive]="true"
-        [previousLabel]="paginationLabels.previousLabel"
-        [nextLabel]="paginationLabels.nextLabel"
-        [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
-        [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
-        [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
-        ></pagination-controls>
+      <div class="pagination mt-3" *ngIf="transactions.length > 0">
+        <pagination-controls
+          (pageChange)="page = $event"
+          [responsive]="true"
+          [previousLabel]="paginationLabels.previousLabel"
+          [nextLabel]="paginationLabels.nextLabel"
+          [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
+          [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
+          [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel">
+        </pagination-controls>
       </div>
+    </div>
   </div>
+</div>

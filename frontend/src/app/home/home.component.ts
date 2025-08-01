@@ -43,7 +43,7 @@ export type ChartOptions1 = {
   selector: 'app-home',
   imports: [CommonModule, NgApexchartsModule, NgxPaginationModule, FontAwesomeModule, RouterLink],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
 
