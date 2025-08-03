@@ -13,6 +13,8 @@ public class Poste {
     private String adresse;
     private String telephone;
     private String email;
+    @Column(columnDefinition = "double default 1000000")
+    private Double budgetAnnuel;
 
     public Long getId() {
         return id;
@@ -52,5 +54,13 @@ public class Poste {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Double getBudgetAnnuel() {
+        return budgetAnnuel;
+    }
+
+    public void setBudgetAnnuel(Double budgetAnnuel) {
+        this.budgetAnnuel = budgetAnnuel;
     }
 }

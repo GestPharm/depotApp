@@ -3,7 +3,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../login/auth.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faClinicMedical } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +14,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent {
 
   faSignOutAlt = faSignOutAlt;
+  faClinicMedical = faClinicMedical;
 
   constructor(private router: Router, private auth: AuthService) {}
 

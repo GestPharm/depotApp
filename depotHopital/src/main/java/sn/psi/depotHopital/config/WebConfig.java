@@ -7,16 +7,20 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 
-//@Configuration
+import java.io.IOException;
+
+@Configuration
 //@EnableWebMvc
-public class WebConfig implements Filter, WebMvcConfigurer {
+public class WebConfig implements  WebMvcConfigurer {
 
-    @Override
+   /* @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**");
     }
@@ -52,14 +56,34 @@ public class WebConfig implements Filter, WebMvcConfigurer {
             response.setStatus(HttpServletResponse.SC_OK);
         }
 
-    }
+    }*/
 
 
-    @Override
+    /*@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/","classpath:/other-resources/");
+    }*/
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // All resources go to where they should go
+        registry.addResourceHandler("/depotHopital/**")
+                .addResourceLocations("classpath:/static/depotHopital/")
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver() {
+                    @Override
+                    protected Resource getResource(String resourcePath, Resource location) throws IOException {
+                        Resource requestedResource = location.createRelative(resourcePath);
+                        // If we actually hit a file, serve that. This is stuff like .js and .css files.
+                        if (requestedResource.exists() && requestedResource.isReadable()) {
+                            return requestedResource;
+                        }
+                        // Anything else returns the index.
+                        return location.createRelative("index.html");
+                    }
+                });
     }
 
 }

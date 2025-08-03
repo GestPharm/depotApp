@@ -12,6 +12,10 @@
 			(input)="filterProduits()"
 		  />
 		</div>
+    <div class="col">
+      <button class="btn btn-primary" [routerLink]="['/produit-form']"><fa-icon [icon]="faAdd" />Nouveau</button>
+    </div>
+
 	  </div>
 
   <!-- Tableau avec pagination -->
@@ -57,10 +61,7 @@
     ></pagination-controls>
   </div>
 
-  <!-- Bouton pour ajouter un nouveau produit -->
-  <div class="mb-4">
-    <button class="btn btn-primary" [routerLink]="['/produit-form']">Nouveau</button>
-  </div>
+  
 
   <!-- Détails du produit sélectionné -->
   <br />

@@ -178,6 +178,11 @@ app-header {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  
+}
+
+.login-container{
+  margin-top: 80px;
 }
 
 .content-container {
@@ -190,6 +195,7 @@ app-header {
 .home-container {
   display: flex;
   flex-direction: column;
+
   min-height: 100%;
   
   .charts-section {
@@ -207,5 +213,19 @@ app-header {
       min-height: 0;
       overflow-y: auto;
     }
+  }
+}
+
+.home-container {
+  /* Default for mobile (smaller header) */
+  margin-top: 60px;
+  scroll-margin-top: 60px;
+}
+
+@media (min-width: 768px) {
+  .home-container {
+    /* For tablets and desktops (larger header) */
+    margin-top: 80px;
+    scroll-margin-top: 80px;
   }
 }

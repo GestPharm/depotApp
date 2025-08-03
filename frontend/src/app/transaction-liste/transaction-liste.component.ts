@@ -3,7 +3,7 @@ import { Transaction } from '../models/transaction.model';
 import { TransactionService } from '../services/transaction.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPen, faTrash, faAdd, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { catchError, debounceTime, Observable, of, switchMap } from 'rxjs';
@@ -39,6 +39,8 @@ export class TransactionListeComponent implements OnInit{
     faTrash= faTrash;
       faPen = faPen;
       faEye= faEye;
+      faSearch= faSearch;
+      faAdd= faAdd;
       dciCritere: string = '';
       nomPosteCritere: string = '';
     TransactionType = TransactionType;

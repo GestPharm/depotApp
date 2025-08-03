@@ -1,7 +1,9 @@
 <div class="container-fluid px-md-5 px-3 home-container">
   <h2 class="text-center fst-italic times-new-roman py-3">Liste des postes</h2>
   
-      
+  <div class="mb-4 ">
+    <button class="btn btn-primary" [routerLink]="['/poste-form']"> <fa-icon [icon]="faAdd" />Nouveau</button>
+</div>
   
       <table class="table table-hover">
         <thead>
@@ -28,9 +30,7 @@
         </tr>
         </tbody>
       </table>
-      <div class="mb-4 ">
-        <button class="btn btn-primary" [routerLink]="['/poste-form']"> Nouveau</button>
-    </div>
+      
     <br/>
     <br/>
     <div class="row" *ngIf="selectedPoste!==undefined && selectedPoste!==null">

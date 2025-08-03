@@ -16,7 +16,8 @@
 
       <!-- Bouton Rechercher -->
       <div class="col-md-4 d-flex align-items-end">
-          <button (click)="rechercherTransaction()" class="btn btn-primary w-100">Rechercher</button>
+          <button (click)="rechercherTransaction()" class="btn btn-primary me-3"><fa-icon [icon]="faSearch" /> Rechercher</button>
+          <button class="btn btn-primary" [routerLink]="['/vente-form']"> <fa-icon [icon]="faAdd" /> Nouveau</button>
       </div>
     </div>
 
@@ -75,11 +76,7 @@
         ></pagination-controls>
       </div>
 
-      <div class="mb-4 ">
-        <button class="btn btn-primary" [routerLink]="['/vente-form']"> Nouveau</button>
-
-    </div>
-
+      
 
 
 </div>

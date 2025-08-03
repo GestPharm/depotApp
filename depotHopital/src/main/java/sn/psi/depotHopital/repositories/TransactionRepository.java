@@ -23,7 +23,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
 
     // New method to count transactions by poste ID
-    @Query("SELECT COUNT(t) FROM Transaction t WHERE t.poste.id = :idPoste  AND t.dateTransaction BETWEEN :startDate AND :endDate")
+    @Query("SELECT COUNT(t) FROM Transaction t WHERE t.poste.id = :idPoste AND t.type = 'sortie' AND t.dateTransaction BETWEEN :startDate AND :endDate")
     Long countTransactionsByPosteId(@Param("idPoste") Long idPoste, @Param("startDate") LocalDate start,
                                     @Param("endDate") LocalDate end);
 

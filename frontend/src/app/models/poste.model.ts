@@ -4,19 +4,22 @@ export class Poste {
     adresse: string | undefined;
     telephone: string | undefined;
     email: string | undefined;
+    budgetAnnuel: number | undefined;
    
     constructor({
       id,
       nom,
       adresse,
       telephone,
-      email
+      email,
+      budgetAnnuel
     }: {
       id?: number;
       nom?: string;
       adresse?: string;
       telephone?: string;
       email?: string;
+      budgetAnnuel?: number;
       
     }) {
       this.id = id;
@@ -24,6 +27,7 @@ export class Poste {
       this.adresse = adresse;
       this.telephone = telephone;
       this.email = email;
+      this.budgetAnnuel = budgetAnnuel;
       
     }
 }

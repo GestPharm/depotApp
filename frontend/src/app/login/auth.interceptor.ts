@@ -1,6 +1,10 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const router = inject(Router);
   const token = localStorage.getItem('token');
 
   // ✅ Skip token for auth-related or public endpoints
@@ -12,8 +16,25 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         Authorization: `Bearer ${token}`
       }
     });
-    return next(cloned);
+    return next(cloned).pipe(
+      catchError((error) => {
+        if (error.status === 403) {
+          // Handle 403 Forbidden (token might be expired or invalid)
+          localStorage.removeItem('token'); // Clear invalid token
+          router.navigate(['/login']); // Redirect to login
+        }
+        return throwError(() => error);
+      })
+    );
   }
 
-  return next(req);
+  return next(req).pipe(
+    catchError((error) => {
+      if (error.status === 403) {
+        // Handle 403 Forbidden for public routes (unlikely but possible)
+        router.navigate(['/login']);
+      }
+      return throwError(() => error);
+    })
+  );
 };

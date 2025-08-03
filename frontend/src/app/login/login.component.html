@@ -1,14 +1,14 @@
-<div class="container mt-5">
+<div class="container login-container">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header bg-primary text-white">
-            <h3 class="card-title text-center">Login</h3>
+            <h3 class="card-title text-center">Connexion</h3>
           </div>
           <div class="card-body">
             <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
               <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Identifiant</label>
                 <input
                   type="text"
                   id="username"
@@ -19,7 +19,7 @@
                 />
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Mot de passe</label>
                 <input
                   type="password"
                   id="password"
@@ -29,9 +29,9 @@
                   required
                 />
               </div>
-              <div class="form-group text-center">
+              <div class="form-group text-center mt-4">
                 <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">
-                  Login
+                  Se connecter
                 </button>
               </div>
             </form>
