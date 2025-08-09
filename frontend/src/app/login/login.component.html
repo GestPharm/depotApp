@@ -33,6 +33,13 @@
                 <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">
                   Se connecter
                 </button>
+              
+              </div>
+              <div class="form-group text-center mt-4">
+                <span>Pas encore de compte</span><a routerLink="/register">
+                  Enregistrez vous
+                </a>
+              
               </div>
             </form>
             <div *ngIf="errorMessage" class="alert alert-danger mt-3">

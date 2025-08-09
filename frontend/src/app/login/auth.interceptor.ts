@@ -2,10 +2,13 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { TokenStorageService } from '../services/token-storage.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
+
+  const tokenService = inject(TokenStorageService);
   const router = inject(Router);
-  const token = localStorage.getItem('token');
+  const token = tokenService.getToken();
 
   // ✅ Skip token for auth-related or public endpoints
   const isPublic = req.url.includes('/login') || req.url.includes('/register') || req.url.includes('/public');

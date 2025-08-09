@@ -24,6 +24,14 @@ public class User implements UserDetails {
 
     private String role; // Add a role field
 
+    private String email;
+
+    private Boolean active;
+
+    private String nom;
+
+    private String prenom;
+
 
     // Implémentation des méthodes de UserDetails
     @Override
@@ -83,5 +91,37 @@ public class User implements UserDetails {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 }

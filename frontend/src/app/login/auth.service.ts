@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { User } from "../models/user.model";
 
 // auth.service.ts
 @Injectable({ providedIn: 'root' })
@@ -14,6 +15,10 @@ export class AuthService {
       username,
       password
     });
+  }
+
+  registrer(user: User){
+    return this.http.post(`${this.baseUrl}/register`, user);
   }
 
     // auth.service.ts
