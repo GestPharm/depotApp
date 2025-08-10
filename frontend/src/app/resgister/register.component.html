@@ -1,0 +1,121 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          <h3 class="card-title text-center">Register</h3>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <div class="form-group">
+              <label for="username">Nom</label>
+              <input
+                type="text"
+                id="nom"
+                name="nom"
+                class="form-control"
+                [(ngModel)]="user.nom"
+                required
+                minlength="3"
+              />
+              <!-- Fixed: Use errors?.['required'] -->
+              <small *ngIf="registerForm.controls['nom']?.errors?.['required']" class="text-danger">
+                le nom is required.
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input
+                type="text"
+                id="prenom"
+                name="prenom"
+                class="form-control"
+                [(ngModel)]="user.prenom"
+                required
+                minlength="3"
+              />
+              <!-- Fixed: Use errors?.['required'] -->
+              <small *ngIf="registerForm.controls['prenom']?.errors?.['required']" class="text-danger">
+                Le prénom is required.
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                [(ngModel)]="user.username"
+                required
+                minlength="3"
+              />
+              <!-- Fixed: Use errors?.['required'] -->
+              <small *ngIf="registerForm.controls['username']?.errors?.['required']" class="text-danger">
+                Username is required.
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                [(ngModel)]="user.password"
+                required
+                minlength="6"
+              />
+              <!-- Fixed: Use errors?.['required'] -->
+              <small *ngIf="registerForm.controls['password']?.errors?.['required']" class="text-danger">
+                Password is required.
+              </small>
+              <!-- Check for minlength -->
+              <small *ngIf="registerForm.controls['password']?.errors?.['minlength']" class="text-danger">
+                Password must be at least 6 characters.
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                [(ngModel)]="user.email"
+                required
+                email
+              />
+              <!-- Fixed: Use errors?.['email'] -->
+              <small *ngIf="registerForm.controls['email']?.errors?.['email']" class="text-danger">
+                Please enter a valid email.
+              </small>
+            </div>
+            <!-- Role Selection -->
+            <div class="form-group">
+              <label for="role" class="form-label">Role</label>
+              <select class="form-select" id="role" 
+                      [(ngModel)]="user.role" name="role" required>
+                <option value="" disabled selected>Select a role</option>
+                <option value="USER">Utilisateur</option>
+                <option value="ADMIN">Administrateur</option>
+                <option value="MODERATOR">Moderateur</option>
+              </select>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">
+                Register
+              </button>
+            </div>
+          </form>
+          <div *ngIf="successMessage" class="alert alert-success mt-3">
+            {{ successMessage }}
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
