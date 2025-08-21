@@ -55,7 +55,7 @@ public class LoginController {
 
         response.put("message", "User registered successfully!");
         return ResponseEntity.ok(response);                                                                                     
-    }é
+    }
 
     @PutMapping("/users/{id}/change-password")
     public ResponseEntity<?> changePassword(@PathVariable Long id, @RequestBody ChangePasswordRequest request) {
