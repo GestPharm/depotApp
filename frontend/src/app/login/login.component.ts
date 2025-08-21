@@ -42,7 +42,7 @@ export class LoginComponent {
         this.tokenStorage.saveUser(data);
 
         this.isLoginFailed = false;
-        this.isLoggedIn = true;
+        this.isLoggedIn = true; 
         this.roles = this.tokenStorage.getUser().roles;
         this.router.navigate(['/home']);
       },
