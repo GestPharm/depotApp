@@ -40,4 +40,12 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+
+  changePassword(userId: number, currentPassword: string, newPassword: string): Observable<any> {
+    const payload = {
+      currentPassword,
+      newPassword
+    };
+    return this.http.put(`${this.baseUrl}/users/${userId}/change-password`, payload);
+  }
 }
