@@ -8,11 +8,13 @@ import { PosteService } from '../services/poste.service';
 import { Poste } from '../models/poste.model';
 import { ListIem } from '../models/generics';
 import { CommonModule, Location } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faPills, faSave, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
   selector: 'app-poste-form',
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink, FontAwesomeModule],
   templateUrl: './poste-form.component.html',
   styleUrl: './poste-form.component.css'
 })
@@ -21,6 +23,10 @@ export class PosteFormComponent implements OnInit {
   poste : Poste = new Poste({});
   id: string | null=null;
   title = '';
+
+    faPills = faPills;
+    faSave = faSave;
+    faArrowLeft = faArrowLeft;
   
 
   fonctions: ListIem[] = [

@@ -12,7 +12,7 @@ import { AddProduitModalComponent } from '../add-produit-modal/add-produit-modal
 import { LigneProduit } from '../../models/ligneProduit.model';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faEye, faPen, faPills, faPlus, faSave, faTrash, faUndoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
@@ -52,6 +52,12 @@ export class RetourDepotComponent {
       faTrash= faTrash;
         faPen = faPen;
         faEye= faEye;
+
+       faSave = faSave;
+       faPlus = faPlus;
+       faPills = faPills;
+      faArrowLeft = faArrowLeft;
+      faUndoAlt = faUndoAlt;
   
 
   isModalVisible = false;

@@ -1,48 +1,45 @@
 <div class="container-fluid px-md-5 px-3 home-container">
   <div class="row py-3">
-  
-      <div class="col-sm-8">
-        <div class="row" style="display: block;">
-          <h2 >{{title}}</h2>
-        </div>
-        <div style="margin-bottom: 2vw;">
-          <form>
+    <div class="col-lg-10 mx-auto">
 
+      <!-- Titre -->
+      <div class="mb-4 d-flex align-items-center">
+        <fa-icon [icon]="faCashRegister" class="text-primary me-2" style="font-size: 1.8rem;"></fa-icon>
+        <h2 class="mb-0">{{ title }}</h2>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <form>
+            <!-- Messages de validation -->
             <app-validation-msg 
               [validationFields]="formValidation" 
               [showErrors]="true"
               [showWarnings]="true">
             </app-validation-msg>
-            
-            <!-- <div class="form-group">
-              <label for="type">Type de la transaction</label>
-              <select  [(ngModel)]="transaction.type" name="type" class="form-control" id="type" placeholder="Type de la transaction">
-                <option value="" selected></option>
-                @for (elt of typeTransactions; track elt) {
-                  <option [value]="elt.value">{{elt.viewValue}}</option>
-                }
-              </select>
-            </div> -->
-            <div class="form-group d-flex align-items-center">
-              <div class="flex-grow-1 me-2">
-                <label for="dateTransaction" class="form-label">Date de la transaction</label>
-                <input
-                  class="form-control"
-                  matInput
-                  [(ngModel)]="transaction.dateTransaction"
-                  name="dateRetrait"
-                  [matDatepicker]="pickerTransaction"
-                  required
-                />
+
+            <div class="row g-3">
+              <!-- Date -->
+              <div class="col-md-6">
+                <label for="dateTransaction" class="form-label fw-bold">Date de la transaction</label>
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    matInput
+                    [(ngModel)]="transaction.dateTransaction"
+                    name="dateRetrait"
+                    [matDatepicker]="pickerTransaction"
+                    required
+                  />
+                  <mat-datepicker-toggle matSuffix [for]="pickerTransaction"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerTransaction></mat-datepicker>
+                </div>
               </div>
-              <mat-datepicker-toggle matSuffix [for]="pickerTransaction"></mat-datepicker-toggle>
-              <mat-datepicker #pickerTransaction></mat-datepicker>
-            </div>
-                        
-            
-            <div class="form-group mb-4" style="display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;">
-              <div>
-                <label for="poste" class="form-label">Poste de santé</label>
+
+              <!-- Poste de santé -->
+              <div class="col-md-12">
+                <label for="poste" class="form-label fw-bold">Poste de santé</label>
                 <input
                   class="form-control"
                   id="poste"
@@ -53,67 +50,86 @@
                   [matAutocomplete]="auto"
                   placeholder="Sélectionner un poste de santé"
                 />
+                <mat-autocomplete 
+                  #auto="matAutocomplete" 
+                  (optionSelected)="onSelectPoste($event.option.value)" 
+                  [displayWith]="displayPoste">
+                  <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
+                    {{option.nom | titlecase }}
+                  </mat-option>
+                </mat-autocomplete>
               </div>
-              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectPoste($event.option.value)" [displayWith]="displayPoste">
-                <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
-                  {{option.nom | titlecase }}
-                </mat-option>
-              </mat-autocomplete>
             </div>
-            
-            <div class="row" style="display: block;" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
-              <h2>Liste des produits</h2>
-            </div>
-          
-            <!-- Tableau avec pagination -->
-            <table class="table table-hover" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
-              <thead>
+          </form>
+        </div>
+      </div>
+
+      <!-- Liste des produits -->
+      <div class="card shadow-sm mb-4" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">
+            <fa-icon [icon]="faPills" class="me-2"></fa-icon> Liste des Produits
+          </h5>
+          <button class="btn btn-light btn-sm" (click)="openDialog(undefined)">
+            <fa-icon [icon]="faPlus" class="me-1"></fa-icon> Ajouter
+          </button>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="table-light">
                 <tr>
-                  
                   <th>DCI</th>
                   <th>Quantité</th>
                   <th>Prix Total</th>
                 </tr>
               </thead>
               <tbody>
-                <!-- Afficher uniquement les éléments de la page actuelle -->
-                <tr *ngFor="let lp of transaction.ligneProduits| paginate: { itemsPerPage: 10, currentPage: page }" (dblclick)="openDialog(lp)">
-                 
+                <tr *ngFor="let lp of transaction.ligneProduits | paginate: { itemsPerPage: 10, currentPage: page }"
+                    (dblclick)="openDialog(lp)">
                   <td>{{ lp.produit?.dci }} {{ lp.produit?.dosage }}</td>
-                  <td>{{ lp.quantite}}</td>
-                  <td>{{ lp.prixTotal }}</td>
-                  
-                  
+                  <td>{{ lp.quantite }}</td>
+                  <td>{{ lp.prixTotal | number:'1.0-0' }} FCFA</td>
                 </tr>
               </tbody>
             </table>
-          
-            <!-- Pagination -->
-            <div class="pagination" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
-              <pagination-controls (pageChange)="page = $event" [responsive]="true"
+          </div>
+
+          <!-- Pagination -->
+          <div class="p-3 d-flex justify-content-center">
+            <pagination-controls 
+              (pageChange)="page = $event" 
+              [responsive]="true"
               [previousLabel]="paginationLabels.previousLabel"
               [nextLabel]="paginationLabels.nextLabel"
               [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
               [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
-              [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
-              ></pagination-controls>
-            </div>
-          
-            <!-- Bouton pour ajouter un nouveau produit -->
-            <div class="mb-4">
-              <button class="btn btn-primary" (click)="openDialog(undefined)">Ajouter des produits</button>
-            </div>
-          </form>
-          
-          
-        </div>
-        <div class="btn-toolbar float-end">
-          <button class="btn btn-primary me-1" *ngIf="isCreation()" (click)="save()">Créer</button>
-          <button class="btn btn-primary me-1" *ngIf="!isCreation()" (click)="update()">Enregistrer</button>
-          <button class="btn btn-primary" [routerLink]="['/transaction-list']"> Retour</button>
+              [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel">
+            </pagination-controls>
+          </div>
         </div>
       </div>
+
+      <!-- Bouton toujours visible -->
+      <div class="mb-4">
+        <button class="btn btn-primary" (click)="openDialog(undefined)">
+          <fa-icon [icon]="faPlus" class="me-1"></fa-icon> Ajouter un produit
+        </button>
+      </div>
+
+      <!-- Actions -->
+      <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+        <button class="btn btn-primary" *ngIf="isCreation()" (click)="save()">
+          <fa-icon [icon]="faSave" class="me-1"></fa-icon> Créer
+        </button>
+        <button class="btn btn-primary" *ngIf="!isCreation()" (click)="update()">
+          <fa-icon [icon]="faSave" class="me-1"></fa-icon> Enregistrer
+        </button>
+        <button class="btn btn-outline-secondary" [routerLink]="['/transaction-list']">
+          <fa-icon [icon]="faArrowLeft" class="me-1"></fa-icon> Retour
+        </button>
+      </div>
+
     </div>
-    
   </div>
-  
+</div>

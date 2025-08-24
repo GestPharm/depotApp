@@ -1,59 +1,115 @@
 <div class="container-fluid px-md-5 px-3 home-container">
   <div class="row py-3">
+    <div class="col-lg-8 mx-auto">
 
-      <div class="col-sm-8">
-        <div class="row" style="display: block;">
-          <h2 >{{title}}</h2>
-        </div>
-        <div style="margin-bottom: 2vw;">
-          <form>
+      <!-- Titre -->
+      <div class="mb-4 d-flex align-items-center">
+        <fa-icon [icon]="faPills" class="text-primary me-2" style="font-size: 1.8rem;"></fa-icon>
+        <h2 class="mb-0">{{ title }}</h2>
+      </div>
 
-            <div class="form-group">
-              <label for="name">DCI</label>
-              <input [(ngModel)]="produit.dci" type="text" name="dci" class="form-control" id="dci"  placeholder="Entrer votre dci">
+      <!-- Formulaire -->
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <form class="row g-3">
+
+            <!-- DCI -->
+            <div class="col-md-6">
+              <label for="dci" class="form-label fw-bold">DCI</label>
+              <input [(ngModel)]="produit.dci"
+                     type="text"
+                     name="dci"
+                     class="form-control"
+                     id="dci"
+                     placeholder="Entrer le DCI">
             </div>
-            <div class="form-group">
-              <label for="dosage">Dosage</label>
-              <input [(ngModel)]="produit.dosage" type="text" name="dosage" class="form-control" id="dosage"  placeholder="Entrer le dosage">
 
+            <!-- Dosage -->
+            <div class="col-md-6">
+              <label for="dosage" class="form-label fw-bold">Dosage</label>
+              <input [(ngModel)]="produit.dosage"
+                     type="text"
+                     name="dosage"
+                     class="form-control"
+                     id="dosage"
+                     placeholder="Ex: 500mg">
             </div>
-            <div class="form-group">
-              <label for="forme">Forme</label>
-              <input [(ngModel)]="produit.forme" type="text" name="forme" class="form-control" id="forme"  placeholder="Entrer la forme du produit">
 
+            <!-- Forme -->
+            <div class="col-md-6">
+              <label for="forme" class="form-label fw-bold">Forme</label>
+              <input [(ngModel)]="produit.forme"
+                     type="text"
+                     name="forme"
+                     class="form-control"
+                     id="forme"
+                     placeholder="Ex: Comprimé, Sirop">
             </div>
-            <div class="form-group">
-              <label for="reference">Référence</label>
-              <input [(ngModel)]="produit.reference" type="text" name="adresse" class="form-control" id="reference"  placeholder="Entrer la référence">
 
+            <!-- Référence -->
+            <div class="col-md-6">
+              <label for="reference" class="form-label fw-bold">Référence</label>
+              <input [(ngModel)]="produit.reference"
+                     type="text"
+                     name="reference"
+                     class="form-control"
+                     id="reference"
+                     placeholder="Code ou référence produit">
             </div>
-            <div class="form-group">
-                <label for="prix">Prix</label>
-                <input [(ngModel)]="produit.prix" type="number" name="prix" class="form-control" id="prix"  placeholder="Entrer le prix">
 
+            <!-- Prix -->
+            <div class="col-md-4">
+              <label for="prix" class="form-label fw-bold">Prix</label>
+              <div class="input-group">
+                <input [(ngModel)]="produit.prix"
+                       type="number"
+                       name="prix"
+                       class="form-control"
+                       id="prix"
+                       placeholder="0">
+                <span class="input-group-text">FCFA</span>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label for="quantite">Quantité restante</label>
-                <input [(ngModel)]="produit.quantite" type="number" name="quantite" class="form-control" id="quantite"  placeholder="Entrer la quantité restante">
+            <!-- Quantité -->
+            <div class="col-md-4">
+              <label for="quantite" class="form-label fw-bold">Quantité restante</label>
+              <input [(ngModel)]="produit.quantite"
+                     type="number"
+                     name="quantite"
+                     class="form-control"
+                     id="quantite"
+                     placeholder="Stock actuel">
+            </div>
 
-              </div>
+            <!-- Seuil d'alerte -->
+            <div class="col-md-4">
+              <label for="seuilAlerte" class="form-label fw-bold">Seuil d’alerte</label>
+              <input [(ngModel)]="produit.seuilAlerte"
+                     type="number"
+                     name="seuilAlerte"
+                     class="form-control"
+                     id="seuilAlerte"
+                     placeholder="Seuil minimum">
+            </div>
 
-              <div class="form-group">
-                <label for="seuilAlerte">Seuil d'alerte</label>
-                <input [(ngModel)]="produit.seuilAlerte" type="number" name="seuilAlerte" class="form-control" id="seuilAlerte"  placeholder="Entrer le seuil d'Alerte">
-
-              </div>
           </form>
-
-
-        </div>
-        <div class="btn-toolbar float-end">
-          <button class="btn btn-primary me-1" *ngIf="isCreation()" (click)="save()">Créer</button>
-          <button class="btn btn-primary me-1" *ngIf="!isCreation()" (click)="update()">Enregistrer</button>
-          <button class="btn btn-primary" [routerLink]="['/produit-list']"> Retour</button>
         </div>
       </div>
-    </div>
 
+      <!-- Actions -->
+      <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+        <button class="btn btn-primary" *ngIf="isCreation()" (click)="save()">
+          <fa-icon [icon]="faSave" class="me-1"></fa-icon> Créer
+        </button>
+        <button class="btn btn-primary" *ngIf="!isCreation()" (click)="update()">
+          <fa-icon [icon]="faSave" class="me-1"></fa-icon> Enregistrer
+        </button>
+        <button class="btn btn-outline-secondary" [routerLink]="['/produit-list']">
+          <fa-icon [icon]="faArrowLeft" class="me-1"></fa-icon> Retour
+        </button>
+      </div>
+
+    </div>
   </div>
+</div>

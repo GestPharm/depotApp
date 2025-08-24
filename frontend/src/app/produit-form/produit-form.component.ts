@@ -8,11 +8,13 @@ import { ProduitService } from '../services/produit.service';
 import { Produit } from '../models/produit.model';
 import { ListIem } from '../models/generics';
 import { CommonModule, Location } from '@angular/common';
+import { faArrowLeft, faPills, faSave } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @Component({
   selector: 'app-produit-form',
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink, FontAwesomeModule],
   templateUrl: './produit-form.component.html',
   styleUrl: './produit-form.component.css'
 })
@@ -21,6 +23,10 @@ export class ProduitFormComponent implements OnInit {
   produit : Produit = new Produit({});
   id: string | null=null;
   title = '';
+
+  faPills = faPills;
+  faSave = faSave;
+  faArrowLeft = faArrowLeft;
   
 
   fonctions: ListIem[] = [

@@ -46,10 +46,10 @@
               <td> {{transaction.poste?.nom }}</td>
               <td>
                 <ul *ngIf="transaction.ligneProduits">
-                    <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}} <ng-container *ngIf="transaction.type ==='sortie'"> - {{elt.prixTotal}}</ng-container> </li>
+                    <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}} <ng-container *ngIf="transaction.type ==='sortie'"> - {{elt.prixTotal | number:'1.0-0' }} FCFA</ng-container> </li>
                 </ul>
               </td>
-              <td>  <ng-container *ngIf="transaction.type ==='sortie'"> - {{transaction.prixTotal}}</ng-container></td>
+              <td>  <ng-container *ngIf="transaction.type ==='sortie'"> - {{transaction.prixTotal | number:'1.0-0' }} FCFA</ng-container></td>
               <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
 
 
@@ -76,7 +76,7 @@
         ></pagination-controls>
       </div>
 
-      
+
 
 
 </div>
