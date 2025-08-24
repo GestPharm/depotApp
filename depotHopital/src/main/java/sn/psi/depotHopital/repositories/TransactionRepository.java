@@ -40,4 +40,29 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     Double calculateTotalVentesAmountByPosteId(@Param("idPoste") Long idPoste, @Param("startDate") LocalDate start,
                                                @Param("endDate") LocalDate end);
 
+    @Query("SELECT COALESCE(SUM(t.prixTotal), 0) " +
+            "FROM Transaction t " +
+            "WHERE t.type = 'sortie' " +
+            "AND FUNCTION('MONTH', t.dateTransaction) = FUNCTION('MONTH', CURRENT_DATE) " +
+            "AND FUNCTION('YEAR', t.dateTransaction) = FUNCTION('YEAR', CURRENT_DATE)")
+    Double getVentesDuMois();
+
+    @Query("SELECT t.type, COUNT(t) " +
+            "FROM Transaction t " +
+            "WHERE FUNCTION('MONTH', t.dateTransaction) = FUNCTION('MONTH', CURRENT_DATE) " +
+            "AND FUNCTION('YEAR', t.dateTransaction) = FUNCTION('YEAR', CURRENT_DATE) " +
+            "GROUP BY t.type")
+    List<Object[]> countTransactionsByTypeForCurrentMonth();
+
+    @Query("SELECT FUNCTION('MONTH', t.dateTransaction) as mois, " +
+            "COALESCE(SUM(lp.quantite * lp.produit.prix), 0) as total " +
+            "FROM Transaction t " +
+            "JOIN t.ligneProduits lp " +
+            "WHERE t.type = 'sortie' " +
+            "AND FUNCTION('YEAR', t.dateTransaction) = FUNCTION('YEAR', CURRENT_DATE) " +
+            "GROUP BY FUNCTION('MONTH', t.dateTransaction) " +
+            "ORDER BY mois")
+    List<Object[]> getVentesParMois();
+
+
 }

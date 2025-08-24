@@ -20,6 +20,7 @@ import { TransactionService } from '../services/transaction.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TransactionType } from '../models/generics';
+import { ProduitService } from '../services/produit.service';
 
 
 export type ChartOptions = {
@@ -50,15 +51,17 @@ export class HomeComponent implements OnInit{
 
 
   @ViewChild("chart") chart: ChartComponent| undefined;
-  public chartOptions: ChartOptions;
+  public chartOptions: any;
 
   @ViewChild("chart1") chart1: ChartComponent| undefined;
-  public chartOptions1: ChartOptions1;
+  public chartOptions1: any;
 
 
   transactions: Transaction[] = [];
 
   page: number = 1; 
+
+  stockFaibleCount: number = 0;
   
     // Configuration des labels de pagination en français
     paginationLabels = {
@@ -72,85 +75,18 @@ export class HomeComponent implements OnInit{
       faTrash= faTrash;
         faPen = faPen;
         faEye= faEye;
+      
+      ventesMois: string|number = 0;
         
 
-   constructor(private transactionService: TransactionService) {
-
-    this.chartOptions = {
-      series: [44, 55, 13],
-      chart: {
-        type: "donut",
-        width: 400, // Set the width of the chart
-        height: 400 // S
-      },
-      labels: ["Entrée", "Sortie", "Retour"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 400,
-              height: 400 
-            },
-            legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
-    };
-
-
-    this.chartOptions1 = {
-      series: [
-        {
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }
-      ],
-      chart: {
-        height: 280,
-        type: "line",
-        zoom: {
-          enabled: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "straight"
-      },
-      title: {
-        text: "Evolution des transactions par mois",
-        align: "left"
-      },
-      grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-          opacity: 0.5
-        }
-      },
-      xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Avr",
-          "Mai",
-          "Jui",
-          "Juil",
-          "Aout",
-          "Sept"
-        ]
-      }
-    };
-
-
-    }
+   constructor(private transactionService: TransactionService, private produitService: ProduitService) {}
 
    ngOnInit() {
       this.loadDataSource();
+      this.loadStockFaible();
+      this.loadVentesMois();
+      this.loadTransactionStats();
+      this.loadVentesParMois();
    }
 
    loadDataSource (){
@@ -162,6 +98,94 @@ export class HomeComponent implements OnInit{
       //this.filteredTransactions = of([...this.transactions]);
     });
 
+  }
+
+  loadStockFaible(): void {
+    this.produitService.getStockFaible().subscribe({
+      next: (data) => this.stockFaibleCount = data,
+      error: (err) => console.error('Erreur stock faible:', err)
+    });
+  }
+
+  loadVentesMois(): void {
+    this.transactionService.getVentesDuMois().subscribe({
+      next: (data) => this.ventesMois = data,
+      error: (err) => console.error('Erreur KPI ventes du mois', err)
+    });
+  }
+
+  loadTransactionStats(): void {
+  this.transactionService.getTransactionStats().subscribe(stats => {
+    this.chartOptions = {
+      series: [
+        stats.ENTREE || 0,
+        stats.SORTIE || 0,
+        stats.RETOUR || 0
+      ],
+      chart: {
+        type: "donut",
+        width: 400,
+        height: 400
+      },
+      labels: ["Entrée", "Sortie", "Retour"],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 300,
+              height: 300
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ]
+    };
+  });
+}
+
+loadVentesParMois(): void {
+  this.transactionService.getVentesParMois().subscribe(stats => {
+    // On reconstruit un tableau de janvier à décembre
+    const data = [];
+    for (let m = 1; m <= 12; m++) {
+      data.push(stats[m] || 0);
+    }
+
+    this.chartOptions1 = {
+      series: [
+        {
+          name: "Ventes",
+          data: data
+        }
+      ],
+      chart: {
+        height: 280,
+        type: "line",
+        zoom: { enabled: false }
+      },
+      dataLabels: { enabled: false },
+      stroke: { curve: "straight" },
+      title: {
+        text: "Évolution des ventes par mois",
+        align: "left"
+      },
+      grid: {
+        row: {
+          colors: ["#f3f3f3", "transparent"],
+          opacity: 0.5
+        }
+      },
+      xaxis: {
+        categories: [
+          "Jan", "Fév", "Mar", "Avr", "Mai", "Juin",
+          "Juil", "Août", "Sept", "Oct", "Nov", "Déc"
+        ]
+      }
+    };
+    });
   }
 
   getTransactionTypeLabel(arg0: string|undefined) {

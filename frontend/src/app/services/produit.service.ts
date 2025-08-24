@@ -64,6 +64,11 @@ export class ProduitService {
         catchError(this.handleError)
       );
   }
+
+  getStockFaible(): Observable<number> {
+    return this.http.get<number>(`${this.baseURL}/api/produits/stock-faible`);
+  }
+  
   
   
   

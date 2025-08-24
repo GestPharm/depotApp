@@ -40,4 +40,11 @@ public class ProduitController {
         produitService.deleteProduit(id);
     }
 
+    // ProduitController.java
+    @GetMapping("/stock-faible")
+    public Long getProduitsStockFaible() {
+        return produitService.countProduitsStockFaible(10); // seuil = 10
+    }
+
+
 }

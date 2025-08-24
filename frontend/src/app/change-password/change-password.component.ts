@@ -31,8 +31,11 @@ export class ChangePasswordComponent {
   onSubmit() {
     if (this.passwordForm.valid) {
       const { currentPassword, newPassword } = this.passwordForm.value;
-      const userId = this.authService.getUserId(); // Ajoutez une méthode pour récupérer l'ID utilisateur si nécessaire
-
+      const userId = this.authService.getUser().id; // Ajoutez une méthode pour récupérer l'ID utilisateur si nécessaire
+      if(userId === undefined) {
+        console.error('User ID is undefined');
+        return;
+      }
       this.authService.changePassword(userId, currentPassword, newPassword).subscribe({
         next: (response) => {
           console.log('Mot de passe changé avec succès', response);

@@ -1,22 +1,29 @@
 <div class="container-fluid px-md-5 px-3 home-container">
   <div class="row py-3">
-  
-      <div class="col-sm-8">
-        <div class="row" style="display: block;">
-          <h2 >{{title}}</h2>
-        </div>
-        <div style="margin-bottom: 2vw;">
-          <form>
+    <div class="col-lg-10 mx-auto">
 
+      <!-- Titre -->
+      <div class="mb-4 d-flex align-items-center">
+        <fa-icon [icon]="faBoxOpen" class="text-primary me-2" style="font-size: 1.8rem;"></fa-icon>
+        <h2 class="mb-0">{{ title }}</h2>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <form>
+            <!-- Messages de validation -->
             <app-validation-msg 
               [validationFields]="formValidation" 
               [showErrors]="true"
               [showWarnings]="true">
             </app-validation-msg>
 
-            <div class="form-group d-flex align-items-center">
-                <div class="flex-grow-1 me-2">
-                  <label for="dateTransaction" class="form-label">Date d'entrée</label>
+            <div class="row g-3">
+              <!-- Date -->
+              <div class="col-md-6">
+                <label for="dateTransaction" class="form-label fw-bold">Date d'entrée</label>
+                <div class="input-group">
                   <input
                     class="form-control"
                     matInput
@@ -25,71 +32,90 @@
                     [matDatepicker]="pickerTransaction"
                     required
                   />
+                  <mat-datepicker-toggle matSuffix [for]="pickerTransaction"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerTransaction></mat-datepicker>
                 </div>
-                <mat-datepicker-toggle matSuffix [for]="pickerTransaction"></mat-datepicker-toggle>
-                <mat-datepicker #pickerTransaction></mat-datepicker>
+              </div>
+
+              <!-- Motif -->
+              <div class="col-md-12">
+                <label for="motif" class="form-label fw-bold">Motif - Commentaire</label>
+                <textarea [(ngModel)]="transaction.motif" 
+                          name="motif" 
+                          class="form-control" 
+                          id="motif"  
+                          rows="3"
+                          placeholder="Entrer le motif"></textarea>
+              </div>
             </div>
-
-            <div class="form-group">
-              <label for="Motif ou Commentaire">Motif - Commentaire</label>
-              <textarea [(ngModel)]="transaction.motif" type="text" name="motif" class="form-control" id="motif"  placeholder="Entrer le motif"></textarea>
-
-            </div>
-
-          <br/><br/>
-
-            <div class="row" style="display: block;" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
-                <h2>Liste des produits</h2>
-              </div>
-            
-              <!-- Tableau avec pagination -->
-              <table class="table table-hover" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
-                <thead>
-                  <tr>
-                    
-                    <th>DCI</th>
-                    <th>Quantité</th>
-                    <th>Prix Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Afficher uniquement les éléments de la page actuelle -->
-                  <tr *ngFor="let lp of transaction.ligneProduits| paginate: { itemsPerPage: 10, currentPage: page }" (dblclick)="openDialog(lp)">
-                   
-                    <td>{{ lp.produit?.dci }} {{ lp.produit?.dosage }}</td>
-                    <td>{{ lp.quantite}}</td>
-                    <td>{{ lp.prixTotal }}</td>
-                    
-                    
-                  </tr>
-                </tbody>
-              </table>
-            
-              <!-- Pagination -->
-              <div class="pagination" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
-                <pagination-controls (pageChange)="page = $event" [responsive]="true"
-                [previousLabel]="paginationLabels.previousLabel"
-                [nextLabel]="paginationLabels.nextLabel"
-                [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
-                [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
-                [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel"
-                ></pagination-controls>
-              </div>
-            
-              <!-- Bouton pour ajouter un nouveau produit -->
-              <div class="mb-4">
-                <button class="btn btn-primary" (click)="openDialog(undefined)">Ajouter des produits</button>
-              </div>
-            </form>
-            
-            
-          </div>
-          <div class="btn-toolbar float-end">
-            <button class="btn btn-primary me-1" *ngIf="isCreation()" (click)="save()">Créer</button>
-            <button class="btn btn-primary me-1" *ngIf="!isCreation()" (click)="update()">Enregistrer</button>
-            <button class="btn btn-primary" [routerLink]="['/transaction-list']"> Retour</button>
-          </div>
+          </form>
         </div>
       </div>
-      
+
+      <!-- Liste des produits -->
+<div class="card shadow-sm mb-4" *ngIf="transaction.ligneProduits && transaction.ligneProduits.length > 0">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <h5 class="mb-0"><i class="fas fa-pills me-2"></i> Liste des Produits</h5>
+    <button class="btn btn-light btn-sm" (click)="openDialog(undefined)">
+           <fa-icon [icon]="faPlus" class="me-1" ></fa-icon> Ajouter un produit
+    </button>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>DCI</th>
+            <th>Quantité</th>
+            <th>Prix Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lp of transaction.ligneProduits | paginate: { itemsPerPage: 10, currentPage: page }"
+              (dblclick)="openDialog(lp)">
+            <td>{{ lp.produit?.dci }} {{ lp.produit?.dosage }}</td>
+            <td>{{ lp.quantite }}</td>
+            <td>{{ lp.prixTotal | number:'1.0-0' }} FCFA</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <!-- Pagination -->
+    <div class="p-3 d-flex justify-content-center">
+      <pagination-controls 
+        (pageChange)="page = $event" 
+        [responsive]="true"
+        [previousLabel]="paginationLabels.previousLabel"
+        [nextLabel]="paginationLabels.nextLabel"
+        [screenReaderPaginationLabel]="paginationLabels.screenReaderPaginationLabel"
+        [screenReaderPageLabel]="paginationLabels.screenReaderPageLabel"
+        [screenReaderCurrentLabel]="paginationLabels.screenReaderCurrentLabel">
+      </pagination-controls>
+    </div>
+  </div>
+</div>
+
+<!-- Bouton toujours visible (même si la liste est vide) -->
+<div class="mb-4">
+  <button class="btn btn-primary" (click)="openDialog(undefined)">
+    <fa-icon [icon]="faPlus" class="me-1" ></fa-icon> Ajouter un produit
+  </button>
+</div>
+
+
+      <!-- Actions -->
+      <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+        <button class="btn btn-primary" *ngIf="isCreation()" (click)="save()">
+          <fa-icon [icon]="faSave" class="me-1" ></fa-icon> Créer
+        </button>
+        <button class="btn btn-primary" *ngIf="!isCreation()" (click)="update()">
+          <fa-icon [icon]="faSave" class="me-1" ></fa-icon>Enregistrer
+        </button>
+        <button class="btn btn-outline-secondary" [routerLink]="['/transaction-list']">
+          <fa-icon [icon]="faArrowLeft" class="me-1" ></fa-icon> Retour
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

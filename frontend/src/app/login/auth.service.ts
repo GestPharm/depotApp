@@ -36,6 +36,10 @@ export class AuthService {
     return this.tokenStorage.getToken();
   }
 
+  getUser(): User {
+    return this.tokenStorage.getUser();
+  }
+
  
 
   isLoggedIn(): boolean {

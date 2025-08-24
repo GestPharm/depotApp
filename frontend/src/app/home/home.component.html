@@ -1,8 +1,33 @@
 <div class="container-fluid px-md-5 px-3 home-container">
   <h5 class="text-center fst-italic times-new-roman py-3">Bienvenue dans votre dépot pharmaceutique</h5>
 
+<div class="row mb-3">
+  <!-- Ventes du mois -->
+  <div class="col-md-4 col-sm-6 mb-2">
+    <div class="card text-white bg-success h-100">
+      <div class="card-body">
+        <h6 class="card-title">Ventes du mois</h6>
+        <h3>{{ ventesMois | number }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 mb-2"></div>
+
+  
+  <!-- Stock faible -->
+  <div class="col-md-4 col-sm-6 mb-2">
+    <div class="card text-white bg-danger h-100">
+      <div class="card-body">
+        <h6 class="card-title">Produits en stock faible</h6>
+        <h3>{{ stockFaibleCount }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!-- Charts Section -->
-  <div class="row gy-4 charts-section">
+  <div class="row gy-4 charts-section" *ngIf="chartOptions && chartOptions1">
     <div class="col-12 col-lg-6">
       <div class="chart-container">
         <span class="chart-title">Répartition des entrées/sorties</span>
@@ -36,30 +61,33 @@
   
   <div class="table-container">
     <div class="table-responsive">
-      <table class="table table-hover">
-          <!-- Table headers remain the same -->
+      <div class="table-container d-none d-md-block">
+        <div class="table-responsive">
+          <table class="table table-hover">
           <thead>
             <tr>
-              <th>No</th>
-              <th>Type de transaction</th>
-              <th>Poste de santé</th>
-              <th>Produits</th>
+              
+              
               <th>Date</th>
+              <th>Produits</th>
+            
+              <th>Type de transaction</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 10, currentPage: page }">
-
-            <td>{{ transaction.id }}</td>
-            <td> {{getTransactionTypeLabel(transaction.type)}}</td>
-            <td> {{transaction.poste?.nom }}</td>
-            <td>
-              <ul *ngIf="transaction.ligneProduits">
-                <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}}</li>
-              </ul>
-            </td>
-            <td> {{transaction.dateTransaction | date: 'dd/MM/yyyy'}}</td>
+            <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: 10, currentPage: page }">
+              
+              <td>{{transaction.dateTransaction | date:'dd/MM/yyyy'}}</td>
+             
+              
+              <td>
+                {{ transaction.poste?.nom }} : <br/>
+                <ul *ngIf="transaction.ligneProduits">
+                  <li *ngFor="let elt of transaction.ligneProduits">{{elt.produit?.dci}} - {{elt.quantite}}</li>
+                </ul>
+              </td>
+               <td>{{getTransactionTypeLabel(transaction.type)}}</td>
 
             <td>
 
@@ -70,9 +98,33 @@
 
             </td>
           </tr>
-          </tbody>
-        </table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Mobile card list (< md) -->
+<div class="d-md-none">
+  <div class="list-group">
+    <div class="list-group-item mb-2" *ngFor="let t of transactions | paginate: { itemsPerPage: 10, currentPage: page }">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1">#{{t.id}} — {{ getTransactionTypeLabel(t.type) }}</h6>
+        <small>{{ t.dateTransaction | date:'dd/MM/yyyy' }}</small>
       </div>
+      <p class="mb-1"><strong>Poste:</strong> {{ t.poste?.nom }}</p>
+      <p class="mb-1"><strong>Produits:</strong>
+        <span *ngFor="let lp of t.ligneProduits" class="badge bg-light text-dark me-1">{{lp.produit?.dci}} x{{lp.quantite}}</span>
+      </p>
+      <div class="mt-2">
+        <a  *ngIf="t.type ==='sortie'" routerLink="/vente-form/{{t.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+        <a  *ngIf="t.type ==='entree'" routerLink="/entree-depot/{{t.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+        <a  *ngIf="t.type ==='retour'" routerLink="/retour-depot/{{t.id}}" class="padding_1vw"><fa-icon [icon]="faEye" /> </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
       <!-- Pagination -->
       <div class="pagination mt-3" *ngIf="transactions.length > 0">

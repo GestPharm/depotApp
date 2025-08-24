@@ -1,45 +1,41 @@
-<nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top mb-4">
-  <a class="navbar-brand fs-2 font-italic times-new-roman" href="#"><i style='font-size:36px;color:white'><fa-icon [icon]="faClinicMedical"></fa-icon></i>Dépot Virtuel</a>
-  <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <i style="font-size:22px;color:white" class="me-2"><fa-icon [icon]="faClinicMedical"></fa-icon></i>
+      <span class="fs-5">Dépôt Virtuel</span>
+    </a>
 
-  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <!-- Toggle button (mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <ul class="navbar-nav me-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Home</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="transactionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Transactions
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="transactionDropdown">
-          <li><a class="dropdown-item" routerLink="/transaction-list" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Liste des Transactions</a></li>
-          <li><a class="dropdown-item" routerLink="/vente-form" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Vente</a></li>
-          <li><a class="dropdown-item" routerLink="/entree-depot" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Entrée</a></li>
-          <li><a class="dropdown-item" routerLink="/retour-depot" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Retour</a></li>
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" routerLink="/home">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Transactions</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/transaction-list">Liste des Transactions</a></li>
+            <li><a class="dropdown-item" routerLink="/vente-form">Vente</a></li>
+            <li><a class="dropdown-item" routerLink="/entree-depot">Entrée</a></li>
+            <li><a class="dropdown-item" routerLink="/retour-depot">Retour</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" routerLink="/produit-list">Produits</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/poste-list">Postes</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/stat-poste">Statistiques</a></li>
+      </ul>
 
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/produit-list" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Produits</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/poste-list" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Postes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/stat-poste" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">Statistiques</a>
-      </li>
-    </ul>
-
-    <!-- Right-aligned logout button -->
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <button class="btn btn-outline-light" (click)="logout()"> <i><fa-icon [icon]="faSignOutAlt" /> </i> Déconnexion</button>
-      </li>
-    </ul>
-
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <button class="btn btn-outline-light" (click)="logout()">
+            <fa-icon [icon]="faSignOutAlt"></fa-icon> Déconnexion
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

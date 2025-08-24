@@ -32,4 +32,8 @@ public class ProduitService {
     public void deleteProduit(Long id) {
         atelierRepository.deleteById(id);
     }
+
+    public Long countProduitsStockFaible(Integer i) {
+        return atelierRepository.countProduitsStockFaible(i);
+    }
 }

@@ -8,7 +8,9 @@ import sn.psi.depotHopital.services.TransactionService;
 import sn.psi.depotHopital.vo.StatPoste;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -30,7 +32,7 @@ public class TransactionController {
 
     @GetMapping("/{id}")
     public Transaction getTransactionById(@PathVariable Long id) {
-        return transactionService.getTransactionById(id);
+        return transactionService.getTransactionById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
@@ -64,5 +66,47 @@ public class TransactionController {
          return stat;
 
     }
+
+    @GetMapping("/ventes-du-mois")
+    public Double getVentesDuMois() {
+        return transactionService.getVentesDuMois();
+    }
+
+    @GetMapping("/stats")
+    public Map<String, Long> getTransactionStats() {
+        List<Object[]> results = transactionService.countTransactionsByTypeForCurrentMonth();
+        Map<String, Long> stats = new HashMap<>();
+        stats.put("ENTREE", 0L);
+        stats.put("SORTIE", 0L);
+        stats.put("RETOUR", 0L);
+
+        for (Object[] row : results) {
+            String type = (String) row[0];
+            Long count = (Long) row[1];
+            stats.put(type.toUpperCase(), count);
+        }
+        return stats;
+    }
+
+    @GetMapping("/ventes-par-mois")
+    public Map<Integer, Double> getVentesParMois() {
+        List<Object[]> results = transactionService.getVentesParMois();
+        Map<Integer, Double> ventesParMois = new HashMap<>();
+
+        // Initialiser chaque mois à 0 (de 1 à 12)
+        for (int m = 1; m <= 12; m++) {
+            ventesParMois.put(m, 0.0);
+        }
+
+        for (Object[] row : results) {
+            Integer mois = ((Number) row[0]).intValue();
+            Double total = ((Number) row[1]).doubleValue();
+            ventesParMois.put(mois, total);
+        }
+        return ventesParMois;
+    }
+
+
+
 
 }

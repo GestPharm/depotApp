@@ -94,6 +94,19 @@ export class TransactionService {
       catchError(this.handleError)
     );
   }
+
+  getVentesDuMois(): Observable<number> {
+    return this.http.get<number>(`${this.baseURL}/api/transactions/ventes-du-mois`);
+  }
+
+  getTransactionStats(): Observable<any> {
+    return this.http.get<any>(`${this.baseURL}/api/transactions/stats`);
+  }
+
+  getVentesParMois(): Observable<any> {
+    return this.http.get<any>(`${this.baseURL}/api/transactions/ventes-par-mois`);
+  }
+  
   
   
   
