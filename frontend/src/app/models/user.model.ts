@@ -2,7 +2,7 @@ export class User {
     id: number | undefined;
     nom: string | undefined;
     prenom: string | undefined;
-    role: string | undefined;
+    roles: string | undefined;
     email: string | undefined;
     username: string | undefined;
     password: string | undefined;
@@ -12,7 +12,7 @@ export class User {
         id,
         nom,
         prenom,
-        role,
+        roles,
         email,
         username,
         password
@@ -20,7 +20,7 @@ export class User {
         id?: number,
         nom?: string,
         prenom?: string,
-        role?: string,
+        roles?: string,
         email?: string,
         username?: string,
         password?: string,
@@ -30,7 +30,7 @@ export class User {
       this.id = id;
       this.nom = nom;
       this.prenom = prenom;
-      this.role = role;
+      this.roles = roles;
       this.username = password;
       this.password = password;
       this.email = email;

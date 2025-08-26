@@ -1,5 +1,9 @@
 package sn.psi.depotHopital.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sn.psi.depotHopital.entities.User;
@@ -9,14 +13,34 @@ import sn.psi.depotHopital.repositories.UserRepository;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getUsername())
+                .password(user.getPassword()) // must be BCrypt-encoded!
+                .roles(user.getRole()) // Spring automatically adds "ROLE_" prefix
+                .build();
+    }
+
+
+
+
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+
     }
 
     public void createUser(String username, String password, String role) {
@@ -56,4 +80,7 @@ public class UserService {
         return userRepository.findByEmail(email).isPresent();
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
 }

@@ -39,7 +39,7 @@ export class LoginComponent {
 
       data => {
         this.tokenStorage.saveToken(data.token);
-        this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveUser(data.user);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true; 

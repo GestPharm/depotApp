@@ -31,7 +31,7 @@ export class StatistiquesComponent implements OnInit {
     searchText: string = ''; // The value bound to the input field using ngModel
     filteredOptions: Observable<Poste[]> = of([]); // Observable for the autocomplete options
 
-    statPoste: StatPoste = new StatPoste({});
+    statPoste: StatPoste = new StatPoste({nbTotalCommandes:0, depenseTotale:0, budgetTotal:0});
 
      
     faEye= faEye;

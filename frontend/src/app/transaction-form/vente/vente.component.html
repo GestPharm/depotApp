@@ -13,8 +13,8 @@
         <div class="card-body">
           <form>
             <!-- Messages de validation -->
-            <app-validation-msg 
-              [validationFields]="formValidation" 
+            <app-validation-msg
+              [validationFields]="formValidation"
               [showErrors]="true"
               [showWarnings]="true">
             </app-validation-msg>
@@ -44,15 +44,15 @@
                   class="form-control"
                   id="poste"
                   name="poste"
-                  type="text" 
+                  type="text"
                   [(ngModel)]="searchText"
                   (ngModelChange)="onSearchChange(searchText)"
                   [matAutocomplete]="auto"
                   placeholder="Sélectionner un poste de santé"
                 />
-                <mat-autocomplete 
-                  #auto="matAutocomplete" 
-                  (optionSelected)="onSelectPoste($event.option.value)" 
+                <mat-autocomplete
+                  #auto="matAutocomplete"
+                  (optionSelected)="onSelectPoste($event.option.value)"
                   [displayWith]="displayPoste">
                   <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
                     {{option.nom | titlecase }}
@@ -89,7 +89,7 @@
                     (dblclick)="openDialog(lp)">
                   <td>{{ lp.produit?.dci }} {{ lp.produit?.dosage }}</td>
                   <td>{{ lp.quantite }}</td>
-                  <td>{{ lp.prixTotal | number:'1.0-0' }} FCFA</td>
+                  <td>{{ lp.prixTotal | currency:'XOF'}}</td>
                 </tr>
               </tbody>
             </table>
@@ -97,8 +97,8 @@
 
           <!-- Pagination -->
           <div class="p-3 d-flex justify-content-center">
-            <pagination-controls 
-              (pageChange)="page = $event" 
+            <pagination-controls
+              (pageChange)="page = $event"
               [responsive]="true"
               [previousLabel]="paginationLabels.previousLabel"
               [nextLabel]="paginationLabels.nextLabel"

@@ -12,6 +12,7 @@ import { EntreeDepotComponent } from './transaction-form/entree-depot/entree-dep
 import { RetourDepotComponent } from './transaction-form/retour-depot/retour-depot.component';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
 import { RegisterComponent } from './resgister/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -30,6 +31,7 @@ export const routes: Routes = [
     {path: "retour-depot/:id", component: RetourDepotComponent, canActivate: [AuthGuard]},
     {path: "transaction-list", component: TransactionListeComponent, canActivate: [AuthGuard]},
     {path: "stat-poste", component: StatistiquesComponent, canActivate: [AuthGuard]},
+    {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
    

@@ -1,12 +1,10 @@
 package sn.psi.depotHopital.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -15,21 +13,25 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import sn.psi.depotHopital.services.CustomUserDetailsService;
+import sn.psi.depotHopital.services.UserService;
 import sn.psi.depotHopital.utils.JwtUtil;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private JwtUtil jwtUtil;
-    @Autowired
-    private  UserDetailsService userDetailsService;
 
-    public SecurityConfig(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
+    private final JwtUtil jwtUtil;
+
+    private final UserService userService;
+
+
+
+
+
+    public SecurityConfig(JwtUtil jwtUtil, UserService userService) {
         this.jwtUtil = jwtUtil;
-        this.userDetailsService = userDetailsService;
+        this.userService = userService;
     }
 
     @Bean
@@ -44,31 +46,28 @@ public class SecurityConfig {
                         .requestMatchers("/api/login", "/api/register").permitAll()
                         .anyRequest().authenticated()
                 )
-                .addFilter(new JwtAuthenticationFilter(authManager, jwtUtil))
-                .addFilterBefore(new JwtAuthorizationFilter(userDetailsService, jwtUtil), UsernamePasswordAuthenticationFilter.class);
+                .addFilter(new JwtAuthenticationFilter(authManager, jwtUtil, userService))
+                .addFilterBefore(new JwtAuthorizationFilter(userService, jwtUtil), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
 
     @Bean
-    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService,
+    public AuthenticationManager authenticationManager(UserDetailsService userService,
                                                        PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setUserDetailsService(userService);
         authProvider.setPasswordEncoder(passwordEncoder);
         return new ProviderManager(authProvider);
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 }
 
-    /*private final CustomUserDetailsService userDetailsService;
+    /*private final CustomUserDetailsService userService;
 
-    public SecurityConfig(CustomUserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    public SecurityConfig(CustomUserDetailsService userService) {
+        this.userService = userService;
     }
 
     @Bean
@@ -97,7 +96,7 @@ public class SecurityConfig {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder
-                .userDetailsService(userDetailsService)
+                .userService(userService)
                 .passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder.build();
     }

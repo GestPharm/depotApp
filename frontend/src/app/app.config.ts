@@ -5,6 +5,8 @@ import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './login/auth.interceptor';
+import { registerLocaleData } from '@angular/common';
+
 
 
 export const appConfig: ApplicationConfig = {

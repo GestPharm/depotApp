@@ -25,11 +25,11 @@ export class AuthService {
     // auth.service.ts
   logout(): void {
     this.tokenStorage.signOut(); // or sessionStorage
-    
+
   }
 
   storeToken(token: string) {
-    this
+    this.tokenStorage.saveToken(token);
   }
 
   getToken(): string | null {
@@ -40,7 +40,7 @@ export class AuthService {
     return this.tokenStorage.getUser();
   }
 
- 
+
 
   isLoggedIn(): boolean {
     return !!this.getToken();

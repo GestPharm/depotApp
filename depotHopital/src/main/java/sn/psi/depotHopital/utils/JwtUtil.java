@@ -2,9 +2,12 @@ package sn.psi.depotHopital.utils;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.stereotype.Component;
+
 
 import java.util.*;
 import java.security.Key;
@@ -18,6 +21,7 @@ public class JwtUtil {
 
     @Value("${jwt.expiration}")
     private long expirationTime;
+
 
     private Key getSigningKey() {
         byte[] keyBytes = Base64.getDecoder().decode(secretKey);
@@ -87,4 +91,6 @@ public class JwtUtil {
     private interface ClaimsResolver<T> {
         T resolve(Claims claims);
     }
+
+
 }

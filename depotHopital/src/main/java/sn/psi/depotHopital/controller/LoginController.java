@@ -1,18 +1,14 @@
 package sn.psi.depotHopital.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import sn.psi.depotHopital.entities.User;
-import sn.psi.depotHopital.services.CustomUserDetailsService;
 import sn.psi.depotHopital.services.UserService;
 
 import java.util.HashMap;
@@ -57,7 +53,7 @@ public class LoginController {
         return ResponseEntity.ok(response);                                                                                     
     }
 
-    @PutMapping("/users/{id}/change-password")
+    @PutMapping("/api/users/{id}/change-password")
     public ResponseEntity<?> changePassword(@PathVariable Long id, @RequestBody ChangePasswordRequest request) {
         // Logique pour vérifier le mot de passe actuel et mettre à jour le mot de passe
         User user = userDetailsService.getUserById(id);

@@ -77,7 +77,7 @@
                     (dblclick)="openDialog(lp)">
                   <td>{{ lp.produit?.dci }} {{ lp.produit?.dosage }}</td>
                   <td>{{ lp.quantite }}</td>
-                  <td>{{ lp.prixTotal | number:'1.0-0' }} FCFA</td>
+                  <td>{{ lp.prixTotal | currency:'XOF'}}</td>
                 </tr>
               </tbody>
             </table>
@@ -85,8 +85,8 @@
 
           <!-- Pagination -->
           <div class="p-3 d-flex justify-content-center">
-            <pagination-controls 
-              (pageChange)="page = $event" 
+            <pagination-controls
+              (pageChange)="page = $event"
               [responsive]="true"
               [previousLabel]="paginationLabels.previousLabel"
               [nextLabel]="paginationLabels.nextLabel"
