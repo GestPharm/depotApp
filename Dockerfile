@@ -1,8 +1,13 @@
 # Étape 1 : Build du backend Spring Boot avec Maven
-FROM node:18
 FROM maven:3.9.6-eclipse-temurin-17 AS backend-build
 
 WORKDIR /app
+
+# Installer Node.js et npm
+RUN apt-get update && apt-get install -y curl && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g npm@latest
 
 # Copier tout le projet dans l'image Docker
 COPY . /app
