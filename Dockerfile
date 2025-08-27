@@ -1,4 +1,5 @@
 # Étape 1 : Build du backend Spring Boot avec Maven
+FROM node:18
 FROM maven:3.9.6-eclipse-temurin-17 AS backend-build
 
 WORKDIR /app
