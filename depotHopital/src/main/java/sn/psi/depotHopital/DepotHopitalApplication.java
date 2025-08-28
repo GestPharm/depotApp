@@ -1,5 +1,6 @@
 package sn.psi.depotHopital;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,12 +19,15 @@ public class DepotHopitalApplication {
 		SpringApplication.run(DepotHopitalApplication.class, args);
 	}
 
+	@Value("${cors.allowed-origins}")
+	private String[] allowedOrigins;
+
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:4200");
+				registry.addMapping("/**").allowedOrigins(allowedOrigins);
 			}
 		};
 	}
