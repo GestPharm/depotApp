@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y curl && \
 COPY . /app
 
 # Construire le projet Maven
-RUN mvn -f /app/pom.xml clean install -DskipTests
+RUN mvn -f /app/pom.xml clean install -Pprod -DskipTests
 
 # Étape 2 : Créer une image légère pour exécuter l'application
 FROM eclipse-temurin:17-jre-alpine
