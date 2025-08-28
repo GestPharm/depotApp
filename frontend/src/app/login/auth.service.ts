@@ -3,11 +3,12 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "../models/user.model";
 import { TokenStorageService } from "../services/token-storage.service";
+import { GenericConstants } from "../models/generics";
 
 // auth.service.ts
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/depotHopital/api';
+  baseUrl: string = GenericConstants.BACKEND_HOST_URL;
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {}
 

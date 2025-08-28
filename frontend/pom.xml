@@ -12,6 +12,21 @@
 	<artifactId>frontend</artifactId>
 	<packaging>pom</packaging>
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <ng.build.args>run build -- --configuration development --source-map=true</ng.build.args>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <ng.build.args>run build -- --configuration production --source-map=false</ng.build.args>
+      </properties>
+    </profile>
+  </profiles>
+
 
 	<build>
         <sourceDirectory>src</sourceDirectory>
@@ -45,7 +60,7 @@
                                 <PROJECT_VERSION>${project.version}</PROJECT_VERSION>
                             </environmentVariables>
                             <executable>npm</executable>
-                            <commandlineArgs>run build --source-map=true</commandlineArgs>
+                            <commandlineArgs>${ng.build.args}</commandlineArgs>
                         </configuration>
                     </execution>
                 </executions>
