@@ -47,7 +47,8 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       },
       err => {
-        this.errorMessage = err.error.message;
+        console.log(err);
+        this.errorMessage = `Nous n'avons pas pu vous authentifié, Veuillez vérifier votre identifiant / mot de passe `;
         this.isLoginFailed = true;
       }
     );

@@ -23,7 +23,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       catchError((error) => {
         if (error.status === 403) {
           // Handle 403 Forbidden (token might be expired or invalid)
-          localStorage.removeItem('token'); // Clear invalid token
+          tokenService.signOut(); // Clear invalid token
           router.navigate(['/login']); // Redirect to login
         }
         return throwError(() => error);

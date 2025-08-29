@@ -15,7 +15,7 @@
 
             <div class="col-md-6">
               <label for="nom" class="form-label fw-bold">Nom</label>
-              <input [(ngModel)]="poste.nom" type="text" name="nom" class="form-control" id="nom"  placeholder="Entrer votre nom">
+              <input [(ngModel)]="poste.nom" type="text" name="nom" class="form-control" id="nom"  placeholder="Entrer votre nom" required>
             </div>
             <div class="col-md-6">
               <label for="email">Adresse</label>
@@ -23,7 +23,7 @@
 
             </div>
             <div class="col-md-6">
-                <label for="email" class="form-label fw-bold">Téléphone</label>
+                <label for="telephone" class="form-label fw-bold">Téléphone</label>
                 <input [(ngModel)]="poste.telephone" type="text" name="telephone" class="form-control" id="telephone"  placeholder="Entrer un numéro de téléphone">
 
               </div>
@@ -34,7 +34,7 @@
 
               </div>
               <div class="col-md-6">
-                <label for="reference" class="form-label fw-bold">Budget annuel</label>
+                <label for="budgetAnnuel" class="form-label fw-bold">Budget annuel</label>
                 <input
                   [(ngModel)]="poste.budgetAnnuel"
                   type="text"

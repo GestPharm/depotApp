@@ -44,7 +44,8 @@ public class SecurityConfig {
                                 "/", "/index.html", "/favicon.ico", "/assets/**", "/*.js", "/*.js.map", "/*.css", "/*.css.map", "/*.scss"
                         ).permitAll()
                         .requestMatchers("/api/login", "/api/register").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .addFilter(new JwtAuthenticationFilter(authManager, jwtUtil, userService))
                 .addFilterBefore(new JwtAuthorizationFilter(userService, jwtUtil), UsernamePasswordAuthenticationFilter.class);

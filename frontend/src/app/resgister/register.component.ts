@@ -36,9 +36,9 @@ export class RegisterComponent {
         console.log(error);
         console.log(error.error);
         console.log(error.error.message);
-        this.errorMessage = error.error.message || 'Registration failed.';
+        this.errorMessage = error.error.message || `Echec lors de l'enregistrement`;
       }
     );
-    
+
   }
 }
