@@ -19,16 +19,6 @@ public class DepotHopitalApplication {
 		SpringApplication.run(DepotHopitalApplication.class, args);
 	}
 
-	@Value("${cors.allowed-origins}")
-	private String[] allowedOrigins;
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins(allowedOrigins);
-			}
-		};
-	}
+
 }

@@ -13,14 +13,14 @@ export class AuthService {
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {}
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, {
+    return this.http.post(`${this.baseUrl}/api/login`, {
       username,
       password
     });
   }
 
   registrer(user: User){
-    return this.http.post(`${this.baseUrl}/register`, user);
+    return this.http.post(`${this.baseUrl}/api/register`, user);
   }
 
     // auth.service.ts
@@ -52,6 +52,6 @@ export class AuthService {
       currentPassword,
       newPassword
     };
-    return this.http.put(`${this.baseUrl}/users/${userId}/change-password`, payload);
+    return this.http.put(`${this.baseUrl}/api/users/${userId}/change-password`, payload);
   }
 }

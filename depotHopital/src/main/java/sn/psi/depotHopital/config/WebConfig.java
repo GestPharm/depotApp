@@ -96,7 +96,7 @@ public class WebConfig implements  WebMvcConfigurer {
     }
 
 
-    @Bean
+    /*@Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
@@ -108,6 +108,6 @@ public class WebConfig implements  WebMvcConfigurer {
 
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
-    }
+    }*/
 
 }
