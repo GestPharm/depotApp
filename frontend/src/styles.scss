@@ -171,7 +171,9 @@ app-footer {
 html, body {
   height: 100%;
   margin: 0;
-  overflow: hidden; /* clé : pas de scroll global => pas d’espace blanc sous le footer */
+/*  overflow: hidden; /* clé : pas de scroll global => pas d’espace blanc sous le footer */
+  overflow-x: hidden; /* ✅ empêche le scroll horizontal */
+  overflow-y: auto;   /* ✅ permet au collapse et au reste de fonctionner */    
 }
 
 /* 2) Root à la hauteur du viewport, pas de min-height qui ajoute de la hauteur */
@@ -424,8 +426,8 @@ textarea.form-control {
     background-color: #f44336; /* Red */
 }
 .alert-success {
-    background-color: #36f456;  
-} 
+    background-color: #36f456;
+}
 .alert{
     padding: 20px;
     color: white;
@@ -450,3 +452,28 @@ textarea.form-control {
     font-size: 0.875rem;
     color: #dc3545;
 }
+
+
+@media (max-width: 768px) {
+  .col-id,
+  .col-quantite,
+  .col-contact,
+  .a-wiew,
+  .col-seuil {
+    display: none;
+  }
+}
+
+
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+  }
+}
+
+
