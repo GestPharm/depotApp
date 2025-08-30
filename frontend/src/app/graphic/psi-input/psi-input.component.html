@@ -1,0 +1,26 @@
+<label [for]="id" class="form-label fw-bold">{{ label }}</label>
+
+<input
+  [type]="type"
+  class="form-control"
+  [id]="id"
+  [name]="name"
+  [placeholder]="placeholder"
+  [required]="required"
+  [(ngModel)]="value"
+  (ngModelChange)="onValueChange($event)"   
+  #input="ngModel"
+  [class.is-invalid]="input.invalid && input.touched"
+/>
+
+<div *ngIf="input.invalid && input.touched" class="invalid-feedback">
+  <span *ngIf="input.errors?.['required']">{{ label }} est requis.</span>
+  <span *ngIf="input.errors?.['email']">Format d'email invalide.</span>
+  <span *ngIf="input.errors?.['minlength']">
+    Minimum {{ input.errors?.['minlength']?.requiredLength }} caractères.
+  </span>
+  <span *ngIf="input.errors?.['maxlength']">
+    Maximum {{ input.errors?.['maxlength']?.requiredLength }} caractères.
+  </span>
+  <span *ngIf="input.errors?.['pattern']">Format invalide.</span>
+</div>

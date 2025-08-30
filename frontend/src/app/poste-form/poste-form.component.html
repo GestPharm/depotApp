@@ -14,12 +14,20 @@
           <form class="row g-3">
 
             <div class="col-md-6">
+              
               <label for="nom" class="form-label fw-bold">Nom</label>
               <input [(ngModel)]="poste.nom" type="text" name="nom" class="form-control" id="nom"  placeholder="Entrer votre nom" required>
             </div>
             <div class="col-md-6">
-              <label for="email">Adresse</label>
-              <input [(ngModel)]="poste.adresse" type="text" name="adresse" class="form-control" id="adresse"  placeholder="Entrer l'adresse">
+              
+              <app-psi-input
+                label="Adresse"
+                id="adresse"
+                name="adresse"
+                [(value)]="poste.adresse"
+                [required]="true"
+                placeholder="Entrer l'adresse">
+            </app-psi-input>
 
             </div>
             <div class="col-md-6">
@@ -29,9 +37,11 @@
               </div>
 
               <div class="col-md-6">
-                <label for="email" class="form-label fw-bold">Email</label>
-                <input [(ngModel)]="poste.email" type="text" name="email" class="form-control" id="email"  placeholder="Entrer l'adresse email">
+                
+                <app-psi-input label="Email" id="email" name="email" [(value)]="poste.email" [required]="true" placeholder="Entrer l'adresse email">
+                </app-psi-input>
 
+               
               </div>
               <div class="col-md-6">
                 <label for="budgetAnnuel" class="form-label fw-bold">Budget annuel</label>

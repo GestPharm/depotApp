@@ -10,11 +10,12 @@ import { ListIem } from '../models/generics';
 import { CommonModule, Location } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPills, faSave, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { PsiInputComponent } from '../graphic/psi-input/psi-input.component';
 
 
 @Component({
   selector: 'app-poste-form',
-  imports: [FormsModule, CommonModule, RouterLink, FontAwesomeModule],
+  imports: [FormsModule, CommonModule, RouterLink, FontAwesomeModule, PsiInputComponent],
   templateUrl: './poste-form.component.html',
   styleUrl: './poste-form.component.css'
 })
