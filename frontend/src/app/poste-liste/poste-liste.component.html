@@ -8,21 +8,21 @@
       <table class="table table-hover">
         <thead>
         <tr>
-          <th>No</th>
+          <th class="col-id">No</th>
           <th>Nom</th>
-          <th>Contact</th>
+          <th class="col-contact">Contact</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let poste of postes ">
     
-          <td>{{ poste.id }}</td>
+          <td class="col-id">{{ poste.id }}</td>
           <td> {{poste.nom }}</td>
-          <td> {{ poste.email }} {{ poste.telephone }}</td>
+          <td class="col-contact"> {{ poste.email }} {{ poste.telephone }}</td>
           <td>
             
-            <a (click)="selectPoste(poste)" class="padding_1vw"><fa-icon [icon]="faEye" /> </a> 
+            <a (click)="selectPoste(poste)" class="padding_1vw"><fa-icon [icon]="faEye" class="a-view"/> </a> 
               <a routerLink="/poste-form/{{poste.id}}" class="padding_1vw"><fa-icon [icon]="faPen" /> </a> 
              <a (click)="deletePoste(poste.id)" class="padding_1vw"><fa-icon [icon]="faTrash" ></fa-icon></a>
             

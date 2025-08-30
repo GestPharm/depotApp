@@ -14,7 +14,7 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "fr"  // Use your desired locale code
+        "sourceLocale": "fr"  
       },
       "architect": {
         "build": {
