@@ -60,6 +60,10 @@ export class ProduitListeComponent implements OnInit{
     }
 
     filterProduits(): void {
+
+      if (!this.searchTerm || this.searchTerm.length < 2) {
+            this.filteredProduits = of([]);;
+      }
       
       if (this.searchTerm ) {
         // Filtrez les postes dont la DCI correspond à la requête

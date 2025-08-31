@@ -179,6 +179,9 @@ export class VenteComponent implements OnInit {
     }
   
     filtrerPostes(): void {
+      if (!this.searchText || this.searchText.length < 2) {
+            this.filteredOptions = of([]);;
+      }
       if (this.searchText) {
         // Filtrez les postes dont la DCI correspond à la requête
         const val = this.listePoste.filter(poste =>

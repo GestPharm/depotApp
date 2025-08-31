@@ -22,7 +22,7 @@ public class PdfController {
 
 
 
-    @GetMapping("/stat_by_poste_pdf/{idPoste}")
+    @GetMapping(value = "/stat_by_poste_pdf/{idPoste}" , produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<byte[]> exportCommandesPdf(@PathVariable Long idPoste) throws Exception {
         List<Transaction> commandes = transactionService.getTransactionsForPoste(idPoste); // ou findTop10ByOrderByDateDesc()
         byte[] pdf = pdfService.generateCommandesPdf(commandes);

@@ -104,17 +104,7 @@ export class TransactionService {
   }
 
 
-downloadPdf(idPoste: number) {
-  this.http.get('${this.baseURL}api/pdf/commandes', { responseType: 'blob' })
-    .subscribe((res: Blob) => {
-      const url = window.URL.createObjectURL(res);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'denieres_commandes.pdf';
-      a.click();
-      window.URL.revokeObjectURL(url);
-    });
-}
+
 
   getVentesDuMois(): Observable<number> {
     return this.http.get<number>(`${this.baseURL}/api/transactions/ventes-du-mois`);

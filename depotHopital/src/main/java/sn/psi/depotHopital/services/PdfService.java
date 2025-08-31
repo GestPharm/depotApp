@@ -27,9 +27,9 @@ public class PdfService {
         document.add(Chunk.NEWLINE);
 
         // Tableau
-        PdfPTable table = new PdfPTable(3); // 3 colonnes
+        PdfPTable table = new PdfPTable(4); // 3 colonnes
         table.setWidthPercentage(100);
-        table.setWidths(new float[]{1, 4, 2}); // largeur relative des colonnes
+        table.setWidths(new float[]{1, 4, 2, 2}); // largeur relative des colonnes
 
         // En-têtes
         table.addCell("No");

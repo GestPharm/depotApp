@@ -126,7 +126,7 @@ modifierLigneProduit(id: number | undefined, nouvellesDonnees: LigneProduit): vo
   }
 
   filtrerProduits(): void {
-    if (this.searchText && this.searchText.trim().length > 0) {
+    if (this.searchText && this.searchText.trim().length > 2) {
       // Filter products whose DCI matches the search query
       const filtered = this.listeProduit.filter(produit =>
         produit?.dci?.toLowerCase().includes(this.searchText.toLowerCase())

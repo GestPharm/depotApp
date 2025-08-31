@@ -8,10 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { StatPoste } from './stat-poste.model';
-import { TransactionType } from '../models/generics';
+import { GenericConstants, TransactionType } from '../models/generics';
 import { faEye} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommandCounterComponent } from '../command-counter/command-counter.component';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -36,10 +37,11 @@ export class StatistiquesComponent implements OnInit {
 
      
     faEye= faEye;
+    baseURL: string = GenericConstants.BACKEND_HOST_URL;
 
     
 
-    constructor(public transactionService: TransactionService,  private posteService: PosteService){
+    constructor(public transactionService: TransactionService,  private posteService: PosteService, private http: HttpClient){
       this.selectedPoste=null;
        
     }
@@ -65,6 +67,9 @@ export class StatistiquesComponent implements OnInit {
         }
       
         filtrerPostes(): void {
+          if (!this.searchText || this.searchText.length < 2) {
+            this.filteredOptions = of([]);
+          }
           if (this.searchText) {
             // Filtrez les postes dont la DCI correspond à la requête
             const val = this.listePoste.filter(poste =>
@@ -120,8 +125,17 @@ export class StatistiquesComponent implements OnInit {
 
         downloadPdf() {
           if(this.selectedPoste && this.selectedPoste.id){
-            this.transactionService.downloadPdf(this.selectedPoste.id);
-          }
+             this.http.get(`${this.baseURL}/api/pdf/stat_by_poste_pdf/${this.selectedPoste.id}`, { responseType: 'blob' })
+                .subscribe((res: Blob) => {
+                  const blob = new Blob([res], { type: 'application/pdf' });
+                  const url = window.URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'dernieres_commandes.pdf';
+                  a.click();
+                  window.URL.revokeObjectURL(url);
+                });
+              }
         }
 
 
