@@ -22,6 +22,7 @@ import { CommandCounterComponent } from '../command-counter/command-counter.comp
 })
 export class StatistiquesComponent implements OnInit {
 
+
   
   title = '';
 
@@ -114,6 +115,13 @@ export class StatistiquesComponent implements OnInit {
               return option?.nom ? option.nom : '';
           }
          
+        }
+
+
+        downloadPdf() {
+          if(this.selectedPoste && this.selectedPoste.id){
+            this.transactionService.downloadPdf(this.selectedPoste.id);
+          }
         }
 
 

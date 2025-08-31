@@ -86,7 +86,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 userMap.put("email", usr.getEmail());
                 userMap.put("nom", usr.getNom());
                 userMap.put("prenom", usr.getPrenom());
-                userMap.put("roles", usr.getRole());
+                userMap.put("role", usr.getRole());
             }
         } else {
              //If you have a custom User entity, cast and expose its fields
@@ -96,7 +96,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
              userMap.put("email", user.getEmail());
              userMap.put("nom", user.getNom());
             userMap.put("prenom", user.getPrenom());
-             userMap.put("roles", user.getRole());
+             userMap.put("role", user.getRole());
         }
 
         // Prepare response

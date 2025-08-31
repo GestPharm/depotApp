@@ -2,17 +2,17 @@ export class User {
     id: number | undefined;
     nom: string | undefined;
     prenom: string | undefined;
-    roles: string | undefined;
+    role: string | undefined;
     email: string | undefined;
     username: string | undefined;
     password: string | undefined;
     active: boolean | undefined;
-   
+
     constructor({
         id,
         nom,
         prenom,
-        roles,
+        role,
         email,
         username,
         password
@@ -20,21 +20,21 @@ export class User {
         id?: number,
         nom?: string,
         prenom?: string,
-        roles?: string,
+        role?: string,
         email?: string,
         username?: string,
         password?: string,
         active?: true
-      
+
     }) {
       this.id = id;
       this.nom = nom;
       this.prenom = prenom;
-      this.roles = roles;
+      this.role = role;
       this.username = password;
       this.password = password;
       this.email = email;
       this.active = this.active;
-      
+
     }
 }

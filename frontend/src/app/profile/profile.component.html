@@ -7,7 +7,7 @@
     <p>
       <strong>Identifiant:</strong>
       {{ currentUser.username }}
-      
+
     </p>
     <p>
       <strong>Email:</strong>
@@ -15,12 +15,16 @@
     </p>
     <p>
       <strong>Roles:</strong>
-    
-        {{ currentUser.roles }}
-      
+      <ng-container *ngSwitch="currentUser.role">
+        <span *ngSwitchCase="'ADMIN'">Administrateur</span>
+        <span *ngSwitchCase="'USER'">Utilisateur</span>
+        <span *ngSwitchCase="'MODERATOR'">Moderateur</span>
+        <span *ngSwitchDefault>{{ currentUser.role }}</span>
+      </ng-container>
+
     </p>
-    
-    
+
+
     <app-change-password></app-change-password>
   </div>
 

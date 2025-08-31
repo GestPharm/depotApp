@@ -25,6 +25,7 @@ export class RegisterComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
   onSubmit() {
+    
     this.auth.registrer(this.user).subscribe(
       (response: any) => {
         this.successMessage = 'Registration successful! Redirecting to login...';
