@@ -21,6 +21,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
             @Param("nomPoste") String nomPoste
     );
 
+    List<Transaction> findTop5ByTypeOrderByDateTransactionDesc(String type);
+
 
     // New method to count transactions by poste ID
     @Query("SELECT COUNT(t) FROM Transaction t WHERE t.poste.id = :idPoste AND t.type = 'sortie' AND t.dateTransaction BETWEEN :startDate AND :endDate")

@@ -24,7 +24,6 @@
       <tr>
         <th class="col-id">#</th>
         <th>DCI</th>
-        <th>Dosage</th>
         <th class="col-quantite">Quantité</th>
         <th class="col-seuil">Seuil d'alerte</th>
         <th>Actions</th>
@@ -35,8 +34,7 @@
         <!-- Afficher uniquement les éléments de la page actuelle -->
         <tr *ngFor="let produit of produits | paginate: { itemsPerPage: 10, currentPage: page }">
           <td class="col-id">{{ produit.id }}</td>
-          <td>{{ produit.dci }}</td>
-          <td>{{ produit.dosage }}</td>
+          <td>{{ produit.dci }} {{ produit.dosage }}</td>
           <td class="col-quantite">{{ produit.quantite }}</td>
           <td class="col-seuil">{{ produit.seuilAlerte }}</td>
           <td>

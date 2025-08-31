@@ -59,10 +59,10 @@ export class HomeComponent implements OnInit{
 
   transactions: Transaction[] = [];
 
-  page: number = 1; 
+  page: number = 1;
 
   stockFaibleCount: number = 0;
-  
+
     // Configuration des labels de pagination en français
     paginationLabels = {
       previousLabel: 'Préc.',
@@ -71,13 +71,13 @@ export class HomeComponent implements OnInit{
       screenReaderPageLabel: 'page',
       screenReaderCurrentLabel: `Vous êtes sur la page`
     };
-  
+
       faTrash= faTrash;
         faPen = faPen;
         faEye= faEye;
-      
+
       ventesMois: string|number = 0;
-        
+
 
    constructor(private transactionService: TransactionService, private produitService: ProduitService) {}
 
@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit{
 
    loadDataSource (){
 
-    this.transactionService.getAllTransaction().subscribe(data => {
+    this.transactionService.getDernieresVentes().subscribe(data => {
 
       this.transactions = data;
 
@@ -191,9 +191,9 @@ loadVentesParMois(): void {
   getTransactionTypeLabel(arg0: string|undefined) {
     return arg0 ? TransactionType[arg0 as keyof typeof TransactionType] : '';
   }
-  
 
-   
+
+
 
 
 

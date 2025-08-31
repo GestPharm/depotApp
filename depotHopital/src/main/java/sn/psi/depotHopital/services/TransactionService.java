@@ -216,4 +216,8 @@ public class TransactionService {
     public List<Object[]> getVentesParMois() {
         return transactionRepository.getVentesParMois();
     }
+
+    public List<Transaction> getDernieresVentes() {
+        return transactionRepository.findTop5ByTypeOrderByDateTransactionDesc("sortie");
+    }
 }

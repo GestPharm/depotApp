@@ -29,6 +29,11 @@ public class TransactionController {
         return transactionService.getAllTransactions();
     }
 
+    @GetMapping("/dernieres_ventes")
+    public List<Transaction> getDernieresVentes() {
+        return transactionService.getDernieresVentes();
+    }
+
 
     @GetMapping("/{id}")
     public Transaction getTransactionById(@PathVariable Long id) {

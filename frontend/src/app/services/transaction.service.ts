@@ -10,28 +10,28 @@ import { StatPoste } from '../statistiques/stat-poste.model';
 })
 export class TransactionService {
 
- 
+
   baseURL: string = GenericConstants.BACKEND_HOST_URL;
-  
+
      httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, x-requested-with, Content-Type, origin, authorization, accept, client-security-token',
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         'Access-Control-Allow-Origin': '*'
-        
+
       })
     };
-  
+
     constructor(private http: HttpClient) {}
-    
+
     getTransaction(id: string): Observable<Transaction> {
       return this.http.get<Transaction>(`${this.baseURL}/api/transactions/${id}`, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
     }
-  
+
     getAllTransaction(): Observable<Transaction[]> {
       return this.http.get<Transaction[]>(`${this.baseURL}/api/transactions`, this.httpOptions)
       .pipe(
@@ -39,10 +39,18 @@ export class TransactionService {
       );
     }
 
-   
-  
+     getDernieresVentes(): Observable<Transaction[]> {
+          return this.http.get<Transaction[]>(`${this.baseURL}/api/transactions/dernieres_ventes`, this.httpOptions)
+          .pipe(
+            catchError(this.handleError)
+          );
+
+     }
+
+
+
     createTransaction(transaction: Transaction): Observable<Transaction> {
-    
+
       return this.http.post<Transaction>(`${this.baseURL}/api/transactions/`, JSON.stringify(transaction), this.httpOptions)
       .pipe(
         catchError(this.handleError)
@@ -50,13 +58,13 @@ export class TransactionService {
     }
 
     updateTransaction(id: number|undefined, transaction: Transaction): Observable<Transaction> {
-    
+
       return this.http.put<Transaction>(`${this.baseURL}/api/transactions/${id}`, transaction, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
     }
-  
+
     /** DELETE: delete the hero from the server */
   deleteTransaction(id: number | undefined): Observable<unknown> {
     const url = `${this.baseURL}/api/transactions/${id}`; // DELETE api/heroes/42
@@ -68,7 +76,7 @@ export class TransactionService {
 
 
   rechercherTransaction(dci: string | null, nomPoste: string| null): Observable<Transaction[]> {
-    
+
     let params= new HttpParams();
     if(dci){
       params= params.set('dci', dci);
@@ -86,9 +94,9 @@ export class TransactionService {
 
 
   getStatByPoste(idPoste: number): Observable<StatPoste> {
-    
-    
-    
+
+
+
     return this.http.get<StatPoste>(`${this.baseURL}/api/transactions/stat_by_poste/${idPoste}`)
     .pipe(
       catchError(this.handleError)
@@ -106,10 +114,10 @@ export class TransactionService {
   getVentesParMois(): Observable<any> {
     return this.http.get<any>(`${this.baseURL}/api/transactions/ventes-par-mois`);
   }
-  
-  
-  
-  
+
+
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -123,6 +131,6 @@ export class TransactionService {
     // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
-  
+
 }
 
