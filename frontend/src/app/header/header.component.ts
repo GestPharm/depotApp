@@ -35,4 +35,19 @@ export class HeaderComponent implements OnInit{
       return this.auth.isLoggedIn();
     }
 
+     closeNavbar() {
+    const navbarToggler = document.querySelector('.navbar-toggler') as HTMLElement;
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    
+    if (navbarCollapse?.classList.contains('show') && navbarToggler) {
+      navbarToggler.click(); // Simule un clic sur le toggle pour fermer
+    }
+  }
+
+    onNavLinkClick() {
+      if (window.innerWidth < 992) { // Seulement en mobile
+        this.closeNavbar();
+      }
+    }
+
 }
